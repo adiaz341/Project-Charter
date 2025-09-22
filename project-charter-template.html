@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Charter Template</title>
+  <meta name="description" content="Single-file, printable, accessible project charter template with TOC and power–interest grid." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand-dark:#004d7a; --brand-mid:#008793; --blue-bg:#e3f2fd; --blue-br:#bbdefb; --green-bg:#f1f8e9; --green-br:#c5e1a5; --paper:#f5f7fb; --ink:#1f2937;
+      --muted:#6b7280; --ring:#93c5fd; --card:#ffffff; --br:#e5e7eb; --shadow:0 6px 20px rgba(0,0,0,.08);
+      --deliv1:#e3f2fd; --deliv2:#f1f8e9; --deliv3:#fff8e1; --deliv4:#fce4ec;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --paper:#0b1220; --ink:#e5e7eb; --card:#0f172a; --br:#20304b; --blue-bg:#0b1f36; --blue-br:#1e3a5f; --green-bg:#0b1f17; --green-br:#174e3b; --shadow:0 8px 24px rgba(0,0,0,.45);
+      --deliv1:#0b1f36; --deliv2:#0b1f17; --deliv3:#332b00; --deliv4:#2b0d1a }
+      .sidebar{ background:#0f172a }
+      .toc a{ color:#c7d2fe }
+      table th{ background:#0b4b6f }
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:var(--paper); color:var(--ink); line-height:1.6}
+
+    /* Skip link */
+    .skip-link{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
+    .skip-link:focus{ left:16px; top:16px; width:auto; height:auto; padding:8px 12px; background:#fff; border-radius:8px; box-shadow:var(--shadow) }
+
+    /* Layout */
+    .shell{max-width:1200px; margin:20px auto; padding:0 16px}
+    .layout{display:grid; grid-template-columns: 280px 1fr; gap:20px; align-items:start}
+    .sidebar{position:sticky; top:24px; align-self:start; background:var(--card); border:1px solid var(--br); border-radius:14px; box-shadow:var(--shadow); overflow:hidden}
+    .sidebar h3{margin:0; padding:14px 16px; background:linear-gradient(0deg,#f7faff,#f2f6fb); border-bottom:1px solid var(--br); color:var(--brand-dark); font-size:15px}
+    .toc{list-style:none; margin:0; padding:8px}
+    .toc li{margin:4px 0}
+    .toc a{display:block; padding:9px 10px; border-radius:8px; text-decoration:none; color:#354; font-size:14px; transition:background .2s ease}
+    .toc a:hover{background:#eef3f7}
+    .toc a.active{background:#ddeefd; color:#123}
+
+    /* Header card */
+    .container{ background: var(--card); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; border:1px solid var(--br) }
+    .header{ background: linear-gradient(135deg, var(--brand-dark), var(--brand-mid)); color: white; padding: 28px; text-align: center }
+    .header h1{ margin: 0 0 6px 0; font-size: clamp(24px, 3.2vw, 34px); font-weight: 700 }
+    .header p{ margin: 0; font-size: 14px; opacity: 0.9 }
+    .content{ padding: 28px }
+
+    .badge{ display:inline-flex; gap:8px; align-items:center; background: #ffffff1a; padding:6px 10px; border-radius:999px; font-size:12px; backdrop-filter: blur(4px) }
+
+    .section{ margin-bottom: 22px; border-radius: 10px; border: 1px solid var(--br); overflow: hidden; transition: all 0.2s ease; background:var(--card); scroll-margin-top: 120px }
+    .section:hover{ box-shadow:0 10px 24px rgba(0,0,0,.08); transform: translateY(-2px) }
+
+    .section:nth-of-type(odd) .section-header { background: var(--blue-bg); border-bottom: 1px solid var(--blue-br) }
+    .section:nth-of-type(even) .section-header { background: var(--green-bg); border-bottom: 1px solid var(--green-br) }
+
+    .section-header{ padding: 14px 18px }
+    .section-title{ margin: 0; color: var(--brand-dark); font-size: 18px }
+    .section-content{ padding: 18px }
+
+    .placeholder{ background: #fff8e1; border: 1px dashed #ffca28; border-radius: 8px; padding: 15px; margin: 10px 0; color: #6d4c41; font-style: italic; font-size: 14px }
+
+    .info-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px }
+    .info-item{ display: flex; flex-direction: column }
+    .info-label{ font-weight: 600; color: var(--brand-dark); font-size: 13px; margin-bottom: 5px }
+    .info-value{ background: #fafafa; padding: 10px; border-radius: 6px; border: 1px solid #ddd; font-size: 14px }
+
+    table{ width: 100%; border-collapse: collapse; margin-top: 14px; border:1px solid var(--br) }
+    table th{ background: var(--brand-dark); color: white; padding: 10px; text-align: left; font-size: 14px }
+    table td{ padding: 10px; border-bottom: 1px solid var(--br); font-size: 13px; vertical-align: top }
+    table tr:hover{ background: #f7f9fb }
+
+    .muted{ color: var(--muted) }
+    .grid-placeholder{ background: #f1f3f6; border: 1px dashed #90a4ae; border-radius: 8px; padding: 25px; text-align: center; color: #607d8b; font-style: italic }
+
+    .footer-note{ background: #fff3e0; border-radius: 8px; padding: 18px; font-size: 14px; color: #e65100; border:1px solid #ffd9a1 }
+    .footer-note strong{ display:block; margin-bottom:8px }
+
+    /* Collapsible WBS styling */
+    details{ margin-bottom: 12px; border:1px solid var(--br); border-radius:8px; padding:8px; background:var(--card) }
+    details summary{ cursor:pointer; font-weight:600; color:var(--brand-dark); padding:6px; border-radius:6px }
+    details[open] summary{ margin-bottom:8px }
+
+    /* Deliverable color accents */
+    .deliv1 summary{ background:var(--deliv1) }
+    .deliv2 summary{ background:var(--deliv2) }
+    .deliv3 summary{ background:var(--deliv3) }
+    .deliv4 summary{ background:var(--deliv4) }
+
+    /* 2A: richer accents for deliverables (adds borders + matching WBS table headers) */
+    details.deliv1{ border-width:1.5px; border-color:#0284c7 }
+    details.deliv2{ border-width:1.5px; border-color:#16a34a }
+    details.deliv3{ border-width:1.5px; border-color:#d97706 }
+    details.deliv4{ border-width:1.5px; border-color:#7c3aed }
+
+    /* Tint WBS table headers inside each deliverable to match */
+    .deliv1 table thead th{ background:#0284c7 }
+    .deliv2 table thead th{ background:#16a34a }
+    .deliv3 table thead th{ background:#d97706 }
+    .deliv4 table thead th{ background:#7c3aed }
+
+    /* Back to Top */
+    .back-to-top{ position: fixed; right: 24px; bottom: 28px; z-index: 1000; background: linear-gradient(135deg, var(--brand-dark), var(--brand-mid)); color:#fff; border:none; border-radius:999px; width:46px; height:46px; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 16px rgba(0,0,0,.2); transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease; opacity:.95 }
+    .back-to-top:hover{ transform: translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.25) }
+    .back-to-top:focus{ outline:2px solid var(--blue-br); outline-offset:3px }
+    .back-to-top.show{ display:flex }
+
+    /* Mobile */
+    @media (max-width: 980px){ .layout{ grid-template-columns: 1fr } }
+
+    /* Print styles */
+    @media print{
+      @page{ margin: 16mm }
+      body{ background:#fff }
+      .sidebar, .back-to-top{ display:none !important }
+      .section{ break-inside: avoid }
+      .container{ box-shadow:none; border:none }
+      a[href^="#"]:after{ content:"" }
+    }
+
+    /* Dark mode accents for borders and headers */
+    @media (prefers-color-scheme: dark){
+      details.deliv1{ border-color:#38bdf8 }
+      details.deliv2{ border-color:#34d399 }
+      details.deliv3{ border-color:#f59e0b }
+      details.deliv4{ border-color:#a78bfa }
+
+      .deliv1 table thead th{ background:#38bdf8 }
+      .deliv2 table thead th{ background:#34d399 }
+      .deliv3 table thead th{ background:#f59e0b }
+      .deliv4 table thead th{ background:#a78bfa }
+    }
+
+	/* Budget subtotal highlights (Section 7) */
+	#section7 table tr[class^="subtotal-"] td{ font-weight:600 }
+	tr.subtotal-labor{ background:#eaf3ff; border-top:2px solid #93c5fd }
+	tr.subtotal-equip{ background:#eaf7ea; border-top:2px solid #86efac }
+	tr.subtotal-mat{ background:#fff7e6; border-top:2px solid #facc15 }
+	tr.subtotal-serv{ background:#f5eaff; border-top:2px solid #c4b5fd }
+	tr.subtotal-grand{ background:#edf2f7; border-top:2px solid #94a3b8 }
+
+
+	@media (prefers-color-scheme: dark){
+	  tr.subtotal-labor{ background:rgba(147,197,253,.15); border-top-color:#93c5fd }
+	  tr.subtotal-equip{ background:rgba(134,239,172,.12); border-top-color:#86efac }
+	  tr.subtotal-mat{ background:rgba(250,204,21,.12); border-top-color:#facc15 }
+	  tr.subtotal-serv{ background:rgba(196,181,253,.15); border-top-color:#c4b5fd }
+	  tr.subtotal-grand{ background:rgba(148,163,184,.15); border-top-color:#94a3b8 }
+    } 
+
+	/* ===== Section 7: visual emphasis ===== */
+	/* Solid emphasis for TOTAL PROJECT BUDGET (targets last row in #budgetTable) */
+	#section7 #budgetTable tbody tr:last-child td{ background:#004d7a; color:#fff; font-weight:700; border-top:2px solid #003a5c }
+	#section7 #budgetTable tbody tr:last-child td strong{ color:#fff }
+
+
+	/* Category % table row tints (match subtotal colors by row order) */
+	#budgetBreakdown tbody tr:nth-child(1) td{ background:#eaf3ff } /* Labor */
+	#budgetBreakdown tbody tr:nth-child(2) td{ background:#eaf7ea } /* Equipment/Software */
+	#budgetBreakdown tbody tr:nth-child(3) td{ background:#fff7e6 } /* Materials */
+	#budgetBreakdown tbody tr:nth-child(4) td{ background:#f5eaff } /* Services */
+	#budgetBreakdown tbody tr:nth-child(5) td{ background:#edf2f7 } /* Contingency */
+	#budgetBreakdown tbody tr:nth-child(6) td{ background:#f1f5f9; font-weight:700 } /* Total Percentage */
+
+
+	@media (prefers-color-scheme: dark){
+	  #section7 #budgetTable tbody tr:last-child td{ background:#0b4b6f; border-top-color:#0a3a54 }
+	  #budgetBreakdown tbody tr:nth-child(1) td{ background:rgba(147,197,253,.15) }
+	  #budgetBreakdown tbody tr:nth-child(2) td{ background:rgba(134,239,172,.12) }
+	  #budgetBreakdown tbody tr:nth-child(3) td{ background:rgba(250,204,21,.12) }
+	  #budgetBreakdown tbody tr:nth-child(4) td{ background:rgba(196,181,253,.15) }
+	  #budgetBreakdown tbody tr:nth-child(5) td{ background:rgba(148,163,184,.15) }
+	  #budgetBreakdown tbody tr:nth-child(6) td{ background:rgba(241,245,249,.08) }
+    }
+  	/* Section 9 diagram sizing */
+.figure-narrow{ max-width: 960px; margin: 0 auto; }
+.media-fluid{ display:block; width:100%; height:auto; }
+.media-maxh{ max-height: 520px; object-fit: contain; }
+
+	/* === Section 11: Bigger screenshots === */
+.tool-gallery{ 
+  display:grid; 
+  grid-template-columns: 1fr;  /* one per row = bigger */
+  gap: 16px; 
+}
+.tool-shot{ margin:0 }
+.tool-shot img{
+  display:block;
+  width:100%;       /* fill the content width */
+  height:auto;      /* keep aspect ratio */
+  border-radius:10px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--br);
+}
+/* Let the gallery “bleed” to the card edges for a little extra width */
+.section-content .bleed{ margin-left:-18px; margin-right:-18px }
+
+/* On very small screens, keep it single column (already 1fr). 
+   If you ever want two columns on desktop, change to 1fr 1fr here. */
+@media (min-width: 1200px){
+  .tool-gallery{ grid-template-columns: 1fr; }
+}
+
+
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="shell">
+    <div class="layout">
+      <!-- Sidebar TOC -->
+      <aside class="sidebar" aria-label="Section navigation">
+        <h3>On this page</h3>
+        <ul class="toc" id="sideToc">
+          <li><a href="#student-info">Student Information</a></li>
+          <li><a href="#section1">1. Title & Description</a></li>
+          <li><a href="#section2">2. Vision, Mission & Strategy</a></li>
+          <li><a href="#section3">3. Business Case</a></li>
+          <li><a href="#section4">4. High-Level Scope</a></li>
+          <li><a href="#section5">5. Stakeholder Register</a></li>
+          <li><a href="#section6">6. Deliverables & DoD</a></li>
+          <li><a href="#section7">7. Budget (est.)</a></li>
+	  <li><a href="#section8">8. Project Methodology — Explanation</a></li>
+	  <li><a href="#section9">9. Project Methodology Diagram</a></li>
+	  <li><a href="#section10">10. Project Tool Selection</a></li>
+	  <li><a href="#section11">11. Project Tool — Screenshot</a></li>
+          <li><a href="#footer-note">Additional Components</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main content -->
+      <main id="main" aria-label="Project charter">
+        <div class="container">
+          <div class="header">
+            <span class="badge" aria-hidden="true">Template • Single file</span>
+            <h1>Landing An Entry-Level IT Job</h1>
+            <p>Project Charter — Managing IT Projects</p>
+          </div>
+          <div class="content">
+
+            <!-- Student Information -->
+            <section class="section" id="student-info">
+              <div class="section-header"><h2 class="section-title">Student Information</h2></div>
+              <div class="section-content">
+                <div class="info-grid">
+                  <div class="info-item"><div class="info-label">Student Name</div><div class="info-value" contenteditable="true" aria-label="Student name">Alejandro Diaz</div></div>
+                  <div class="info-item"><div class="info-label">Course</div><div class="info-value" contenteditable="true">Managing IT Projects</div></div>
+                  <div class="info-item"><div class="info-label">Semester</div><div class="info-value" contenteditable="true">Fall 2025</div></div>
+                </div>
+                <p class="muted" style="margin-top:8px">Tip: Click any shaded field to edit inline. Your edits will print.</p>
+              </div>
+            </section>
+
+            <!-- Section 1: Project Title & Description -->
+            <section class="section" id="section1">
+              <div class="section-header"><h2 class="section-title">1. Project Title & Description</h2></div>
+              <div class="section-content">
+                <div class="placeholder" contenteditable="true">
+                  <h3>Project Title: Landing An Entry-Level IT Job</h3>
+                  <p>I am going to build an IT portfolio to showcase what I have learned since transitioning from the chemical blending industry. I will begin by reinforcing my knowledge in Networking, Cybersecurity, and IT Fundamentals. Doing this will aid my chances of securing employment once I graduate from college with my B.S. in Computer Information Systems.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 2: Vision, Mission & Strategy Alignment -->
+            <section class="section" id="section2">
+              <div class="section-header"><h2 class="section-title">2. Vision, Mission &amp; Strategy Alignment</h2></div>
+              <div class="section-content">
+                <div class="placeholder" contenteditable="true">
+                  <h4>Personal Mission Connection</h4>
+                  <p>I am a reliable, hardworking, and trustworthy individual who strives to better himself every day. I face challenges—even when I don’t fully understand them—head-on and work well in teams as either a helper or a leader. I pride myself on hard work and communication with the goal of advancing the project and the team.</p>
+                  <h4>Vision Alignment</h4>
+                  <p>In the next five years, I see myself working in the IT industry in either the cybersecurity or networking sector. I plan to earn certifications such as CompTIA A+, Network+, Security+, and CCNA. I am working toward a future in IT management and plan to pursue a master's degree to deepen my knowledge.</p>
+                  <h4>Strategic Goal Support</h4>
+                  <ul>
+                    <li>Obtain industry-recognized certifications.</li>
+                    <li>Work or volunteer in an IT position.</li>
+                    <li>Get hands-on experience in cybersecurity and networking fundamentals.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 3: Business Case -->
+            <section class="section" id="section3">
+              <div class="section-header"><h2 class="section-title">3. Business Case &amp; Justification</h2></div>
+              <div class="section-content">
+                <div class="placeholder" contenteditable="true">
+                  <h4>Professional Value</h4>
+                  <p>This project will benefit my career by highlighting what I have learned during my studies. It will also enhance my portfolio with examples of projects and hands-on experience. Additionally, it will encourage me to apply for internships and volunteer more at work, church, and wherever I am able to gain experience.</p>
+                  <h4>Personal Value</h4>
+                  <p>This project will grant me personal satisfaction, skill development, and a structured way to deepen my learning while building a portfolio that helps ensure my job applications are taken seriously. I will strengthen fundamentals in networking, cybersecurity, and troubleshooting as a foundation for continued growth—serving as a stepping stone into the IT workforce.</p>
+                  <h4>Learning Outcomes</h4>
+                  <p>This project will teach me project management, industry knowledge, technical skills, and networking skills. Hands-on assignments—such as labs and online courses—will reinforce learning and retention. I will also build a professional portfolio and a lightweight website to showcase my skills, and expand my network through meetups (e.g., Eventbrite), campus guest speakers, and job fairs at Cal State LA.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 4: High-Level Scope -->
+            <section class="section" id="section4">
+              <div class="section-header"><h2 class="section-title">4. High-Level Scope</h2></div>
+              <div class="section-content">
+                <div class="placeholder" contenteditable="true">
+                  <h4>In Scope</h4>
+                  <ul>
+                    <li>Build digital portfolio</li>
+                    <li>Research objectives and strategize certification for CompTIA A+</li>
+                    <li>Complete Cisco's IT Support Specialist Path</li>
+                    <li>Complete Cisco's Network Technician Path</li>
+                    <li>Complete Cisco's Junior Cybersecurity Analyst Path</li>
+                    <li>Include knowledge of SQL, Python, and Oracle databases</li>
+                    <li>Build personal website to house digital portfolio</li>
+                  </ul>
+                </div>
+                <div class="placeholder" contenteditable="true">
+                  <h4>Roadmap Items</h4>
+                  <ul>
+                    <li>Resume update linking digital portfolio</li>
+                    <li>Post completion badges to website</li>
+                    <li>Attempt certification in CompTIA A+</li>
+                    <li>Study for either CCNA, Network+, or Security+</li>
+                    <li>Apply for jobs</li>
+                  </ul>
+                </div>
+                <div class="placeholder" contenteditable="true">
+                  <h4>Out of Scope</h4>
+                  <ul>
+                    <li>Build home lab</li>
+                    <li>Build portfolio website from scratch</li>
+                    <li>Learn HTML, CSS, and JavaScript</li>
+                    <li>Apply to jobs prematurely</li>
+                    <li>Spend money on certification exams too soon</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 5: Stakeholder Register -->
+            <section class="section" id="section5">
+              <div class="section-header"><h2 class="section-title">5. Stakeholder Register</h2></div>
+              <div class="section-content">
+                <table id="stakeTable">
+                  <thead>
+                    <tr>
+                      <th>Stakeholder</th>
+                      <th>Category</th>
+                      <th>Role/Interest</th>
+                      <th>Power</th>
+                      <th>Interest</th>
+                      <th>Engagement Strategy</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Myself &amp; Wife</td>
+                      <td>Internal</td>
+                      <td>Provide resources, time, motivation, and accountability</td>
+                      <td>High</td>
+                      <td>High</td>
+                      <td>Manage closely — weekly check-ins, milestone celebrations</td>
+                    </tr>
+                    <tr>
+                      <td>Current Job</td>
+                      <td>Internal</td>
+                      <td>Potential to apply new skills and allocate study time</td>
+                      <td>Medium</td>
+                      <td>Medium</td>
+                      <td>Keep satisfied — share graduation and certification plans</td>
+                    </tr>
+                    <tr>
+                      <td>Professors / Mentors</td>
+                      <td>External</td>
+                      <td>Offer guidance, feedback, and career advice</td>
+                      <td>Medium</td>
+                      <td>Medium</td>
+                      <td>Keep satisfied — periodic emails or meetings</td>
+                    </tr>
+                    <tr>
+                      <td>Peer Learners / Study Groups</td>
+                      <td>External</td>
+                      <td>Collaborative learning and motivation</td>
+                      <td>Low</td>
+                      <td>Low</td>
+                      <td>Monitor — participate in forums and group sessions</td>
+                    </tr>
+                    <tr>
+                      <td>Certification Providers (CompTIA, Cisco, ISC²)</td>
+                      <td>External</td>
+                      <td>Validate knowledge with recognized credentials</td>
+                      <td>High</td>
+                      <td>High</td>
+                      <td>Manage closely — follow exam requirements</td>
+                    </tr>
+                    <tr>
+                      <td>Future Employers / Recruiters</td>
+                      <td>External</td>
+                      <td>Interested in portfolio, skills, and certifications</td>
+                      <td>High</td>
+                      <td>High</td>
+                      <td>Manage closely — share updates via LinkedIn and networking</td>
+                    </tr>
+                    <tr>
+                      <td>IT Communities / Local Meetups</td>
+                      <td>External</td>
+                      <td>Networking, knowledge exchange, mentorship</td>
+                      <td>Medium</td>
+                      <td>Medium</td>
+                      <td>Keep informed — attend events and contribute</td>
+                    </tr>
+                    <tr>
+                      <td>Regulatory Framework Bodies (e.g., NIST)</td>
+                      <td>External</td>
+                      <td>Provide cybersecurity standards and frameworks</td>
+                      <td>Low</td>
+                      <td>Low</td>
+                      <td>Monitor — align learning with guidelines</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="grid-placeholder" style="margin-top: 20px;">
+                  <svg viewBox="0 0 800 560" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                    <style><![CDATA[
+                      .title{font:700 16px Inter, 'Segoe UI', Arial, sans-serif}
+                      .sub{font:400 12px Inter, 'Segoe UI', Arial, sans-serif; fill:#37474f}
+                      .item{font:400 12px Inter, 'Segoe UI', Arial, sans-serif}
+                      .label{font:700 14px Inter, 'Segoe UI', Arial, sans-serif}
+                    ]]></style>
+                    <rect x="0" y="0" width="800" height="560" fill="#ffffff"/>
+                    <rect x="20" y="20" width="760" height="460" fill="#ffffff" stroke="#90a4ae" stroke-dasharray="6 6" rx="10"/>
+                    <rect x="30"  y="30"  width="360" height="210" fill="#d5e8d4" stroke="#82b366"/>
+                    <rect x="410" y="30"  width="360" height="210" fill="#f8cecc" stroke="#b85450"/>
+                    <rect x="30"  y="270" width="360" height="210" fill="#ffe6cc" stroke="#d79b00"/>
+                    <rect x="410" y="270" width="360" height="210" fill="#e1d5e7" stroke="#9673a6"/>
+                    <line x1="400" y1="20" x2="400" y2="480" stroke="#90a4ae" stroke-dasharray="4 4"/>
+                    <line x1="20" y1="250" x2="780" y2="250" stroke="#90a4ae" stroke-dasharray="4 4"/>
+                    <text x="210" y="60" class="title" text-anchor="middle">Keep Satisfied</text>
+                    <text x="210" y="80" class="sub" text-anchor="middle">(High Power, Low Interest)</text>
+                    <text x="590" y="60" class="title" text-anchor="middle">Manage Closely</text>
+                    <text x="590" y="80" class="sub" text-anchor="middle">(High Power, High Interest)</text>
+                    <text x="210" y="290" class="title" text-anchor="middle">Monitor</text>
+                    <text x="210" y="310" class="sub" text-anchor="middle">(Low Power, Low Interest)</text>
+                    <text x="590" y="290" class="title" text-anchor="middle">Keep Informed</text>
+                    <text x="590" y="310" class="sub" text-anchor="middle">(Low Power, High Interest)</text>
+                    <text x="210" y="110" class="item" text-anchor="middle">• Current Job</text>
+                    <text x="210" y="130" class="item" text-anchor="middle">• Professors / Mentors</text>
+                    <text x="590" y="110" class="item" text-anchor="middle">• Wife &amp; Myself</text>
+                    <text x="590" y="130" class="item" text-anchor="middle">• Certification Providers</text>
+                    <text x="590" y="150" class="item" text-anchor="middle">• Future Employers / Recruiters</text>
+                    <text x="210" y="340" class="item" text-anchor="middle">• Regulatory Bodies</text>
+                    <text x="210" y="360" class="item" text-anchor="middle">• Peer Learners</text>
+                    <text x="590" y="340" class="item" text-anchor="middle">• IT Communities / Meetups</text>
+                    <text x="22" y="250" class="label" text-anchor="middle" transform="rotate(-90 22,250)">Power</text>
+                    <text x="20" y="200" class="label" text-anchor="middle" style="font-size:18px">↑</text>
+                    <text x="400" y="540" class="label" text-anchor="middle"><tspan>Interest</tspan><tspan dx="8" style="font-size:18px">→</tspan></text>
+                  </svg>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 6: Deliverables & Definition of Done + WBS (collapsible) -->
+            <section class="section" id="section6">
+              <div class="section-header"><h2 class="section-title">6. Deliverables &amp; Definition of Done</h2></div>
+              <div class="section-content">
+                <table id="deliverablesTable">
+                  <thead>
+                    <tr>
+                      <th>Deliverable Name</th>
+                      <th>Type</th>
+                      <th>SMART Description</th>
+                      <th>Definition of Done</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>GitHub Portfolio</td>
+                      <td>Project Deliverable</td>
+                      <td>Create and publish a personal GitHub portfolio site that is accessible, professional, and showcases coursework as well as certifications.</td>
+                      <td>Portfolio website published on GitHub with working navigation, links, and professional presentation.</td>
+                    </tr>
+                    <tr>
+                      <td>Networking Fundamentals Badge</td>
+                      <td>Certification Deliverable</td>
+                      <td>Complete Cisco Networking Academy's Networking Technician Path and earn a certificate to demonstrate networking skills.</td>
+                      <td>Completion certificate earned from Cisco Networking Academy.</td>
+                    </tr>
+                    <tr>
+                      <td>Cybersecurity Fundamentals Badge</td>
+                      <td>Certification Deliverable</td>
+                      <td>Complete Cisco's Cybersecurity Analyst Path and hands-on labs, documenting experience and earning a certificate.</td>
+                      <td>Completion of Cisco Cybersecurity Analyst Path with certificate and labs documented.</td>
+                    </tr>
+                    <tr>
+                      <td>ISC2 &amp; Security+ Certifications</td>
+                      <td>Certification Deliverable</td>
+                      <td>Complete ISC2 CC and CompTIA Security+ certifications to validate cybersecurity knowledge and skills.</td>
+                      <td>Both exams passed and certificates uploaded to GitHub portfolio.</td>
+                    </tr>
+                    <tr>
+                      <td>Apply for a Job in IT</td>
+                      <td>Career Deliverable</td>
+                      <td>Update resume and portfolio, submit at least 10 applications, and secure interviews for IT positions.</td>
+                      <td>Resume updated, applications submitted, interviews secured, and an offer obtained.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <!-- Collapsible WBS -->
+                <details class="deliv1" open>
+                  <summary>Deliverable 1 — GitHub Portfolio (WBS)</summary>
+                  <table>
+                    <thead>
+                      <tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>1</td><td>Deliverable</td><td>GitHub Portfolio</td><td>24</td><td>--</td><td></td></tr>
+                      <tr><td>1.1</td><td>Work Package</td><td>Structure GitHub webpage</td><td>6</td><td>--</td><td></td></tr>
+                      <tr><td>1.1.1</td><td>Task</td><td>Create GitHub page</td><td>1</td><td>--</td><td>Task 1.1.2 (1 day) || Task 1.1.3 (3 days)</td></tr>
+                      <tr><td>1.1.2</td><td>Task</td><td>YouTube: how to make a portfolio</td><td>1</td><td>1.1.1 Create GitHub page</td><td></td></tr>
+                      <tr><td>1.1.3</td><td>Task</td><td>Use template or create own landing page</td><td>3</td><td>1.1.1 Create GitHub page</td><td></td></tr>
+                      <tr><td>1.1.4</td><td>Task</td><td>Make webpage public</td><td>2</td><td>1.1.1 Create GitHub page</td><td></td></tr>
+                      <tr><td>1.2</td><td>Work Package</td><td>Place professional profile picture</td><td>1</td><td>1.1 Structure GitHub webpage</td><td></td></tr>
+                      <tr><td>1.2.1</td><td>Task</td><td>YouTube: how to place profile picture</td><td>1</td><td>--</td><td>Task 1.2.1 (1 day) || Task 1.2.2 (1 day)</td></tr>
+                      <tr><td>1.2.2</td><td>Task</td><td>Upload professional profile picture</td><td>1</td><td>1.1.1 Create GitHub page</td><td></td></tr>
+                      <tr><td>1.3</td><td>Work Package</td><td>Ability to navigate through GitHub</td><td>6</td><td>1.1 Structure GitHub webpage</td><td></td></tr>
+                      <tr><td>1.3.1</td><td>Task</td><td>YouTube: how to design GitHub functionality</td><td>2</td><td>--</td><td></td></tr>
+                      <tr><td>1.3.2</td><td>Task</td><td>Use ChatGPT as needed to code webpage</td><td>2</td><td>1.3.1 YouTube: how to design GitHub functionality</td><td></td></tr>
+                      <tr><td>1.3.3</td><td>Task</td><td>Use working links to external sites</td><td>2</td><td>1.3.1 YouTube: how to design GitHub functionality</td><td></td></tr>
+                      <tr><td>1.4</td><td>Work Package</td><td>Verifying profile works properly</td><td>11</td><td></td><td></td></tr>
+                      <tr><td>1.4.1</td><td>Task</td><td>Verify GitHub is accessible</td><td>1</td><td>1.1.4 Make webpage public</td><td></td></tr>
+                      <tr><td>1.4.2</td><td>Task</td><td>Confirm links are working properly</td><td>3</td><td>--</td><td></td></tr>
+                      <tr><td>1.4.4</td><td>Task</td><td>Make sure navigation is smooth</td><td>5</td><td>1.3.1 YouTube: how to design GitHub functionality</td><td></td></tr>
+                      <tr><td>1.3.4</td><td>Task</td><td>Add LinkedIn profile to GitHub</td><td>2</td><td>--</td><td></td></tr>
+                    </tbody>
+                  </table>
+                </details>
+
+                <details class="deliv2">
+                  <summary>Deliverable 2 — Networking Fundamentals Badge (WBS)</summary>
+                  <table>
+                    <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
+                    <tbody>
+                      <tr><td>2</td><td>Deliverable</td><td>Networking Fundamentals Badge</td><td>24</td><td>--</td><td></td></tr>
+                      <tr><td>2.1</td><td>Work Package</td><td>Join Cisco Networking Academy</td><td>3</td><td>--</td><td></td></tr>
+                      <tr><td>2.1.1</td><td>Task</td><td>Sign up for Cisco's Networking Academy</td><td>1</td><td>--</td><td></td></tr>
+                      <tr><td>2.1.2</td><td>Task</td><td>Register for Networking Technician Path</td><td>1</td><td>2.1.1</td><td></td></tr>
+                      <tr><td>2.1.3</td><td>Task</td><td>Register for Cisco Packet Tracer</td><td>1</td><td>2.1.1</td><td></td></tr>
+                      <tr><td>2.2</td><td>Work Package</td><td>Networking Technician Path</td><td>9</td><td>--</td><td></td></tr>
+                      <tr><td>2.2.1</td><td>Task</td><td>Complete the networking tech path</td><td>5</td><td>2.1.1</td><td></td></tr>
+                      <tr><td>2.2.2</td><td>Task</td><td>Screenshot and annotate hands-on portion</td><td>2</td><td>2.2.1</td><td>Task 2.2.1 (5 days) || Task 2.2.2 (2 days)</td></tr>
+                      <tr><td>2.2.3</td><td>Task</td><td>Complete assessment at end of path</td><td>2</td><td>2.2.1</td><td></td></tr>
+                      <tr><td>2.2.4</td><td>Task</td><td>Get the Networking Technician path badge</td><td>2</td><td>2.1.2</td><td></td></tr>
+                      <tr><td>2.3</td><td>Work Package</td><td>Cisco Packet Tracer</td><td>12</td><td>--</td><td></td></tr>
+                      <tr><td>2.3.1</td><td>Task</td><td>Begin Cisco Packet Tracer course</td><td>5</td><td>2.1.1</td><td>Task 2.3.1 (5 days) || Task 2.3.2 (5 days)</td></tr>
+                      <tr><td>2.3.2</td><td>Task</td><td>Screenshot builds done using Packet Tracer</td><td>5</td><td>2.3.1</td><td></td></tr>
+                      <tr><td>2.3.3</td><td>Task</td><td>Complete assessment at end of path</td><td>2</td><td>2.3.2</td><td></td></tr>
+                      <tr><td>2.3.4</td><td>Task</td><td>Get Cisco Packet Tracer badge</td><td>5</td><td>--</td><td></td></tr>
+                    </tbody>
+                  </table>
+                </details>
+
+                <details class="deliv3">
+                  <summary>Deliverable 3 — Cybersecurity Fundamentals Badge (WBS)</summary>
+                  <table>
+                    <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
+                    <tbody>
+                      <tr><td>3</td><td>Deliverable</td><td>Cybersecurity Fundamentals Badge</td><td>28</td><td>--</td><td></td></tr>
+                      <tr><td>3.1</td><td>Work Package</td><td>Register for Cybersecurity Path on Cisco</td><td>1</td><td>2.1</td><td></td></tr>
+                      <tr><td>3.1.1</td><td>Task</td><td>Register for Cybersecurity Analyst path</td><td>1</td><td>2.1</td><td></td></tr>
+                      <tr><td>3.2</td><td>Work Package</td><td>Do hands-on labs on Try Hack Me</td><td>9</td><td>--</td><td></td></tr>
+                      <tr><td>3.2.1</td><td>Task</td><td>Sign up for Try Hack Me</td><td>1</td><td>--</td><td></td></tr>
+                      <tr><td>3.2.2</td><td>Task</td><td>Do free rooms to get hands-on experience</td><td>5</td><td>3.2.1</td><td></td></tr>
+                      <tr><td>3.2.3</td><td>Task</td><td>Use labs completed as hands-on experience</td><td>3</td><td>--</td><td>Task 3.2.2 (5 days) || Task 3.2.3 (3 days)</td></tr>
+                      <tr><td>3.2.4</td><td>Task</td><td>Create link for GitHub portfolio</td><td>3</td><td>1.1.1</td><td></td></tr>
+                      <tr><td>3.3</td><td>Work Package</td><td>Get hands-on with LabEX.io</td><td>8</td><td>--</td><td></td></tr>
+                      <tr><td>3.3.1</td><td>Task</td><td>Sign up for LabEX.io</td><td>1</td><td>--</td><td></td></tr>
+                      <tr><td>3.3.2</td><td>Task</td><td>Follow cybersecurity path</td><td>5</td><td>3.3.1</td><td></td></tr>
+                      <tr><td>3.3.3</td><td>Task</td><td>Use hands-on labs as proof for website</td><td>3</td><td>--</td><td>Task 3.3.2 (5 days) || Task 3.3.3 (3 days)</td></tr>
+                      <tr><td>3.3.4</td><td>Task</td><td>Add necessary badges to GitHub</td><td>2</td><td>1.1.1</td><td></td></tr>
+                      <tr><td>3.4</td><td>Work Package</td><td>Get Cybersecurity Analyst Badge on Cisco</td><td>10</td><td>2.1</td><td></td></tr>
+                      <tr><td>3.4.1</td><td>Task</td><td>Study for assessment test</td><td>5</td><td>--</td><td></td></tr>
+                      <tr><td>3.4.2</td><td>Task</td><td>Earn Cybersecurity Analyst path badge</td><td>5</td><td>3.1.1</td><td></td></tr>
+                    </tbody>
+                  </table>
+                </details>
+
+                <details class="deliv4">
+                  <summary>Deliverable 4 — Certifications &amp; Job Application (WBS)</summary>
+                  <table>
+                    <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
+                    <tbody>
+                      <tr><td>4</td><td>Deliverable</td><td>Get certified in ISC2 and Security+ &amp; Apply for a Job</td><td>56</td><td>--</td><td></td></tr>
+                      <tr><td>4.1</td><td>Work Package</td><td>Attain ISC2 Cybersecurity certification</td><td>10</td><td>--</td><td></td></tr>
+                      <tr><td>4.1.1</td><td>Task</td><td>Sign up for free ISC2 class and exam</td><td>1</td><td>--</td><td></td></tr>
+                      <tr><td>4.1.2</td><td>Task</td><td>Complete free Cybersecurity course</td><td>5</td><td>4.1.1</td><td>Task 4.1.2 (5 days) || Task 4.1.3 (5 days)</td></tr>
+                      <tr><td>4.1.3</td><td>Task</td><td>Study for ISC2 exam</td><td>5</td><td>4.1.1</td><td></td></tr>
+                      <tr><td>4.1.4</td><td>Task</td><td>Schedule exam appointment for ISC2 CC</td><td>5</td><td>--</td><td></td></tr>
+                      <tr><td>4.2</td><td>Work Package</td><td>Get Security+ certification</td><td>6</td><td>--</td><td></td></tr>
+                      <tr><td>4.2.1</td><td>Task</td><td>Complete Cengage study book for Security+</td><td>5</td><td>--</td><td>Task 4.2.1 (5 days) || Task 4.2.2 (5 days) || Task 4.2.3 (5 days)</td></tr>
+                      <tr><td>4.2.2</td><td>Task</td><td>Use hands-on labs from LabEX.io for practice</td><td>5</td><td>4.2.1</td><td></td></tr>
+                      <tr><td>4.2.3</td><td>Task</td><td>Study and save money for the exam</td><td>5</td><td>4.2.1</td><td></td></tr>
+                      <tr><td>4.2.4</td><td>Task</td><td>Schedule exam appointment for Security+ certification</td><td>1</td><td>4.2.3</td><td></td></tr>
+                      <tr><td>4.3</td><td>Work Package</td><td>Display certificates on GitHub</td><td>6</td><td>--</td><td></td></tr>
+                      <tr><td>4.3.1</td><td>Task</td><td>Copy link to Security+ certification</td><td>1</td><td>4.2.4</td><td></td></tr>
+                      <tr><td>4.3.2</td><td>Task</td><td>Make a banner URL to see cert.</td><td>1</td><td>4.2.4</td><td></td></tr>
+                      <tr><td>4.3.3</td><td>Task</td><td>Copy link to ISC2 CC cert</td><td>1</td><td>4.1.4</td><td></td></tr>
+                      <tr><td>4.3.4</td><td>Task</td><td>Make a banner URL to see cert.</td><td>1</td><td>4.1.4</td><td></td></tr>
+                      <tr><td>4.3.5</td><td>Task</td><td>Upload to GitHub portfolio</td><td>2</td><td>1.1.1</td><td></td></tr>
+                      <tr><td>4.4</td><td>Work Package</td><td>Apply for a job in IT</td><td>34</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.1</td><td>Task</td><td>Inspect GitHub portfolio</td><td>10</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.1.1</td><td>Task</td><td>Make sure every link works</td><td>1</td><td>1.1.1</td><td></td></tr>
+                      <tr><td>4.4.1.2</td><td>Task</td><td>Make sure anyone can access GitHub page</td><td>1</td><td>1.1.4</td><td></td></tr>
+                      <tr><td>4.4.1.3</td><td>Task</td><td>Beautify where needed</td><td>3</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.1.4</td><td>Task</td><td>Possibly turn portfolio into webpage</td><td>5</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.2</td><td>Work Package</td><td>Update resume</td><td>4</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.2.1</td><td>Task</td><td>Add new achievements and experience</td><td>1</td><td>Del. 2, 3, 4 — Networking, cybersecurity, and certs in ISC2 Security+</td><td></td></tr>
+                      <tr><td>4.4.2.2</td><td>Task</td><td>Place resume on GitHub</td><td>1</td><td>1.1.1</td><td></td></tr>
+                      <tr><td>4.4.2.3</td><td>Task</td><td>Place resume on LinkedIn</td><td>1</td><td>1.1.1</td><td></td></tr>
+                      <tr><td>4.4.2.4</td><td>Task</td><td>Go to career center for help with resume</td><td>1</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.3</td><td>Work Package</td><td>Send applications for employment</td><td>15</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.3.1</td><td>Task</td><td>Look up entry-level IT jobs on LinkedIn</td><td>3</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.3.2</td><td>Task</td><td>Search the web for IT job openings</td><td>2</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.3.3</td><td>Task</td><td>Talk to network about job openings in their work</td><td>2</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.3.4</td><td>Task</td><td>Practice for interviews</td><td>5</td><td>4.4.3.5</td><td></td></tr>
+                      <tr><td>4.4.3.5</td><td>Task</td><td>Secure at least 2 interviews</td><td>3</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.4</td><td>Work Package</td><td>Get hired</td><td>5</td><td>--</td><td></td></tr>
+                      <tr><td>4.4.4.1</td><td>Task</td><td>GET A JOB!!!</td><td>5</td><td>--</td><td></td></tr>
+                    </tbody>
+                  </table>
+                </details>
+
+              </div>
+            </section>
+
+            <section class="section" id="section7">
+  <div class="section-header"><h2 class="section-title">7. Budget (estimated)</h2></div>
+  <div class="section-content">
+    <table id="budgetTable">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Item / Description</th>
+          <th>Qty</th>
+          <th>Unit Cost ($)</th>
+          <th>Subtotal ($)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Labor</td><td>Developer</td><td>30</td><td>$100.00</td><td>$3,000.00</td><td>Develop GitHub page</td></tr>
+        <tr><td>Labor</td><td>Designer</td><td>0</td><td>$85.00</td><td>$0.00</td><td></td></tr>
+        <tr><td>Labor</td><td>Project Manager</td><td>5</td><td>$120.00</td><td>$600.00</td><td>I will be project manager</td></tr>
+        <tr><td>Labor</td><td>Tester</td><td>3</td><td>$75.00</td><td>$225.00</td><td>Get peers to review my GitHub</td></tr>
+        <tr><td>Labor</td><td>Business Analyst</td><td>0</td><td>$95.00</td><td>$0.00</td><td></td></tr>
+        <tr><td>Labor</td><td>Other Role</td><td>0</td><td>$0.00</td><td>$0.00</td><td></td></tr>
+        <tr class="subtotal-labor"><td><strong>LABOR SUBTOTAL</strong></td><td></td><td></td><td></td><td><strong>$3,825.00</strong></td><td>total cost of labor</td></tr>
+
+        <tr><td>Equipment/Software</td><td>Software Licenses</td><td>1</td><td>$229.99</td><td>$229.99</td><td>Cengage Unlimited: Subscription for Students – Cengage</td></tr>
+        <tr><td>Equipment/Software</td><td>Development Tools</td><td>0</td><td>$0.00</td><td>$0.00</td><td></td></tr>
+        <tr><td>Equipment/Software</td><td>Testing Environment</td><td>0</td><td>$0.00</td><td>$0.00</td><td>Servers or cloud instances</td></tr>
+        <tr><td>Equipment/Software</td><td>Database Software</td><td>0</td><td>$0.00</td><td>$0.00</td><td>If needed for project</td></tr>
+        <tr><td>Equipment/Software</td><td>Other Equipment</td><td>2</td><td>$44.99</td><td>$89.98</td><td>Buying additional RAM for laptop — NVTEK 16GB (2X8GB) DDR4 3200MHZ PC4-25600 SODIMM 2Rx8 1.2V CL22 260-PIN Non-ECC Laptop PC Computer Memory KIT at Amazon.com</td></tr>
+        <tr class="subtotal-equip"><td><strong>EQUIPMENT/SOFTWARE SUBTOTAL</strong></td><td></td><td></td><td></td><td><strong>$319.97</strong></td><td></td></tr>
+
+        <tr><td>Materials</td><td>Stock Images/Media</td><td>0</td><td>$0.00</td><td>$0.00</td><td>Graphics and multimedia</td></tr>
+        <tr><td>Materials</td><td>Training Materials</td><td>1</td><td>$229.99</td><td>$229.99</td><td>Cengage</td></tr>
+        <tr><td>Materials</td><td>Documentation Assets</td><td>1</td><td>$25.00</td><td>$25.00</td><td>For borrowed templates on GitHub</td></tr>
+        <tr><td>Materials</td><td>Other Materials</td><td>2</td><td>$50.00</td><td>$100.00</td><td>live study groups and seminars</td></tr>
+        <tr><td>Materials</td><td>Other Materials</td><td>2</td><td>$50.00</td><td>$100.00</td><td>Price of certification exams</td></tr>
+        <tr class="subtotal-mat"><td><strong>MATERIALS SUBTOTAL</strong></td><td></td><td></td><td></td><td><strong>$454.99</strong></td><td></td></tr>
+
+        <tr><td>Services</td><td>Cloud Hosting</td><td>1</td><td>$0.10</td><td>$0.10</td><td>AWS and Azure for AI learning</td></tr>
+        <tr><td>Services</td><td>Third-party APIs</td><td>0</td><td>$0.00</td><td>$0.00</td><td>Payment processing etc.</td></tr>
+        <tr><td>Services</td><td>Consulting Services</td><td>5</td><td>$25.00</td><td>$125.00</td><td>External expertise</td></tr>
+        <tr><td>Services</td><td>Security Audit</td><td>0</td><td>$0.00</td><td>$0.00</td><td>Security assessments</td></tr>
+        <tr><td>Services</td><td>Other Services</td><td>2</td><td>$20.00</td><td>$40.00</td><td>Consulting on Portfolio</td></tr>
+        <tr class="subtotal-serv"><td><strong>SERVICES SUBTOTAL</strong></td><td></td><td></td><td></td><td><strong>$165.10</strong></td><td></td></tr>
+
+        <tr class="subtotal-grand"><td><strong>SUBTOTAL DIRECT COSTS</strong></td><td>Sum of all categories</td><td></td><td></td><td><strong>$4,765.06</strong></td><td></td></tr>
+        <tr><td><strong>Contingency Reserve (%)</strong></td><td>20%</td><td></td><td></td><td><strong>$953.01</strong></td><td>Adjust percentage as needed</td></tr>
+        <tr><td><strong>TOTAL PROJECT BUDGET</strong></td><td>Final budget amount</td><td></td><td></td><td><strong>$5,718.07</strong></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <table id="budgetBreakdown" style="margin-top:12px">
+      <thead><tr><th>Category</th><th>% of Total</th></tr></thead>
+      <tbody>
+        <tr><td>Labor</td><td>66.89%</td></tr>
+        <tr><td>Equipment/Software</td><td>5.60%</td></tr>
+        <tr><td>Materials</td><td>7.96%</td></tr>
+        <tr><td>Services</td><td>2.89%</td></tr>
+        <tr><td>Contingency</td><td>16.67%</td></tr>
+        <tr><td><strong>Total Percentage</strong></td><td><strong>100.00%</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top:6px">Percentages rounded to two decimals; totals may differ by ±0.01% due to rounding.</p>
+  </div>
+</section>
+<!-- Section 8: Project Methodology — Explanation -->
+<section class="section" id="section8">
+  <div class="section-header"><h2 class="section-title">8. Project Methodology — Explanation</h2></div>
+  <div class="section-content">
+   <div class="placeholder" contenteditable="true">
+  <p>Predictive will be the methodology I choose to complete my project.</p>
+  <ul>
+    <li>All requirements were gathered at the beginning of the planning phase. While one more option was added, nothing will be deleted or forgotten.</li>
+    <li>I will be able to establish a timeline for when I should complete certain deliverables, but feedback won’t be truly needed until the very end (of the semester).</li>
+    <li>There is no need for iterations or constant changes to the goals I have already established.</li>
+    <li>The main goal of the project is to get a job; the last deliverable will be a completed portfolio to showcase to employers and an updated resume.</li>
+  </ul>
+</div>
+
+  </div>
+</section>
+
+<!-- Section 9: Project Methodology — Diagram -->
+<section class="section" id="section9">
+  <div class="section-header"><h2 class="section-title">9. Project Methodology Diagram</h2></div>
+  <div class="section-content">
+    <figure class="figure-narrow" style="margin:0">
+      <img
+        src="file:///C:/Users/dodge/OneDrive/Desktop/Project%20Charter/Project%20Methodology.png"
+        alt="Project methodology diagram (Predictive)"
+        class="media-fluid media-maxh"
+        loading="lazy"
+      />
+      <figcaption class="muted" style="margin-top:8px">
+        Figure: Project methodology diagram (Predictive).
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- Section 10: Project Tool Selection Explanation -->
+<section class="section" id="section10">
+  <div class="section-header"><h2 class="section-title">10. Project Tool Selection</h2></div>
+  <div class="section-content">
+
+    <div class="placeholder" contenteditable="true">
+  <h4>Primary Tool &amp; Rationale</h4>
+  <p>The three project management tools I chose to explore are Smartsheet, Asana, and Monday.com; the one I really enjoyed using—and will continue to use—is Monday.com. That was, coincidentally, a management tool a lot of the interviewees I spoke to talked about using. I can see why Monday would be a good project management tool to use, not just for predictive, but also for hybrid and agile.</p>
+  <p>I look forward to getting as familiar as possible with this project. This one was more intuitive to use and had an easy upload option for files I already have saved to my computer. It is free to use, beginner-friendly, and very intuitive in adding new views and dashboards to configure it to your liking. The one that sold me was the mobile option that Asana and Smartsheet didn’t allow, not to mention Smartsheet only allowed me to use whatever the “organization” had previously created. This was one of the key reasons why I also stayed away from Smartsheet, and Asana was a little too plain for my liking.</p>
+</div>
+        
+  </div>
+</section>
+
+
+
+<!-- Section 11: Screenshots — Project Tool in Use -->
+<section class="section" id="section11">
+  <div class="section-header"><h2 class="section-title">11. Screenshots — Project Tool in Use</h2></div>
+  <div class="section-content">
+    <div class="tool-gallery bleed">
+      <figure class="tool-shot">
+        <a href="Screenshot 2025-09-20 212134.png" target="_blank" rel="noopener">
+          <img src="Screenshot 2025-09-20 212134.png" alt="Monday.com main table showing WBS, dependencies, and status" loading="lazy">
+        </a>
+        <figcaption class="muted">Main table — WBS columns and statuses.</figcaption>
+      </figure>
+
+      <figure class="tool-shot">
+        <a href="Screenshot 2025-09-20 212159.png" target="_blank" rel="noopener">
+          <img src="Screenshot 2025-09-20 212159.png" alt="Gantt view by week with phases and milestones" loading="lazy">
+        </a>
+        <figcaption class="muted">Gantt — schedule by week.</figcaption>
+      </figure>
+
+      <figure class="tool-shot">
+        <a href="Screenshot 2025-09-20 212213.png" target="_blank" rel="noopener">
+          <img src="Screenshot 2025-09-20 212213.png" alt="Dashboard view with chart of items by status" loading="lazy">
+        </a>
+        <figcaption class="muted">Dashboard — progress by phase.</figcaption>
+      </figure>
+
+      <figure class="tool-shot">
+        <a href="Screenshot 2025-09-20 212415.png" target="_blank" rel="noopener">
+          <img src="Screenshot 2025-09-20 212415.png" alt="List view of all items across groups and boards" loading="lazy">
+        </a>
+        <figcaption class="muted">List view — all items.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+
+
+            <!-- Additional Components -->
+            <section id="footer-note">
+              <div class="footer-note">
+                <strong>Note for Future Updates</strong>
+                This charter will be expanded throughout the semester as we cover additional project management components including:
+                <ul>
+                  <li>High-Level Timeline &amp; Milestones</li>
+                  <li>Execution Plan Overview</li>
+                  <li>Risk Register</li>
+                  <li>Acceptance Criteria</li>
+                  <li>Project Manager Authority &amp; Approvals</li>
+                </ul>
+                Keep this file — you'll be adding to it as the semester progresses!
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top" type="button">↑</button>
+
+  <script>
+    // ===== Sidebar TOC behavior: smooth scroll + robust active highlighting + aria-current =====
+    const sectionIds = ['student-info','section1','section2','section3','section4','section5','section6','section7','section8','section9','section10','section11','footer-note'];
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+    const navLinks = Array.from(document.querySelectorAll('#sideToc a'));
+    const SCROLL_OFFSET = 120; // must match CSS scroll-margin-top
+
+    function setActive(id){
+      navLinks.forEach(a => {
+        const isActive = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('active', isActive);
+        if(isActive){ a.setAttribute('aria-current','location'); } else { a.removeAttribute('aria-current'); }
+      });
+    }
+
+    let isManual = false; let scrollTimer;
+
+    // Smooth, offset-aware scrolling for clicks
+    navLinks.forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault(); const id = a.getAttribute('href').slice(1); const target = document.getElementById(id); if(!target) return;
+        isManual = true; setActive(id);
+        const y = target.getBoundingClientRect().top + window.pageYOffset - SCROLL_OFFSET;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        clearTimeout(scrollTimer); scrollTimer = setTimeout(() => { isManual = false; }, 900);
+      });
+    });
+
+    // Active section detection based on scroll position
+    function updateActiveOnScroll(){
+      if(isManual) return; const y = window.pageYOffset + SCROLL_OFFSET + 1; let currentId = sections[0]?.id;
+      for (const sec of sections){ if (sec.offsetTop <= y) currentId = sec.id; }
+      if(currentId) setActive(currentId);
+    }
+    window.addEventListener('scroll', updateActiveOnScroll, { passive: true });
+    window.addEventListener('load', updateActiveOnScroll);
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 400){ backToTop.classList.add('show'); } else { backToTop.classList.remove('show'); }
+    }, { passive: true });
+    backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+  </script>
+</body>
+</html>
