@@ -14,7 +14,27 @@
       --muted:#6b7280; --ring:#93c5fd; --card:#ffffff; --br:#e5e7eb; --shadow:0 6px 20px rgba(0,0,0,.08);
       --deliv1:#e3f2fd; --deliv2:#f1f8e9; --deliv3:#fff8e1; --deliv4:#fce4ec;
     }
-    @media (prefers-color-scheme: dark){
+    /* Collapsible sections */
+.section { position: relative; }
+.section.collapsed .section-content { display: none; }
+
+.section-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--brand-dark);
+  cursor: pointer;
+}
+.section-toggle:hover { background:#f7f9fb; }
+.section-toggle .chev { display:inline-block; margin-right:6px; }
+
+	  @media (prefers-color-scheme: dark){
       :root{ --paper:#0b1220; --ink:#e5e7eb; --card:#0f172a; --br:#20304b; --blue-bg:#0b1f36; --blue-br:#1e3a5f; --green-bg:#0b1f17; --green-br:#174e3b; --shadow:0 8px 24px rgba(0,0,0,.45);
       --deliv1:#0b1f36; --deliv2:#0b1f17; --deliv3:#332b00; --deliv4:#2b0d1a }
       .sidebar{ background:#0f172a }
@@ -857,5 +877,117 @@
     }, { passive: true });
     backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
   </script>
+<script>
+(function(){
+  // Helpers
+  function makeToggleButton(sec){
+    const header = sec.querySelector('.section-header');
+    const content = sec.querySelector('.section-content');
+    if(!header || !content) return null;
+
+    const id = sec.id || ('sec-' + Math.random().toString(36).slice(2));
+    sec.id = id;
+    if(!content.id) content.id = id + '-content';
+
+    // Create toggle button
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'section-toggle';
+    btn.setAttribute('aria-controls', content.id);
+    btn.setAttribute('aria-expanded', 'true');
+    btn.innerHTML = '<span class="chev" aria-hidden="true">▾</span>Collapse';
+
+    // Apply saved state
+    const saved = localStorage.getItem('sec-collapsed:'+id);
+    if(saved === '1'){
+      sec.classList.add('collapsed');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = '<span class="chev" aria-hidden="true">▸</span>Expand';
+    }
+
+    // Toggle handler
+    btn.addEventListener('click', () => toggle(sec, btn));
+    header.appendChild(btn);
+    return btn;
+  }
+
+  function toggle(sec, btn){
+    sec.classList.toggle('collapsed');
+    const isCollapsed = sec.classList.contains('collapsed');
+    btn.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+    btn.innerHTML = isCollapsed
+      ? '<span class="chev" aria-hidden="true">▸</span>Expand'
+      : '<span class="chev" aria-hidden="true">▾</span>Collapse';
+    localStorage.setItem('sec-collapsed:'+sec.id, isCollapsed ? '1' : '0');
+  }
+
+  // Initialize toggles on all main sections
+  const sections = Array.from(document.querySelectorAll('section.section[id]'));
+  sections.forEach(sec => makeToggleButton(sec));
+
+  // Expand target when navigating via sidebar links
+  document.querySelectorAll('#sideToc a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => {
+      const id = a.getAttribute('href').slice(1);
+      const sec = document.getElementById(id);
+      if(!sec) return;
+      if(sec.classList.contains('collapsed')){
+        const btn = sec.querySelector('.section-toggle');
+        if(btn) sec.classList.remove('collapsed'), btn.setAttribute('aria-expanded', 'true'), btn.innerHTML = '<span class="chev" aria-hidden="true">▾</span>Collapse';
+        localStorage.setItem('sec-collapsed:'+id, '0');
+      }
+    });
+  });
+
+  // Optional: Expand/Collapse all controls under the sidebar
+  (function addGlobalControls(){
+    const sidebar = document.querySelector('.sidebar');
+    if(!sidebar) return;
+    const wrap = document.createElement('div');
+    wrap.style.padding = '8px 10px 12px';
+    wrap.style.borderTop = '1px solid #e1e5eb';
+    wrap.style.display = 'flex';
+    wrap.style.gap = '8px';
+    wrap.style.flexWrap = 'wrap';
+
+    const btnExpand = document.createElement('button');
+    btnExpand.type = 'button';
+    btnExpand.textContent = 'Expand all';
+    Object.assign(btnExpand.style, {padding:'6px 10px', border:'1px solid #e1e5eb', borderRadius:'6px', background:'#fff', cursor:'pointer', fontSize:'12px'});
+
+    const btnCollapse = document.createElement('button');
+    btnCollapse.type = 'button';
+    btnCollapse.textContent = 'Collapse all';
+    Object.assign(btnCollapse.style, {padding:'6px 10px', border:'1px solid #e1e5eb', borderRadius:'6px', background:'#fff', cursor:'pointer', fontSize:'12px'});
+
+    wrap.appendChild(btnExpand);
+    wrap.appendChild(btnCollapse);
+    sidebar.appendChild(wrap);
+
+    btnExpand.addEventListener('click', () => {
+      sections.forEach(sec => {
+        if(sec.classList.contains('collapsed')){
+          sec.classList.remove('collapsed');
+          const btn = sec.querySelector('.section-toggle');
+          if(btn){ btn.setAttribute('aria-expanded','true'); btn.innerHTML = '<span class="chev" aria-hidden="true">▾</span>Collapse'; }
+          localStorage.setItem('sec-collapsed:'+sec.id, '0');
+        }
+      });
+    });
+
+    btnCollapse.addEventListener('click', () => {
+      sections.forEach(sec => {
+        if(!sec.classList.contains('collapsed')){
+          sec.classList.add('collapsed');
+          const btn = sec.querySelector('.section-toggle');
+          if(btn){ btn.setAttribute('aria-expanded','false'); btn.innerHTML = '<span class="chev" aria-hidden="true">▸</span>Expand'; }
+          localStorage.setItem('sec-collapsed:'+sec.id, '1');
+        }
+      });
+    });
+  })();
+})();
+</script>
+
 </body>
 </html>
