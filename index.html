@@ -109,7 +109,20 @@
     .toc a{display:block; padding:9px 10px; border-radius:8px; text-decoration:none; color:#354; font-size:14px; transition:background .2s ease}
     .toc a:hover{background:#eef3f7}
     .toc a.active{background:#ddeefd; color:#123}
+	/* === TOC open/close controls === */
+	.toc-controls{ display:flex; gap:8px; padding:8px 8px 0; }
+	.toc-btn{
+  	font: 600 12px/1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  	padding:6px 10px; border:1px solid var(--br); border-radius:8px;
+  	background:#fff; cursor:pointer;
+	}
+.toc-btn:hover{ background:#f7f9fb }
+@media (prefers-color-scheme: dark){
+  .toc-btn{ background:#0f172a; border-color:#20304b; color:#e5e7eb }
+  .toc-btn:hover{ background:#1e293b }
+}
 
+	  
     /* Header card */
     .container{ background: var(--card); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; border:1px solid var(--br) }
     .header{ background: linear-gradient(135deg, var(--brand-dark), var(--brand-mid)); color: white; padding: 28px; text-align: center }
@@ -249,6 +262,10 @@
       <!-- Sidebar TOC -->
       <aside class="sidebar" aria-label="Section navigation">
         <h3>On this page</h3>
+		<div class="toc-controls" role="group" aria-label="Collapse controls">
+  			<button id="openAll" type="button" class="toc-btn">Open all</button>
+ 			<button id="closeAll" type="button" class="toc-btn">Close all</button>
+		</div>
         <ul class="toc" id="sideToc">
           <li><a href="#student-info">Student Information</a></li>
           <li><a href="#section1">1. Title & Description</a></li>
@@ -258,10 +275,10 @@
           <li><a href="#section5">5. Stakeholder Register</a></li>
           <li><a href="#section6">6. Deliverables & DoD</a></li>
           <li><a href="#section7">7. Budget (est.)</a></li>
-	  <li><a href="#section8">8. Project Methodology — Explanation</a></li>
-	  <li><a href="#section9">9. Project Methodology Diagram</a></li>
-	  <li><a href="#section10">10. Project Tool Selection</a></li>
-	  <li><a href="#section11">11. Project Tool — Screenshot</a></li>
+	  	  <li><a href="#section8">8. Project Methodology — Explanation</a></li>
+	  	  <li><a href="#section9">9. Project Methodology Diagram</a></li>
+	  	  <li><a href="#section10">10. Project Tool Selection</a></li>
+	  	  <li><a href="#section11">11. Project Tool — Screenshot</a></li>
           <li><a href="#footer-note">Additional Components</a></li>
         </ul>
       </aside>
@@ -907,7 +924,33 @@
     if (save) localStorage.setItem('sec-collapsed:' + sec.id, collapsed ? '1' : '0');
   }
 
-  const sections = Array.from(document.querySelectorAll('section.section[id]'));
+    const sections = Array.from(document.querySelectorAll('section.section[id]'));
+	  // Wire up “Open all / Close all” buttons
+  const openBtn  = document.getElementById('openAll');
+  const closeBtn = document.getElementById('closeAll');
+  
+  openBtn?.addEventListener('click', () => {
+  sections.forEach(sec => setCollapsed(sec, false));
+});
+
+closeBtn?.addEventListener('click', () => {
+  sections.forEach(sec => setCollapsed(sec, true));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
+  // Helper to set collapsed/expanded state + persist it
+  function setCollapsed(sec, collapsed, save = true){
+    const header = sec.querySelector('.section-header');
+    if (collapsed){
+      sec.classList.add('collapsed');
+      header?.setAttribute('aria-expanded', 'false');
+    } else {
+      sec.classList.remove('collapsed');
+      header?.setAttribute('aria-expanded', 'true');
+    }
+    if (save) localStorage.setItem('sec-collapsed:' + sec.id, collapsed ? '1' : '0');
+  }
 
   sections.forEach(sec => {
     const header = sec.querySelector('.section-header');
