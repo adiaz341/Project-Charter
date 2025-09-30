@@ -16,12 +16,18 @@
     }
     /* Collapsible sections: header is the toggle */
 .section { position: relative; }
-.section .section-header { cursor: pointer; user-select: none; padding-right: 44px; position: relative; }
+.section .section-header {
+  cursor: pointer;
+  user-select: none;
+  padding-right: 44px; /* room for chevron */
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 .section .section-header::after{
   content: '▾';
   position: absolute;
-  right: 14px;
-  top: 50%;
+  right: 14px; top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
   color: var(--brand-dark);
@@ -29,16 +35,63 @@
 }
 .section.collapsed .section-header::after { content: '▸'; }
 .section.collapsed .section-content { display: none; }
-.section .section-header:focus-visible { outline: 2px solid var(--blue-br); outline-offset: 2px; }
-
+.section .section-header:focus-visible {
+  outline: 2px solid var(--blue-br);
+  outline-offset: 2px;
+}
 
 	  @media (prefers-color-scheme: dark){
-      :root{ --paper:#0b1220; --ink:#e5e7eb; --card:#0f172a; --br:#20304b; --blue-bg:#0b1f36; --blue-br:#1e3a5f; --green-bg:#0b1f17; --green-br:#174e3b; --shadow:0 8px 24px rgba(0,0,0,.45);
-      --deliv1:#0b1f36; --deliv2:#0b1f17; --deliv3:#332b00; --deliv4:#2b0d1a }
-      .sidebar{ background:#0f172a }
-      .toc a{ color:#c7d2fe }
-      table th{ background:#0b4b6f }
-    }
+  /* Theme tokens */
+  :root{
+    --paper:#0b1220; --ink:#e5e7eb; --card:#0f172a; --br:#20304b;
+    --blue-bg:#0b1f36; --blue-br:#1e3a5f; --green-bg:#0b1f17; --green-br:#174e3b;
+    --shadow:0 8px 24px rgba(0,0,0,.45);
+    --deliv1:#0b1f36; --deliv2:#0b1f17; --deliv3:#332b00; --deliv4:#2b0d1a;
+  }
+
+  /* General UI */
+  .sidebar{ background:#0f172a }
+  .toc a{ color:#c7d2fe }
+  .toc a:hover{ background:#1e293b }
+  table th{ background:#0b4b6f }
+
+  /* Deliverables accents */
+  details.deliv1{ border-color:#38bdf8 }
+  details.deliv2{ border-color:#34d399 }
+  details.deliv3{ border-color:#f59e0b }
+  details.deliv4{ border-color:#a78bfa }
+  .deliv1 table thead th{ background:#38bdf8 }
+  .deliv2 table thead th{ background:#34d399 }
+  .deliv3 table thead th{ background:#f59e0b }
+  .deliv4 table thead th{ background:#a78bfa }
+
+  /* Budget subtotals */
+  tr.subtotal-labor{ background:rgba(147,197,253,.15); border-top-color:#93c5fd }
+  tr.subtotal-equip{ background:rgba(134,239,172,.12); border-top-color:#86efac }
+  tr.subtotal-mat{ background:rgba(250,204,21,.12); border-top-color:#facc15 }
+  tr.subtotal-serv{ background:rgba(196,181,253,.15); border-top-color:#c4b5fd }
+  tr.subtotal-grand{ background:rgba(148,163,184,.15); border-top-color:#94a3b8 }
+
+  /* TOTAL row emphasis */
+  #section7 #budgetTable tbody tr:last-child td{
+    background:#0b4b6f; border-top-color:#0a3a54;
+  }
+
+  /* Percent breakdown tints */
+  #budgetBreakdown tbody tr:nth-child(1) td{ background:rgba(147,197,253,.15) }
+  #budgetBreakdown tbody tr:nth-child(2) td{ background:rgba(134,239,172,.12) }
+  #budgetBreakdown tbody tr:nth-child(3) td{ background:rgba(250,204,21,.12) }
+  #budgetBreakdown tbody tr:nth-child(4) td{ background:rgba(196,181,253,.15) }
+  #budgetBreakdown tbody tr:nth-child(5) td{ background:rgba(148,163,184,.15) }
+  #budgetBreakdown tbody tr:nth-child(6) td{ background:rgba(241,245,249,.08) }
+}
+
+	  @media (prefers-reduced-motion: reduce){
+  	.section:hover { transform: none; }
+  	html { scroll-behavior: auto; } /* avoid animated scroll if desired */
+	}
+	 
+
     html{scroll-behavior:smooth}
     body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:var(--paper); color:var(--ink); line-height:1.6}
 
@@ -136,19 +189,6 @@
       a[href^="#"]:after{ content:"" }
     }
 
-    /* Dark mode accents for borders and headers */
-    @media (prefers-color-scheme: dark){
-      details.deliv1{ border-color:#38bdf8 }
-      details.deliv2{ border-color:#34d399 }
-      details.deliv3{ border-color:#f59e0b }
-      details.deliv4{ border-color:#a78bfa }
-
-      .deliv1 table thead th{ background:#38bdf8 }
-      .deliv2 table thead th{ background:#34d399 }
-      .deliv3 table thead th{ background:#f59e0b }
-      .deliv4 table thead th{ background:#a78bfa }
-    }
-
 	/* Budget subtotal highlights (Section 7) */
 	#section7 table tr[class^="subtotal-"] td{ font-weight:600 }
 	tr.subtotal-labor{ background:#eaf3ff; border-top:2px solid #93c5fd }
@@ -156,21 +196,11 @@
 	tr.subtotal-mat{ background:#fff7e6; border-top:2px solid #facc15 }
 	tr.subtotal-serv{ background:#f5eaff; border-top:2px solid #c4b5fd }
 	tr.subtotal-grand{ background:#edf2f7; border-top:2px solid #94a3b8 }
-
-
-	@media (prefers-color-scheme: dark){
-	  tr.subtotal-labor{ background:rgba(147,197,253,.15); border-top-color:#93c5fd }
-	  tr.subtotal-equip{ background:rgba(134,239,172,.12); border-top-color:#86efac }
-	  tr.subtotal-mat{ background:rgba(250,204,21,.12); border-top-color:#facc15 }
-	  tr.subtotal-serv{ background:rgba(196,181,253,.15); border-top-color:#c4b5fd }
-	  tr.subtotal-grand{ background:rgba(148,163,184,.15); border-top-color:#94a3b8 }
-    } 
-
+	
 	/* ===== Section 7: visual emphasis ===== */
 	/* Solid emphasis for TOTAL PROJECT BUDGET (targets last row in #budgetTable) */
 	#section7 #budgetTable tbody tr:last-child td{ background:#004d7a; color:#fff; font-weight:700; border-top:2px solid #003a5c }
 	#section7 #budgetTable tbody tr:last-child td strong{ color:#fff }
-
 
 	/* Category % table row tints (match subtotal colors by row order) */
 	#budgetBreakdown tbody tr:nth-child(1) td{ background:#eaf3ff } /* Labor */
@@ -180,16 +210,6 @@
 	#budgetBreakdown tbody tr:nth-child(5) td{ background:#edf2f7 } /* Contingency */
 	#budgetBreakdown tbody tr:nth-child(6) td{ background:#f1f5f9; font-weight:700 } /* Total Percentage */
 
-
-	@media (prefers-color-scheme: dark){
-	  #section7 #budgetTable tbody tr:last-child td{ background:#0b4b6f; border-top-color:#0a3a54 }
-	  #budgetBreakdown tbody tr:nth-child(1) td{ background:rgba(147,197,253,.15) }
-	  #budgetBreakdown tbody tr:nth-child(2) td{ background:rgba(134,239,172,.12) }
-	  #budgetBreakdown tbody tr:nth-child(3) td{ background:rgba(250,204,21,.12) }
-	  #budgetBreakdown tbody tr:nth-child(4) td{ background:rgba(196,181,253,.15) }
-	  #budgetBreakdown tbody tr:nth-child(5) td{ background:rgba(148,163,184,.15) }
-	  #budgetBreakdown tbody tr:nth-child(6) td{ background:rgba(241,245,249,.08) }
-    }
   	/* Section 9 diagram sizing */
 .figure-narrow{ max-width: 960px; margin: 0 auto; }
 .media-fluid{ display:block; width:100%; height:auto; }
@@ -494,7 +514,7 @@
                       <td>GitHub Portfolio</td>
                       <td>Project Deliverable</td>
                       <td>Create and publish a personal GitHub portfolio site that is accessible, professional, and showcases coursework as well as certifications.</td>
-                      <td>Portfolio reviewed by 2 peers confirming all 10+ links work, loads in <3 seconds, and displays correctly on mobile/desktop</td>
+                      <td>Portfolio reviewed by 2 peers confirming all 10+ links work, loads in less than 3 seconds, and displays correctly on mobile/desktop</td>
                     </tr>
                     <tr>
                       <td>Networking Fundamentals Badge</td>
@@ -875,89 +895,26 @@
     }, { passive: true });
     backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
   </script>
+
 <script>
 (function(){
-  // Helpers
-  function makeToggleButton(sec){
-    const header = sec.querySelector('.section-header');
-    const content = sec.querySelector('.section-content');
-    if(!header || !content) return null;
-
-    const id = sec.id || ('sec-' + Math.random().toString(36).slice(2));
-    sec.id = id;
-    if(!content.id) content.id = id + '-content';
-
-    // Create toggle button
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'section-toggle';
-    btn.setAttribute('aria-controls', content.id);
-    btn.setAttribute('aria-expanded', 'true');
-    btn.innerHTML = '<span class="chev" aria-hidden="true">▾</span>Collapse';
-
-    // Apply saved state
-    const saved = localStorage.getItem('sec-collapsed:'+id);
-    if(saved === '1'){
-      sec.classList.add('collapsed');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.innerHTML = '<span class="chev" aria-hidden="true">▸</span>Expand';
-    }
-
-    // Toggle handler
-    btn.addEventListener('click', () => toggle(sec, btn));
-    header.appendChild(btn);
-    return btn;
-  }
-
-  function toggle(sec, btn){
-    sec.classList.toggle('collapsed');
-    const isCollapsed = sec.classList.contains('collapsed');
-    btn.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
-    btn.innerHTML = isCollapsed
-      ? '<span class="chev" aria-hidden="true">▸</span>Expand'
-      : '<span class="chev" aria-hidden="true">▾</span>Collapse';
-    localStorage.setItem('sec-collapsed:'+sec.id, isCollapsed ? '1' : '0');
-  }
-
-  // Initialize toggles on all main sections
-  const sections = Array.from(document.querySelectorAll('section.section[id]'));
-  sections.forEach(sec => makeToggleButton(sec));
-
-  // Expand target when navigating via sidebar links
-  document.querySelectorAll('#sideToc a[href^="#"]').forEach(a => {
-    a.addEventListener('click', () => {
-      const id = a.getAttribute('href').slice(1);
-      const sec = document.getElementById(id);
-      if(!sec) return;
-      if(sec.classList.contains('collapsed')){
-        const btn = sec.querySelector('.section-toggle');
-        if(btn) sec.classList.remove('collapsed'), btn.setAttribute('aria-expanded', 'true'), btn.innerHTML = '<span class="chev" aria-hidden="true">▾</span>Collapse';
-        localStorage.setItem('sec-collapsed:'+id, '0');
-      }
-    });
-  });
-
-  <script>
-(function(){
-  // Remove old button toggles if they exist
-  document.querySelectorAll('.section-toggle').forEach(el => el.remove());
-
+  // Make each .section-header the toggle for its section
   function toggle(sec, save = true){
     sec.classList.toggle('collapsed');
     const collapsed = sec.classList.contains('collapsed');
-    sec.querySelector('.section-header')?.setAttribute('aria-expanded', String(!collapsed));
+    const header = sec.querySelector('.section-header');
+    header?.setAttribute('aria-expanded', String(!collapsed));
     if (save) localStorage.setItem('sec-collapsed:' + sec.id, collapsed ? '1' : '0');
   }
 
   const sections = Array.from(document.querySelectorAll('section.section[id]'));
 
-  // Make each header the toggle
   sections.forEach(sec => {
     const header = sec.querySelector('.section-header');
     const content = sec.querySelector('.section-content');
     if (!header || !content) return;
 
-    // Ensure stable ids
+    // Stable IDs
     if (!sec.id) sec.id = 'sec-' + Math.random().toString(36).slice(2);
     if (!content.id) content.id = sec.id + '-content';
 
@@ -985,7 +942,7 @@
     header.addEventListener('keydown', onActivate);
   });
 
-  // Expand a section if navigated to from the sidebar TOC
+  // Ensure a section expands when reached via sidebar TOC
   document.querySelectorAll('#sideToc a[href^="#"]').forEach(a => {
     a.addEventListener('click', () => {
       const id = a.getAttribute('href').slice(1);
@@ -1000,6 +957,7 @@
   });
 })();
 </script>
+
 
 
 </body>
