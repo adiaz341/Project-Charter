@@ -60,11 +60,12 @@
   details.deliv2{ border-color:#34d399 }
   details.deliv3{ border-color:#f59e0b }
   details.deliv4{ border-color:#a78bfa }
+  details.deliv5{ border-color:#2dd4bf }
   .deliv1 table thead th{ background:#38bdf8 }
   .deliv2 table thead th{ background:#34d399 }
   .deliv3 table thead th{ background:#f59e0b }
   .deliv4 table thead th{ background:#a78bfa }
-
+  .deliv5 table thead th{ background:#2dd4bf }
   /* Budget subtotals */
   tr.subtotal-labor{ background:rgba(147,197,253,.15); border-top-color:#93c5fd }
   tr.subtotal-equip{ background:rgba(134,239,172,.12); border-top-color:#86efac }
@@ -170,19 +171,19 @@
     .deliv2 summary{ background:var(--deliv2) }
     .deliv3 summary{ background:var(--deliv3) }
     .deliv4 summary{ background:var(--deliv4) }
-
+    .deliv5 summary{ background:#e6fffb }
     /* 2A: richer accents for deliverables (adds borders + matching WBS table headers) */
     details.deliv1{ border-width:1.5px; border-color:#0284c7 }
     details.deliv2{ border-width:1.5px; border-color:#16a34a }
     details.deliv3{ border-width:1.5px; border-color:#d97706 }
     details.deliv4{ border-width:1.5px; border-color:#7c3aed }
-
+    details.deliv5{ border-width:1.5px; border-color:#14b8a6 }
     /* Tint WBS table headers inside each deliverable to match */
     .deliv1 table thead th{ background:#0284c7 }
     .deliv2 table thead th{ background:#16a34a }
     .deliv3 table thead th{ background:#d97706 }
     .deliv4 table thead th{ background:#7c3aed }
-
+    .deliv5 table thead th{ background:#14b8a6 }
     /* Back to Top */
     .back-to-top{ position: fixed; right: 24px; bottom: 28px; z-index: 1000; background: linear-gradient(135deg, var(--brand-dark), var(--brand-mid)); color:#fff; border:none; border-radius:999px; width:46px; height:46px; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 16px rgba(0,0,0,.2); transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease; opacity:.95 }
     .back-to-top:hover{ transform: translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.25) }
@@ -557,6 +558,12 @@
                       <td>Present completed portfolio and resume to 5 IT industry professionals and collect structured feedback on job readiness by December 5, 2025.</td>
                       <td>Feedback received from 5 professionals documented with key insights and action items identified; portfolio revised based on feedback.</td>
                     </tr>
+					<tr>
+  					  <td>IT Support Path (Cisco Networking Academy)</td>
+  					  <td>Certification / Learning Path</td>
+  					  <td>Complete the Cisco Networking Academy IT Support Specialist path (core modules in IT fundamentals, operating systems, basic networking, troubleshooting). Capture notes and screenshots of hands-on work.</td>
+  					  <td>Earn the IT Support Specialist digital badge/certificate; complete required assessments; upload badge and evidence (screenshots/notes) to GitHub portfolio.</td>
+					</tr>
                   </tbody>
                 </table>
 
@@ -683,7 +690,31 @@
                     </tbody>
                   </table>
                 </details>
-
+			<details class="deliv5">
+  				<summary>Deliverable 5 — IT Support Path (Cisco Networking Academy) — WBS</summary>
+  				<table>
+    			 <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
+    			 <tbody>
+      			   <tr><td>5</td><td>Deliverable</td><td>IT Support Path (Cisco Networking Academy)</td><td>28</td><td>--</td><td></td></tr>
+      			   <tr><td>5.1</td><td>Work Package</td><td>Enroll & Plan</td><td>2</td><td>--</td><td></td></tr>
+      			   <tr><td>5.1.1</td><td>Task</td><td>Join/confirm Cisco Networking Academy account</td><td>1</td><td>--</td><td></td></tr>
+      			   <tr><td>5.1.2</td><td>Task</td><td>Enroll in “IT Support Specialist” path + schedule</td><td>1</td><td>5.1.1</td><td></td></tr>
+			       <tr><td>5.2</td><td>Work Package</td><td>Core Courses</td><td>14</td><td>5.1</td><td></td></tr>
+      			   <tr><td>5.2.1</td><td>Task</td><td>IT Fundamentals module</td><td>4</td><td>5.1.2</td><td></td></tr>
+      			   <tr><td>5.2.2</td><td>Task</td><td>Operating Systems basics</td><td>5</td><td>5.2.1</td><td></td></tr>
+      			   <tr><td>5.2.3</td><td>Task</td><td>Networking essentials</td><td>5</td><td>5.2.2</td><td></td></tr>
+      			   <tr><td>5.3</td><td>Work Package</td><td>Hands-on Labs</td><td>6</td><td>5.2</td><td></td></tr>
+      			   <tr><td>5.3.1</td><td>Task</td><td>Packet Tracer practice labs (screenshots + notes)</td><td>4</td><td>5.2.3</td><td></td></tr>
+      			   <tr><td>5.3.2</td><td>Task</td><td>Troubleshooting exercises (ticket scenarios)</td><td>2</td><td>5.3.1</td><td></td></tr>
+      			   <tr><td>5.4</td><td>Work Package</td><td>Assessments & Badge</td><td>4</td><td>5.2</td><td></td></tr>
+      			   <tr><td>5.4.1</td><td>Task</td><td>Complete quizzes/assessments</td><td>2</td><td>5.2</td><td></td></tr>
+      			   <tr><td>5.4.2</td><td>Task</td><td>Earn IT Support Specialist badge/certificate</td><td>2</td><td>5.4.1</td><td></td></tr>
+      			   <tr><td>5.5</td><td>Work Package</td><td>Portfolio Integration</td><td>2</td><td>5.4.2</td><td></td></tr>
+      			   <tr><td>5.5.1</td><td>Task</td><td>Upload badge + lab evidence to GitHub portfolio</td><td>1</td><td>5.4.2</td><td></td></tr>
+      			   <tr><td>5.5.2</td><td>Task</td><td>Link on resume/LinkedIn; verify links work</td><td>1</td><td>5.5.1</td><td></td></tr>
+    			  </tbody>
+  			   </table>
+			</details>
               </div>
             </section>
 
