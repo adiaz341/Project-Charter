@@ -46,7 +46,7 @@
     --paper:#0b1220; --ink:#e5e7eb; --card:#0f172a; --br:#20304b;
     --blue-bg:#0b1f36; --blue-br:#1e3a5f; --green-bg:#0b1f17; --green-br:#174e3b;
     --shadow:0 8px 24px rgba(0,0,0,.45);
-    --deliv1:#0b1f36; --deliv2:#0b1f17; --deliv3:#332b00; --deliv4:#2b0d1a; --deliv5:#0b1f1d;
+    --deliv1:#0b1f36; --deliv2:#0b1f17; --deliv3:#332b00; --deliv4:#2b0d1a; --deliv5:#0b1f1e;
   }
 
   /* General UI */
@@ -189,6 +189,36 @@
     .back-to-top:hover{ transform: translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.25) }
     .back-to-top:focus{ outline:2px solid var(--blue-br); outline-offset:3px }
     .back-to-top.show{ display:flex }
+
+	/* Highlight any WBS row marked as Work Package */
+.wbs-workpkg td{
+  font-weight:600;
+  background: var(--deliv1); /* fallback; overridden per deliverable below */
+  border-left:4px solid currentColor;
+}
+
+/* Keep highlight on hover */
+.wbs-workpkg:hover td{ background:inherit }
+
+/* Use each section’s accent color as the row background */
+.deliv1 .wbs-workpkg td{ background:var(--deliv1) }
+.deliv2 .wbs-workpkg td{ background:var(--deliv2) }
+.deliv3 .wbs-workpkg td{ background:var(--deliv3) }
+.deliv4 .wbs-workpkg td{ background:var(--deliv4) }
+.deliv5 .wbs-workpkg td{ background:var(--deliv5) }
+
+/* Optional: crisper left accent using border colors */
+details.deliv1 .wbs-workpkg td{ border-left-color:#0284c7 }
+details.deliv2 .wbs-workpkg td{ border-left-color:#16a34a }
+details.deliv3 .wbs-workpkg td{ border-left-color:#d97706 }
+details.deliv4 .wbs-workpkg td{ border-left-color:#7c3aed }
+details.deliv5 .wbs-workpkg td{ border-left-color:#0d9488 }
+
+/* Print: preserve highlight */
+@media print{
+  .wbs-workpkg td{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+
 
     /* Mobile */
     @media (max-width: 980px){ .layout{ grid-template-columns: 1fr } }
@@ -620,7 +650,8 @@
         <tbody>
           <tr><td>3</td><td>Deliverable</td><td>Cybersecurity Fundamentals Badge</td><td>28</td><td>—</td><td></td></tr>
           <tr><td>3.1</td><td>Work Package</td><td>Register for Cybersecurity Path</td><td>1</td><td>2.1</td><td></td></tr>
-          <tr><td>3.1.1</td><td>Task</td><td>Enroll in Cybersecurity Analyst Path</td><td>1</td><td>2.1</td><td></td></tr>
+          <tr><td>3.1.1</td><td>Task</td><td>Study for assessment</td><td>5</td><td>—</td><td></td></tr>
+		  <tr><td>3.1.2</td><td>Task</td><td>Complete Cybersecurity Analyst Path</td><td>1</td><td>2.1</td><td></td></tr>
           <tr><td>3.2</td><td>Work Package</td><td>TryHackMe hands-on labs</td><td>9</td><td>—</td><td></td></tr>
           <tr><td>3.2.1</td><td>Task</td><td>Sign up for TryHackMe</td><td>1</td><td>—</td><td></td></tr>
           <tr><td>3.2.2</td><td>Task</td><td>Complete free rooms</td><td>5</td><td>3.2.1</td><td></td></tr>
@@ -630,10 +661,7 @@
           <tr><td>3.3.1</td><td>Task</td><td>Sign up for LabEX.io</td><td>1</td><td>—</td><td></td></tr>
           <tr><td>3.3.2</td><td>Task</td><td>Follow cybersecurity path</td><td>5</td><td>3.3.1</td><td></td></tr>
           <tr><td>3.3.3</td><td>Task</td><td>Use labs as proof for site</td><td>3</td><td>—</td><td>3.3.2 (5d) || 3.3.3 (3d)</td></tr>
-          <tr><td>3.3.4</td><td>Task</td><td>Add badges to GitHub</td><td>2</td><td>1.1.1</td><td></td></tr>
-          <tr><td>3.4</td><td>Work Package</td><td>Earn Cybersecurity Analyst badge</td><td>10</td><td>2.1</td><td></td></tr>
-          <tr><td>3.4.1</td><td>Task</td><td>Study for assessment</td><td>5</td><td>—</td><td></td></tr>
-          <tr><td>3.4.2</td><td>Task</td><td>Pass assessment / earn badge</td><td>5</td><td>3.1.1</td><td></td></tr>
+          <tr><td>3.3.4</td><td>Task</td><td>Add badges to GitHub</td><td>2</td><td>1.1.1</td><td></td></tr>          
         </tbody>
       </table>
     </details>
@@ -644,7 +672,7 @@
       <table>
         <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
         <tbody>
-          <tr><td>4</td><td>Deliverable</td><td>ISC2 + Security+ &amp; Apply for a Job</td><td>56</td><td>—</td><td></td></tr>
+          <tr><td>4</td><td>Deliverable</td><td>ISC2 + Security+</td><td>56</td><td>—</td><td></td></tr>
           <tr><td>4.1</td><td>Work Package</td><td>ISC2 CC</td><td>10</td><td>—</td><td></td></tr>
           <tr><td>4.1.1</td><td>Task</td><td>Sign up for ISC2 class/exam</td><td>1</td><td>—</td><td></td></tr>
           <tr><td>4.1.2</td><td>Task</td><td>Complete course</td><td>5</td><td>4.1.1</td><td>4.1.2 (5d) || 4.1.3 (5d)</td></tr>
@@ -661,25 +689,7 @@
           <tr><td>4.3.3</td><td>Task</td><td>Link ISC2 CC certificate</td><td>1</td><td>4.1.4</td><td></td></tr>
           <tr><td>4.3.4</td><td>Task</td><td>Create banner URL (ISC2 CC)</td><td>1</td><td>4.1.4</td><td></td></tr>
           <tr><td>4.3.5</td><td>Task</td><td>Upload to portfolio</td><td>2</td><td>1.1.1</td><td></td></tr>
-          <tr><td>4.4</td><td>Work Package</td><td>Apply for jobs</td><td>34</td><td>—</td><td></td></tr>
-          <tr><td>4.4.1</td><td>Task</td><td>Inspect portfolio</td><td>10</td><td>—</td><td></td></tr>
-          <tr><td>4.4.1.1</td><td>Task</td><td>Verify all links</td><td>1</td><td>1.1.1</td><td></td></tr>
-          <tr><td>4.4.1.2</td><td>Task</td><td>Confirm public access</td><td>1</td><td>1.1.4</td><td></td></tr>
-          <tr><td>4.4.1.3</td><td>Task</td><td>Beautify where needed</td><td>3</td><td>—</td><td></td></tr>
-          <tr><td>4.4.1.4</td><td>Task</td><td>Consider standalone website</td><td>5</td><td>—</td><td></td></tr>
           <tr><td>4.4.2</td><td>Work Package</td><td>Update resume</td><td>4</td><td>—</td><td></td></tr>
-          <tr><td>4.4.2.1</td><td>Task</td><td>Add new achievements</td><td>1</td><td>Del. 2, 3, 4</td><td></td></tr>
-          <tr><td>4.4.2.2</td><td>Task</td><td>Place resume on GitHub</td><td>1</td><td>1.1.1</td><td></td></tr>
-          <tr><td>4.4.2.3</td><td>Task</td><td>Place resume on LinkedIn</td><td>1</td><td>1.1.1</td><td></td></tr>
-          <tr><td>4.4.2.4</td><td>Task</td><td>Career center review</td><td>1</td><td>—</td><td></td></tr>
-          <tr><td>4.4.3</td><td>Work Package</td><td>Applications</td><td>15</td><td>—</td><td></td></tr>
-          <tr><td>4.4.3.1</td><td>Task</td><td>Search LinkedIn (entry-level IT)</td><td>3</td><td>—</td><td></td></tr>
-          <tr><td>4.4.3.2</td><td>Task</td><td>Search web job boards</td><td>2</td><td>—</td><td></td></tr>
-          <tr><td>4.4.3.3</td><td>Task</td><td>Leverage network for leads</td><td>2</td><td>—</td><td></td></tr>
-          <tr><td>4.4.3.4</td><td>Task</td><td>Interview practice</td><td>5</td><td>4.4.3.5</td><td></td></tr>
-          <tr><td>4.4.3.5</td><td>Task</td><td>Secure ≥ 2 interviews</td><td>3</td><td>—</td><td></td></tr>
-          <tr><td>4.4.4</td><td>Work Package</td><td>Offer &amp; onboarding</td><td>5</td><td>—</td><td></td></tr>
-          <tr><td>4.4.4.1</td><td>Task</td><td>Get hired</td><td>5</td><td>—</td><td></td></tr>
         </tbody>
       </table>
     </details>
@@ -693,7 +703,7 @@
           <tr><td>5</td><td>Deliverable</td><td>IT Support Path (Cisco Networking Academy)</td><td>28</td><td>—</td><td></td></tr>
           <tr><td>5.1</td><td>Work Package</td><td>Enroll &amp; plan</td><td>2</td><td>—</td><td></td></tr>
           <tr><td>5.1.1</td><td>Task</td><td>Join/confirm NetAcad account</td><td>1</td><td>—</td><td></td></tr>
-          <tr><td>5.1.2</td><td>Task</td><td>Enroll in “IT Support Specialist” path + schedule</td><td>1</td><td>5.1.1</td><td></td></tr>
+          <tr><td>5.1.2</td><td>Task</td><td>Enroll in “IT Support Specialist” path</td><td>1</td><td>5.1.1</td><td></td></tr>
           <tr><td>5.2</td><td>Work Package</td><td>Core courses</td><td>14</td><td>5.1</td><td></td></tr>
           <tr><td>5.2.1</td><td>Task</td><td>IT fundamentals</td><td>4</td><td>5.1.2</td><td></td></tr>
           <tr><td>5.2.2</td><td>Task</td><td>Operating systems basics</td><td>5</td><td>5.2.1</td><td></td></tr>
@@ -996,6 +1006,19 @@ closeBtn?.addEventListener('click', () => {
 })();
 </script>
 
+<script>
+/* Mark any row whose Level cell is "Work Package" */
+(function(){
+  const isWorkPkg = (txt) => txt.trim().toLowerCase() === 'work package';
+  document.querySelectorAll('details[class^="deliv"] table tbody tr').forEach(tr => {
+    const levelCell = tr.cells?.[1];
+    if (levelCell && isWorkPkg(levelCell.textContent || '')) {
+      tr.classList.add('wbs-workpkg');
+      tr.setAttribute('aria-label', 'Work Package');
+    }
+  });
+})();
+</script>
 
 
 </body>
