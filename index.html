@@ -12,7 +12,7 @@
     :root{
       --brand-dark:#004d7a; --brand-mid:#008793; --blue-bg:#e3f2fd; --blue-br:#bbdefb; --green-bg:#f1f8e9; --green-br:#c5e1a5; --paper:#f5f7fb; --ink:#1f2937;
       --muted:#6b7280; --ring:#93c5fd; --card:#ffffff; --br:#e5e7eb; --shadow:0 6px 20px rgba(0,0,0,.08);
-      --deliv1:#e3f2fd; --deliv2:#f1f8e9; --deliv3:#fff8e1; --deliv4:#fce4ec;
+      --deliv1:#e3f2fd; --deliv2:#f1f8e9; --deliv3:#fff8e1; --deliv4:#fce4ec; --deliv5:#e0f2f1;
     }
     /* Collapsible sections: header is the toggle */
 .section { position: relative; }
@@ -46,7 +46,7 @@
     --paper:#0b1220; --ink:#e5e7eb; --card:#0f172a; --br:#20304b;
     --blue-bg:#0b1f36; --blue-br:#1e3a5f; --green-bg:#0b1f17; --green-br:#174e3b;
     --shadow:0 8px 24px rgba(0,0,0,.45);
-    --deliv1:#0b1f36; --deliv2:#0b1f17; --deliv3:#332b00; --deliv4:#2b0d1a;
+    --deliv1:#0b1f36; --deliv2:#0b1f17; --deliv3:#332b00; --deliv4:#2b0d1a; --deliv5:#0b1f1d;
   }
 
   /* General UI */
@@ -60,12 +60,12 @@
   details.deliv2{ border-color:#34d399 }
   details.deliv3{ border-color:#f59e0b }
   details.deliv4{ border-color:#a78bfa }
-  details.deliv5{ border-color:#2dd4bf }
+  details.deliv5{ border-color:#14b8a6 }
   .deliv1 table thead th{ background:#38bdf8 }
   .deliv2 table thead th{ background:#34d399 }
   .deliv3 table thead th{ background:#f59e0b }
   .deliv4 table thead th{ background:#a78bfa }
-  .deliv5 table thead th{ background:#2dd4bf }
+  .deliv5 table thead th{ background:#14b8a6 }
   /* Budget subtotals */
   tr.subtotal-labor{ background:rgba(147,197,253,.15); border-top-color:#93c5fd }
   tr.subtotal-equip{ background:rgba(134,239,172,.12); border-top-color:#86efac }
@@ -171,19 +171,19 @@
     .deliv2 summary{ background:var(--deliv2) }
     .deliv3 summary{ background:var(--deliv3) }
     .deliv4 summary{ background:var(--deliv4) }
-    .deliv5 summary{ background:#e6fffb }
+    .deliv5 summary{ background:var(--deliv5) }
     /* 2A: richer accents for deliverables (adds borders + matching WBS table headers) */
     details.deliv1{ border-width:1.5px; border-color:#0284c7 }
     details.deliv2{ border-width:1.5px; border-color:#16a34a }
     details.deliv3{ border-width:1.5px; border-color:#d97706 }
     details.deliv4{ border-width:1.5px; border-color:#7c3aed }
-    details.deliv5{ border-width:1.5px; border-color:#14b8a6 }
+    details.deliv5{ border-width:1.5px; border-color:#0d9488 }
     /* Tint WBS table headers inside each deliverable to match */
     .deliv1 table thead th{ background:#0284c7 }
     .deliv2 table thead th{ background:#16a34a }
     .deliv3 table thead th{ background:#d97706 }
     .deliv4 table thead th{ background:#7c3aed }
-    .deliv5 table thead th{ background:#14b8a6 }
+    .deliv5 table thead th{ background:#0d9488 }
     /* Back to Top */
     .back-to-top{ position: fixed; right: 24px; bottom: 28px; z-index: 1000; background: linear-gradient(135deg, var(--brand-dark), var(--brand-mid)); color:#fff; border:none; border-radius:999px; width:46px; height:46px; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 16px rgba(0,0,0,.2); transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease; opacity:.95 }
     .back-to-top:hover{ transform: translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.25) }
@@ -309,7 +309,7 @@
               <div class="section-header"><h2 class="section-title">1. Project Title & Description</h2></div>
               <div class="section-content">
                   <h3>Project Title: Landing An Entry-Level IT Job</h3>
-                  <p>The goal is to secure an entry-level position in Information Technology by developing and demonstrating both technical and professional skills required in the field. To achieve this, I will get hands-on experience through online learning platforms, earn IT-specific certifications, network, and create a portfolio to house these achievements.</p>
+                  <p>The goal is to secure an entry-level position in Information Technology by developing and demonstrating both technical and professional skills required in the field. To achieve this, I will get hands-on experience through online learning platforms, earn IT-specific certifications, and network.</p>
               </div>
             </section>
 
@@ -503,208 +503,214 @@
             </section>
 
             <!-- Section 6: Deliverables & Definition of Done + WBS (collapsible) -->
-            <section class="section" id="section6">
-              <div class="section-header"><h2 class="section-title">6. Deliverables &amp; Definition of Done</h2></div>
-              <div class="section-content">
-                <table id="deliverablesTable">
-                  <thead>
-                    <tr>
-                      <th>Deliverable Name</th>
-                      <th>Type</th>
-                      <th>SMART Description</th>
-                      <th>Definition of Done</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>GitHub Portfolio</td>
-                      <td>Project Deliverable</td>
-                      <td>Create and publish a personal GitHub portfolio site that is accessible, professional, and showcases coursework as well as certifications.</td>
-                      <td>Portfolio reviewed by 2 peers confirming all 10+ links work, loads in less than 3 seconds, and displays correctly on mobile/desktop</td>
-                    </tr>
-                    <tr>
-                      <td>Networking Fundamentals Badge</td>
-                      <td>Certification Deliverable</td>
-                      <td>Complete Cisco Networking Academy's Networking Technician Path and earn a certificate to demonstrate networking skills.</td>
-                      <td>Completion certificate earned from Cisco Networking Academy.</td>
-                    </tr>
-                    <tr>
-                      <td>Cybersecurity Fundamentals Badge</td>
-                      <td>Certification Deliverable</td>
-                      <td>Complete Cisco's Cybersecurity Analyst Path and hands-on labs, documenting experience and earning a certificate.</td>
-                      <td>Completion of Cisco Cybersecurity Analyst Path with certificate and labs documented.</td>
-                    </tr>
-                    <tr>
-                      <td>ISC2 &amp; Security+ Certifications</td>
-                      <td>Certification Deliverable</td>
-                      <td>Complete ISC2 CC and CompTIA Security+ certifications to validate cybersecurity knowledge and skills.</td>
-                      <td>Both exams passed and certificates uploaded to GitHub portfolio.</td>
-                    </tr>
-                    <tr>
-                      <td>Industry Feedback Sessions</td>
-                      <td>Validation Deliverable</td>
-                      <td>Present completed portfolio and resume to 5 IT industry professionals and collect structured feedback on job readiness by December 5, 2025.</td>
-                      <td>Feedback received from 5 professionals documented with key insights and action items identified; portfolio revised based on feedback.</td>
-                    </tr>
-					<tr>
-  					  <td>IT Support Path (Cisco Networking Academy)</td>
-  					  <td>Certification / Learning Path</td>
-  					  <td>Complete the Cisco Networking Academy IT Support Specialist path (core modules in IT fundamentals, operating systems, basic networking, troubleshooting). Capture notes and screenshots of hands-on work.</td>
-  					  <td>Earn the IT Support Specialist digital badge/certificate; complete required assessments; upload badge and evidence (screenshots/notes) to GitHub portfolio.</td>
-					</tr>
-                  </tbody>
-                </table>
+<section class="section" id="section6">
+  <div class="section-header"><h2 class="section-title">6. Deliverables &amp; Definition of Done</h2></div>
+  <div class="section-content">
 
-                <!-- Collapsible WBS -->
-                <details class="deliv1" open>
-                  <summary>Deliverable 1 — GitHub Portfolio (WBS)</summary>
-                  <table>
-                    <thead>
-                      <tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>1</td><td>Deliverable</td><td>GitHub Portfolio</td><td>24</td><td>--</td><td></td></tr>
-                      <tr><td>1.1</td><td>Work Package</td><td>Structure GitHub webpage</td><td>6</td><td>--</td><td></td></tr>
-                      <tr><td>1.1.1</td><td>Task</td><td>Create GitHub page</td><td>1</td><td>--</td><td>Task 1.1.2 (1 day) || Task 1.1.3 (3 days)</td></tr>
-                      <tr><td>1.1.2</td><td>Task</td><td>YouTube: how to make a portfolio</td><td>1</td><td>1.1.1 Create GitHub page</td><td></td></tr>
-                      <tr><td>1.1.3</td><td>Task</td><td>Use template or create own landing page</td><td>3</td><td>1.1.1 Create GitHub page</td><td></td></tr>
-                      <tr><td>1.1.4</td><td>Task</td><td>Make webpage public</td><td>2</td><td>1.1.1 Create GitHub page</td><td></td></tr>
-                      <tr><td>1.2</td><td>Work Package</td><td>Place professional profile picture</td><td>1</td><td>1.1 Structure GitHub webpage</td><td></td></tr>
-                      <tr><td>1.2.1</td><td>Task</td><td>YouTube: how to place profile picture</td><td>1</td><td>--</td><td>Task 1.2.1 (1 day) || Task 1.2.2 (1 day)</td></tr>
-                      <tr><td>1.2.2</td><td>Task</td><td>Upload professional profile picture</td><td>1</td><td>1.1.1 Create GitHub page</td><td></td></tr>
-                      <tr><td>1.3</td><td>Work Package</td><td>Ability to navigate through GitHub</td><td>6</td><td>1.1 Structure GitHub webpage</td><td></td></tr>
-                      <tr><td>1.3.1</td><td>Task</td><td>YouTube: how to design GitHub functionality</td><td>2</td><td>--</td><td></td></tr>
-                      <tr><td>1.3.2</td><td>Task</td><td>Use ChatGPT as needed to code webpage</td><td>2</td><td>1.3.1 YouTube: how to design GitHub functionality</td><td></td></tr>
-                      <tr><td>1.3.3</td><td>Task</td><td>Use working links to external sites</td><td>2</td><td>1.3.1 YouTube: how to design GitHub functionality</td><td></td></tr>
-                      <tr><td>1.4</td><td>Work Package</td><td>Verifying profile works properly</td><td>11</td><td></td><td></td></tr>
-                      <tr><td>1.4.1</td><td>Task</td><td>Verify GitHub is accessible</td><td>1</td><td>1.1.4 Make webpage public</td><td></td></tr>
-                      <tr><td>1.4.2</td><td>Task</td><td>Confirm links are working properly</td><td>3</td><td>--</td><td></td></tr>
-                      <tr><td>1.4.4</td><td>Task</td><td>Make sure navigation is smooth</td><td>5</td><td>1.3.1 YouTube: how to design GitHub functionality</td><td></td></tr>
-                      <tr><td>1.3.4</td><td>Task</td><td>Add LinkedIn profile to GitHub</td><td>2</td><td>--</td><td></td></tr>
-                    </tbody>
-                  </table>
-                </details>
+    <!-- Master list of deliverables -->
+    <table id="deliverablesTable">
+      <thead>
+        <tr>
+          <th>Deliverable Name</th>
+          <th>Type</th>
+          <th>SMART Description</th>
+          <th>Definition of Done</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GitHub Portfolio</td>
+          <td>Project Deliverable</td>
+          <td>Create and publish a personal GitHub portfolio site that is accessible, professional, and showcases coursework and certifications.</td>
+          <td>Reviewed by 2 peers confirming 10+ links work; loads &lt; 3 seconds; responsive on mobile/desktop.</td>
+        </tr>
+        <tr>
+          <td>Networking Fundamentals Badge</td>
+          <td>Certification Deliverable</td>
+          <td>Complete Cisco Networking Academy’s Networking Technician Path and earn the certificate to demonstrate networking skills.</td>
+          <td>Completion certificate from Cisco Networking Academy uploaded to portfolio.</td>
+        </tr>
+        <tr>
+          <td>Cybersecurity Fundamentals Badge</td>
+          <td>Certification Deliverable</td>
+          <td>Complete Cisco’s Cybersecurity Analyst Path and hands-on labs; document experience and earn the certificate.</td>
+          <td>Cybersecurity Analyst Path certificate earned; labs documented and linked in portfolio.</td>
+        </tr>
+        <tr>
+          <td>ISC2 &amp; Security+ Certifications</td>
+          <td>Certification Deliverable</td>
+          <td>Pass ISC2 CC and CompTIA Security+ to validate cybersecurity knowledge and skills.</td>
+          <td>Both exams passed; certificates linked in GitHub portfolio.</td>
+        </tr>
+        <tr>
+          <td>Industry Feedback Sessions</td>
+          <td>Validation Deliverable</td>
+          <td>Present portfolio and resume to 5 IT professionals and collect structured feedback by Dec 5, 2025.</td>
+          <td>Feedback from 5 professionals documented with actions; portfolio revised accordingly.</td>
+        </tr>
+        <tr>
+          <td>IT Support Path (Cisco Networking Academy)</td>
+          <td>Certification / Learning Path</td>
+          <td>Complete the IT Support Specialist path (IT fundamentals, operating systems, basic networking, troubleshooting). Capture notes and screenshots of hands-on work.</td>
+          <td>IT Support Specialist badge earned; assessments completed; badge + evidence uploaded to portfolio.</td>
+        </tr>
+      </tbody>
+    </table>
 
-                <details class="deliv2">
-                  <summary>Deliverable 2 — Networking Fundamentals Badge (WBS)</summary>
-                  <table>
-                    <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
-                    <tbody>
-                      <tr><td>2</td><td>Deliverable</td><td>Networking Fundamentals Badge</td><td>24</td><td>--</td><td></td></tr>
-                      <tr><td>2.1</td><td>Work Package</td><td>Join Cisco Networking Academy</td><td>3</td><td>--</td><td></td></tr>
-                      <tr><td>2.1.1</td><td>Task</td><td>Sign up for Cisco's Networking Academy</td><td>1</td><td>--</td><td></td></tr>
-                      <tr><td>2.1.2</td><td>Task</td><td>Register for Networking Technician Path</td><td>1</td><td>2.1.1</td><td></td></tr>
-                      <tr><td>2.1.3</td><td>Task</td><td>Register for Cisco Packet Tracer</td><td>1</td><td>2.1.1</td><td></td></tr>
-                      <tr><td>2.2</td><td>Work Package</td><td>Networking Technician Path</td><td>9</td><td>--</td><td></td></tr>
-                      <tr><td>2.2.1</td><td>Task</td><td>Complete the networking tech path</td><td>5</td><td>2.1.1</td><td></td></tr>
-                      <tr><td>2.2.2</td><td>Task</td><td>Screenshot and annotate hands-on portion</td><td>2</td><td>2.2.1</td><td>Task 2.2.1 (5 days) || Task 2.2.2 (2 days)</td></tr>
-                      <tr><td>2.2.3</td><td>Task</td><td>Complete assessment at end of path</td><td>2</td><td>2.2.1</td><td></td></tr>
-                      <tr><td>2.2.4</td><td>Task</td><td>Get the Networking Technician path badge</td><td>2</td><td>2.1.2</td><td></td></tr>
-                      <tr><td>2.3</td><td>Work Package</td><td>Cisco Packet Tracer</td><td>12</td><td>--</td><td></td></tr>
-                      <tr><td>2.3.1</td><td>Task</td><td>Begin Cisco Packet Tracer course</td><td>5</td><td>2.1.1</td><td>Task 2.3.1 (5 days) || Task 2.3.2 (5 days)</td></tr>
-                      <tr><td>2.3.2</td><td>Task</td><td>Screenshot builds done using Packet Tracer</td><td>5</td><td>2.3.1</td><td></td></tr>
-                      <tr><td>2.3.3</td><td>Task</td><td>Complete assessment at end of path</td><td>2</td><td>2.3.2</td><td></td></tr>
-                      <tr><td>2.3.4</td><td>Task</td><td>Get Cisco Packet Tracer badge</td><td>5</td><td>--</td><td></td></tr>
-                    </tbody>
-                  </table>
-                </details>
+    <!-- Collapsible WBS: D1 -->
+    <details class="deliv1" open>
+      <summary>Deliverable 1 — GitHub Portfolio (WBS)</summary>
+      <table>
+        <thead>
+          <tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Deliverable</td><td>GitHub Portfolio</td><td>24</td><td>—</td><td></td></tr>
+          <tr><td>1.1</td><td>Work Package</td><td>Structure GitHub webpage</td><td>6</td><td>—</td><td></td></tr>
+          <tr><td>1.1.1</td><td>Task</td><td>Create GitHub page</td><td>1</td><td>—</td><td>1.1.2 (1d) || 1.1.3 (3d)</td></tr>
+          <tr><td>1.1.2</td><td>Task</td><td>YouTube: how to make a portfolio</td><td>1</td><td>1.1.1</td><td></td></tr>
+          <tr><td>1.1.3</td><td>Task</td><td>Use template or create landing page</td><td>3</td><td>1.1.1</td><td></td></tr>
+          <tr><td>1.1.4</td><td>Task</td><td>Make webpage public</td><td>2</td><td>1.1.1</td><td></td></tr>
+          <tr><td>1.2</td><td>Work Package</td><td>Professional profile picture</td><td>1</td><td>1.1</td><td></td></tr>
+          <tr><td>1.2.1</td><td>Task</td><td>YouTube: place profile picture</td><td>1</td><td>—</td><td>1.2.1 (1d) || 1.2.2 (1d)</td></tr>
+          <tr><td>1.2.2</td><td>Task</td><td>Upload profile picture</td><td>1</td><td>1.1.1</td><td></td></tr>
+          <tr><td>1.3</td><td>Work Package</td><td>Site navigation &amp; linking</td><td>6</td><td>1.1</td><td></td></tr>
+          <tr><td>1.3.1</td><td>Task</td><td>YouTube: design functionality</td><td>2</td><td>—</td><td></td></tr>
+          <tr><td>1.3.2</td><td>Task</td><td>Use ChatGPT as needed</td><td>2</td><td>1.3.1</td><td></td></tr>
+          <tr><td>1.3.3</td><td>Task</td><td>Add working external links</td><td>2</td><td>1.3.1</td><td></td></tr>
+          <tr><td>1.4</td><td>Work Package</td><td>Verification &amp; polish</td><td>11</td><td>—</td><td></td></tr>
+          <tr><td>1.4.1</td><td>Task</td><td>Verify accessibility (public)</td><td>1</td><td>1.1.4</td><td></td></tr>
+          <tr><td>1.4.2</td><td>Task</td><td>Confirm links work</td><td>3</td><td>—</td><td></td></tr>
+          <tr><td>1.4.4</td><td>Task</td><td>Ensure smooth navigation</td><td>5</td><td>1.3.1</td><td></td></tr>
+          <tr><td>1.3.4</td><td>Task</td><td>Add LinkedIn profile</td><td>2</td><td>—</td><td></td></tr>
+        </tbody>
+      </table>
+    </details>
 
-                <details class="deliv3">
-                  <summary>Deliverable 3 — Cybersecurity Fundamentals Badge (WBS)</summary>
-                  <table>
-                    <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
-                    <tbody>
-                      <tr><td>3</td><td>Deliverable</td><td>Cybersecurity Fundamentals Badge</td><td>28</td><td>--</td><td></td></tr>
-                      <tr><td>3.1</td><td>Work Package</td><td>Register for Cybersecurity Path on Cisco</td><td>1</td><td>2.1</td><td></td></tr>
-                      <tr><td>3.1.1</td><td>Task</td><td>Register for Cybersecurity Analyst path</td><td>1</td><td>2.1</td><td></td></tr>
-                      <tr><td>3.2</td><td>Work Package</td><td>Do hands-on labs on Try Hack Me</td><td>9</td><td>--</td><td></td></tr>
-                      <tr><td>3.2.1</td><td>Task</td><td>Sign up for Try Hack Me</td><td>1</td><td>--</td><td></td></tr>
-                      <tr><td>3.2.2</td><td>Task</td><td>Do free rooms to get hands-on experience</td><td>5</td><td>3.2.1</td><td></td></tr>
-                      <tr><td>3.2.3</td><td>Task</td><td>Use labs completed as hands-on experience</td><td>3</td><td>--</td><td>Task 3.2.2 (5 days) || Task 3.2.3 (3 days)</td></tr>
-                      <tr><td>3.2.4</td><td>Task</td><td>Create link for GitHub portfolio</td><td>3</td><td>1.1.1</td><td></td></tr>
-                      <tr><td>3.3</td><td>Work Package</td><td>Get hands-on with LabEX.io</td><td>8</td><td>--</td><td></td></tr>
-                      <tr><td>3.3.1</td><td>Task</td><td>Sign up for LabEX.io</td><td>1</td><td>--</td><td></td></tr>
-                      <tr><td>3.3.2</td><td>Task</td><td>Follow cybersecurity path</td><td>5</td><td>3.3.1</td><td></td></tr>
-                      <tr><td>3.3.3</td><td>Task</td><td>Use hands-on labs as proof for website</td><td>3</td><td>--</td><td>Task 3.3.2 (5 days) || Task 3.3.3 (3 days)</td></tr>
-                      <tr><td>3.3.4</td><td>Task</td><td>Add necessary badges to GitHub</td><td>2</td><td>1.1.1</td><td></td></tr>
-                      <tr><td>3.4</td><td>Work Package</td><td>Get Cybersecurity Analyst Badge on Cisco</td><td>10</td><td>2.1</td><td></td></tr>
-                      <tr><td>3.4.1</td><td>Task</td><td>Study for assessment test</td><td>5</td><td>--</td><td></td></tr>
-                      <tr><td>3.4.2</td><td>Task</td><td>Earn Cybersecurity Analyst path badge</td><td>5</td><td>3.1.1</td><td></td></tr>
-                    </tbody>
-                  </table>
-                </details>
+    <!-- D2 -->
+    <details class="deliv2">
+      <summary>Deliverable 2 — Networking Fundamentals Badge (WBS)</summary>
+      <table>
+        <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>Deliverable</td><td>Networking Fundamentals Badge</td><td>24</td><td>—</td><td></td></tr>
+          <tr><td>2.1</td><td>Work Package</td><td>Join Cisco Networking Academy</td><td>3</td><td>—</td><td></td></tr>
+          <tr><td>2.1.1</td><td>Task</td><td>Sign up for Cisco NetAcad</td><td>1</td><td>—</td><td></td></tr>
+          <tr><td>2.1.2</td><td>Task</td><td>Register for Networking Technician Path</td><td>1</td><td>2.1.1</td><td></td></tr>
+          <tr><td>2.1.3</td><td>Task</td><td>Register for Cisco Packet Tracer</td><td>1</td><td>2.1.1</td><td></td></tr>
+          <tr><td>2.2</td><td>Work Package</td><td>Networking Technician Path</td><td>9</td><td>—</td><td></td></tr>
+          <tr><td>2.2.1</td><td>Task</td><td>Complete curriculum</td><td>5</td><td>2.1.1</td><td></td></tr>
+          <tr><td>2.2.2</td><td>Task</td><td>Screenshot &amp; annotate labs</td><td>2</td><td>2.2.1</td><td>2.2.1 (5d) || 2.2.2 (2d)</td></tr>
+          <tr><td>2.2.3</td><td>Task</td><td>Complete assessment</td><td>2</td><td>2.2.1</td><td></td></tr>
+          <tr><td>2.2.4</td><td>Task</td><td>Obtain badge</td><td>2</td><td>2.1.2</td><td></td></tr>
+          <tr><td>2.3</td><td>Work Package</td><td>Cisco Packet Tracer</td><td>12</td><td>—</td><td></td></tr>
+          <tr><td>2.3.1</td><td>Task</td><td>Begin Packet Tracer course</td><td>5</td><td>2.1.1</td><td>2.3.1 (5d) || 2.3.2 (5d)</td></tr>
+          <tr><td>2.3.2</td><td>Task</td><td>Screenshot builds</td><td>5</td><td>2.3.1</td><td></td></tr>
+          <tr><td>2.3.3</td><td>Task</td><td>Complete assessment</td><td>2</td><td>2.3.2</td><td></td></tr>
+          <tr><td>2.3.4</td><td>Task</td><td>Get Packet Tracer badge</td><td>5</td><td>—</td><td></td></tr>
+        </tbody>
+      </table>
+    </details>
 
-                <details class="deliv4">
-                  <summary>Deliverable 4 — Certifications &amp; Job Application (WBS)</summary>
-                  <table>
-                    <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
-                    <tbody>
-                      <tr><td>4</td><td>Deliverable</td><td>Get certified in ISC2 and Security+ &amp; Apply for a Job</td><td>56</td><td>--</td><td></td></tr>
-                      <tr><td>4.1</td><td>Work Package</td><td>Attain ISC2 Cybersecurity certification</td><td>10</td><td>--</td><td></td></tr>
-                      <tr><td>4.1.1</td><td>Task</td><td>Sign up for free ISC2 class and exam</td><td>1</td><td>--</td><td></td></tr>
-                      <tr><td>4.1.2</td><td>Task</td><td>Complete free Cybersecurity course</td><td>5</td><td>4.1.1</td><td>Task 4.1.2 (5 days) || Task 4.1.3 (5 days)</td></tr>
-                      <tr><td>4.1.3</td><td>Task</td><td>Study for ISC2 exam</td><td>5</td><td>4.1.1</td><td></td></tr>
-                      <tr><td>4.1.4</td><td>Task</td><td>Schedule exam appointment for ISC2 CC</td><td>5</td><td>--</td><td></td></tr>
-                      <tr><td>4.2</td><td>Work Package</td><td>Get Security+ certification</td><td>6</td><td>--</td><td></td></tr>
-                      <tr><td>4.2.1</td><td>Task</td><td>Complete Cengage study book for Security+</td><td>5</td><td>--</td><td>Task 4.2.1 (5 days) || Task 4.2.2 (5 days) || Task 4.2.3 (5 days)</td></tr>
-                      <tr><td>4.2.2</td><td>Task</td><td>Use hands-on labs from LabEX.io for practice</td><td>5</td><td>4.2.1</td><td></td></tr>
-                      <tr><td>4.2.3</td><td>Task</td><td>Study and save money for the exam</td><td>5</td><td>4.2.1</td><td></td></tr>
-                      <tr><td>4.2.4</td><td>Task</td><td>Schedule exam appointment for Security+ certification</td><td>1</td><td>4.2.3</td><td></td></tr>
-                      <tr><td>4.3</td><td>Work Package</td><td>Display certificates on GitHub</td><td>6</td><td>--</td><td></td></tr>
-                      <tr><td>4.3.1</td><td>Task</td><td>Copy link to Security+ certification</td><td>1</td><td>4.2.4</td><td></td></tr>
-                      <tr><td>4.3.2</td><td>Task</td><td>Make a banner URL to see cert.</td><td>1</td><td>4.2.4</td><td></td></tr>
-                      <tr><td>4.3.3</td><td>Task</td><td>Copy link to ISC2 CC cert</td><td>1</td><td>4.1.4</td><td></td></tr>
-                      <tr><td>4.3.4</td><td>Task</td><td>Make a banner URL to see cert.</td><td>1</td><td>4.1.4</td><td></td></tr>
-                      <tr><td>4.3.5</td><td>Task</td><td>Upload to GitHub portfolio</td><td>2</td><td>1.1.1</td><td></td></tr>
-                      <tr><td>4.4</td><td>Work Package</td><td>Apply for a job in IT</td><td>34</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.1</td><td>Task</td><td>Inspect GitHub portfolio</td><td>10</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.1.1</td><td>Task</td><td>Make sure every link works</td><td>1</td><td>1.1.1</td><td></td></tr>
-                      <tr><td>4.4.1.2</td><td>Task</td><td>Make sure anyone can access GitHub page</td><td>1</td><td>1.1.4</td><td></td></tr>
-                      <tr><td>4.4.1.3</td><td>Task</td><td>Beautify where needed</td><td>3</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.1.4</td><td>Task</td><td>Possibly turn portfolio into webpage</td><td>5</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.2</td><td>Work Package</td><td>Update resume</td><td>4</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.2.1</td><td>Task</td><td>Add new achievements and experience</td><td>1</td><td>Del. 2, 3, 4 — Networking, cybersecurity, and certs in ISC2 Security+</td><td></td></tr>
-                      <tr><td>4.4.2.2</td><td>Task</td><td>Place resume on GitHub</td><td>1</td><td>1.1.1</td><td></td></tr>
-                      <tr><td>4.4.2.3</td><td>Task</td><td>Place resume on LinkedIn</td><td>1</td><td>1.1.1</td><td></td></tr>
-                      <tr><td>4.4.2.4</td><td>Task</td><td>Go to career center for help with resume</td><td>1</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.3</td><td>Work Package</td><td>Send applications for employment</td><td>15</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.3.1</td><td>Task</td><td>Look up entry-level IT jobs on LinkedIn</td><td>3</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.3.2</td><td>Task</td><td>Search the web for IT job openings</td><td>2</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.3.3</td><td>Task</td><td>Talk to network about job openings in their work</td><td>2</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.3.4</td><td>Task</td><td>Practice for interviews</td><td>5</td><td>4.4.3.5</td><td></td></tr>
-                      <tr><td>4.4.3.5</td><td>Task</td><td>Secure at least 2 interviews</td><td>3</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.4</td><td>Work Package</td><td>Get hired</td><td>5</td><td>--</td><td></td></tr>
-                      <tr><td>4.4.4.1</td><td>Task</td><td>GET A JOB!!!</td><td>5</td><td>--</td><td></td></tr>
-                    </tbody>
-                  </table>
-                </details>
-			<details class="deliv5">
-  				<summary>Deliverable 5 — IT Support Path (Cisco Networking Academy) — WBS</summary>
-  				<table>
-    			 <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
-    			 <tbody>
-      			   <tr><td>5</td><td>Deliverable</td><td>IT Support Path (Cisco Networking Academy)</td><td>28</td><td>--</td><td></td></tr>
-      			   <tr><td>5.1</td><td>Work Package</td><td>Enroll & Plan</td><td>2</td><td>--</td><td></td></tr>
-      			   <tr><td>5.1.1</td><td>Task</td><td>Join/confirm Cisco Networking Academy account</td><td>1</td><td>--</td><td></td></tr>
-      			   <tr><td>5.1.2</td><td>Task</td><td>Enroll in “IT Support Specialist” path + schedule</td><td>1</td><td>5.1.1</td><td></td></tr>
-			       <tr><td>5.2</td><td>Work Package</td><td>Core Courses</td><td>14</td><td>5.1</td><td></td></tr>
-      			   <tr><td>5.2.1</td><td>Task</td><td>IT Fundamentals module</td><td>4</td><td>5.1.2</td><td></td></tr>
-      			   <tr><td>5.2.2</td><td>Task</td><td>Operating Systems basics</td><td>5</td><td>5.2.1</td><td></td></tr>
-      			   <tr><td>5.2.3</td><td>Task</td><td>Networking essentials</td><td>5</td><td>5.2.2</td><td></td></tr>
-      			   <tr><td>5.3</td><td>Work Package</td><td>Hands-on Labs</td><td>6</td><td>5.2</td><td></td></tr>
-      			   <tr><td>5.3.1</td><td>Task</td><td>Packet Tracer practice labs (screenshots + notes)</td><td>4</td><td>5.2.3</td><td></td></tr>
-      			   <tr><td>5.3.2</td><td>Task</td><td>Troubleshooting exercises (ticket scenarios)</td><td>2</td><td>5.3.1</td><td></td></tr>
-      			   <tr><td>5.4</td><td>Work Package</td><td>Assessments & Badge</td><td>4</td><td>5.2</td><td></td></tr>
-      			   <tr><td>5.4.1</td><td>Task</td><td>Complete quizzes/assessments</td><td>2</td><td>5.2</td><td></td></tr>
-      			   <tr><td>5.4.2</td><td>Task</td><td>Earn IT Support Specialist badge/certificate</td><td>2</td><td>5.4.1</td><td></td></tr>
-      			   <tr><td>5.5</td><td>Work Package</td><td>Portfolio Integration</td><td>2</td><td>5.4.2</td><td></td></tr>
-      			   <tr><td>5.5.1</td><td>Task</td><td>Upload badge + lab evidence to GitHub portfolio</td><td>1</td><td>5.4.2</td><td></td></tr>
-      			   <tr><td>5.5.2</td><td>Task</td><td>Link on resume/LinkedIn; verify links work</td><td>1</td><td>5.5.1</td><td></td></tr>
-    			  </tbody>
-  			   </table>
-			</details>
-              </div>
-            </section>
+    <!-- D3 -->
+    <details class="deliv3">
+      <summary>Deliverable 3 — Cybersecurity Fundamentals Badge (WBS)</summary>
+      <table>
+        <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>Deliverable</td><td>Cybersecurity Fundamentals Badge</td><td>28</td><td>—</td><td></td></tr>
+          <tr><td>3.1</td><td>Work Package</td><td>Register for Cybersecurity Path</td><td>1</td><td>2.1</td><td></td></tr>
+          <tr><td>3.1.1</td><td>Task</td><td>Enroll in Cybersecurity Analyst Path</td><td>1</td><td>2.1</td><td></td></tr>
+          <tr><td>3.2</td><td>Work Package</td><td>TryHackMe hands-on labs</td><td>9</td><td>—</td><td></td></tr>
+          <tr><td>3.2.1</td><td>Task</td><td>Sign up for TryHackMe</td><td>1</td><td>—</td><td></td></tr>
+          <tr><td>3.2.2</td><td>Task</td><td>Complete free rooms</td><td>5</td><td>3.2.1</td><td></td></tr>
+          <tr><td>3.2.3</td><td>Task</td><td>Document labs for portfolio</td><td>3</td><td>—</td><td>3.2.2 (5d) || 3.2.3 (3d)</td></tr>
+          <tr><td>3.2.4</td><td>Task</td><td>Create GitHub links</td><td>3</td><td>1.1.1</td><td></td></tr>
+          <tr><td>3.3</td><td>Work Package</td><td>LabEX.io practice</td><td>8</td><td>—</td><td></td></tr>
+          <tr><td>3.3.1</td><td>Task</td><td>Sign up for LabEX.io</td><td>1</td><td>—</td><td></td></tr>
+          <tr><td>3.3.2</td><td>Task</td><td>Follow cybersecurity path</td><td>5</td><td>3.3.1</td><td></td></tr>
+          <tr><td>3.3.3</td><td>Task</td><td>Use labs as proof for site</td><td>3</td><td>—</td><td>3.3.2 (5d) || 3.3.3 (3d)</td></tr>
+          <tr><td>3.3.4</td><td>Task</td><td>Add badges to GitHub</td><td>2</td><td>1.1.1</td><td></td></tr>
+          <tr><td>3.4</td><td>Work Package</td><td>Earn Cybersecurity Analyst badge</td><td>10</td><td>2.1</td><td></td></tr>
+          <tr><td>3.4.1</td><td>Task</td><td>Study for assessment</td><td>5</td><td>—</td><td></td></tr>
+          <tr><td>3.4.2</td><td>Task</td><td>Pass assessment / earn badge</td><td>5</td><td>3.1.1</td><td></td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <!-- D4 -->
+    <details class="deliv4">
+      <summary>Deliverable 4 — Certifications &amp; Job Application (WBS)</summary>
+      <table>
+        <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
+        <tbody>
+          <tr><td>4</td><td>Deliverable</td><td>ISC2 + Security+ &amp; Apply for a Job</td><td>56</td><td>—</td><td></td></tr>
+          <tr><td>4.1</td><td>Work Package</td><td>ISC2 CC</td><td>10</td><td>—</td><td></td></tr>
+          <tr><td>4.1.1</td><td>Task</td><td>Sign up for ISC2 class/exam</td><td>1</td><td>—</td><td></td></tr>
+          <tr><td>4.1.2</td><td>Task</td><td>Complete course</td><td>5</td><td>4.1.1</td><td>4.1.2 (5d) || 4.1.3 (5d)</td></tr>
+          <tr><td>4.1.3</td><td>Task</td><td>Study for exam</td><td>5</td><td>4.1.1</td><td></td></tr>
+          <tr><td>4.1.4</td><td>Task</td><td>Schedule ISC2 CC exam</td><td>5</td><td>—</td><td></td></tr>
+          <tr><td>4.2</td><td>Work Package</td><td>Security+</td><td>6</td><td>—</td><td></td></tr>
+          <tr><td>4.2.1</td><td>Task</td><td>Cengage study book</td><td>5</td><td>—</td><td>4.2.1 (5d) || 4.2.2 (5d) || 4.2.3 (5d)</td></tr>
+          <tr><td>4.2.2</td><td>Task</td><td>LabEX.io practice</td><td>5</td><td>4.2.1</td><td></td></tr>
+          <tr><td>4.2.3</td><td>Task</td><td>Study &amp; save for exam</td><td>5</td><td>4.2.1</td><td></td></tr>
+          <tr><td>4.2.4</td><td>Task</td><td>Schedule Security+ exam</td><td>1</td><td>4.2.3</td><td></td></tr>
+          <tr><td>4.3</td><td>Work Package</td><td>Showcase certificates</td><td>6</td><td>—</td><td></td></tr>
+          <tr><td>4.3.1</td><td>Task</td><td>Link Security+ certificate</td><td>1</td><td>4.2.4</td><td></td></tr>
+          <tr><td>4.3.2</td><td>Task</td><td>Create banner URL (Security+)</td><td>1</td><td>4.2.4</td><td></td></tr>
+          <tr><td>4.3.3</td><td>Task</td><td>Link ISC2 CC certificate</td><td>1</td><td>4.1.4</td><td></td></tr>
+          <tr><td>4.3.4</td><td>Task</td><td>Create banner URL (ISC2 CC)</td><td>1</td><td>4.1.4</td><td></td></tr>
+          <tr><td>4.3.5</td><td>Task</td><td>Upload to portfolio</td><td>2</td><td>1.1.1</td><td></td></tr>
+          <tr><td>4.4</td><td>Work Package</td><td>Apply for jobs</td><td>34</td><td>—</td><td></td></tr>
+          <tr><td>4.4.1</td><td>Task</td><td>Inspect portfolio</td><td>10</td><td>—</td><td></td></tr>
+          <tr><td>4.4.1.1</td><td>Task</td><td>Verify all links</td><td>1</td><td>1.1.1</td><td></td></tr>
+          <tr><td>4.4.1.2</td><td>Task</td><td>Confirm public access</td><td>1</td><td>1.1.4</td><td></td></tr>
+          <tr><td>4.4.1.3</td><td>Task</td><td>Beautify where needed</td><td>3</td><td>—</td><td></td></tr>
+          <tr><td>4.4.1.4</td><td>Task</td><td>Consider standalone website</td><td>5</td><td>—</td><td></td></tr>
+          <tr><td>4.4.2</td><td>Work Package</td><td>Update resume</td><td>4</td><td>—</td><td></td></tr>
+          <tr><td>4.4.2.1</td><td>Task</td><td>Add new achievements</td><td>1</td><td>Del. 2, 3, 4</td><td></td></tr>
+          <tr><td>4.4.2.2</td><td>Task</td><td>Place resume on GitHub</td><td>1</td><td>1.1.1</td><td></td></tr>
+          <tr><td>4.4.2.3</td><td>Task</td><td>Place resume on LinkedIn</td><td>1</td><td>1.1.1</td><td></td></tr>
+          <tr><td>4.4.2.4</td><td>Task</td><td>Career center review</td><td>1</td><td>—</td><td></td></tr>
+          <tr><td>4.4.3</td><td>Work Package</td><td>Applications</td><td>15</td><td>—</td><td></td></tr>
+          <tr><td>4.4.3.1</td><td>Task</td><td>Search LinkedIn (entry-level IT)</td><td>3</td><td>—</td><td></td></tr>
+          <tr><td>4.4.3.2</td><td>Task</td><td>Search web job boards</td><td>2</td><td>—</td><td></td></tr>
+          <tr><td>4.4.3.3</td><td>Task</td><td>Leverage network for leads</td><td>2</td><td>—</td><td></td></tr>
+          <tr><td>4.4.3.4</td><td>Task</td><td>Interview practice</td><td>5</td><td>4.4.3.5</td><td></td></tr>
+          <tr><td>4.4.3.5</td><td>Task</td><td>Secure ≥ 2 interviews</td><td>3</td><td>—</td><td></td></tr>
+          <tr><td>4.4.4</td><td>Work Package</td><td>Offer &amp; onboarding</td><td>5</td><td>—</td><td></td></tr>
+          <tr><td>4.4.4.1</td><td>Task</td><td>Get hired</td><td>5</td><td>—</td><td></td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <!-- D5 -->
+    <details class="deliv5">
+      <summary>Deliverable 5 — IT Support Path (Cisco Networking Academy) — WBS</summary>
+      <table>
+        <thead><tr><th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration (days)</th><th>Dependencies</th><th>Parallel</th></tr></thead>
+        <tbody>
+          <tr><td>5</td><td>Deliverable</td><td>IT Support Path (Cisco Networking Academy)</td><td>28</td><td>—</td><td></td></tr>
+          <tr><td>5.1</td><td>Work Package</td><td>Enroll &amp; plan</td><td>2</td><td>—</td><td></td></tr>
+          <tr><td>5.1.1</td><td>Task</td><td>Join/confirm NetAcad account</td><td>1</td><td>—</td><td></td></tr>
+          <tr><td>5.1.2</td><td>Task</td><td>Enroll in “IT Support Specialist” path + schedule</td><td>1</td><td>5.1.1</td><td></td></tr>
+          <tr><td>5.2</td><td>Work Package</td><td>Core courses</td><td>14</td><td>5.1</td><td></td></tr>
+          <tr><td>5.2.1</td><td>Task</td><td>IT fundamentals</td><td>4</td><td>5.1.2</td><td></td></tr>
+          <tr><td>5.2.2</td><td>Task</td><td>Operating systems basics</td><td>5</td><td>5.2.1</td><td></td></tr>
+          <tr><td>5.3</td><td>Work Package</td><td>Hands-on labs</td><td>6</td><td>5.2</td><td></td></tr>
+          <tr><td>5.3.1</td><td>Task</td><td>Troubleshooting ticket scenarios</td><td>2</td><td>5.3.1</td><td></td></tr>
+          <tr><td>5.4</td><td>Work Package</td><td>Assessments &amp; badge</td><td>4</td><td>5.2</td><td></td></tr>
+          <tr><td>5.4.1</td><td>Task</td><td>Complete quizzes/assessments</td><td>2</td><td>5.2</td><td></td></tr>
+          <tr><td>5.4.2</td><td>Task</td><td>Earn IT Support Specialist badge</td><td>2</td><td>5.4.1</td><td></td></tr>
+          <tr><td>5.5</td><td>Work Package</td><td>Portfolio integration</td><td>2</td><td>5.4.2</td><td></td></tr>
+          <tr><td>5.5.1</td><td>Task</td><td>Upload badge + lab evidence to portfolio</td><td>1</td><td>5.4.2</td><td></td></tr>
+          <tr><td>5.5.2</td><td>Task</td><td>Add to resume/LinkedIn; verify links</td><td>1</td><td>5.5.1</td><td></td></tr>
+        </tbody>
+      </table>
+    </details>
+
+  </div>
+</section>
 
             <section class="section" id="section7">
   <div class="section-header"><h2 class="section-title">7. Budget (estimated)</h2></div>
