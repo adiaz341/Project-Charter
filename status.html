@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Status Reports — Project Charter</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* --- minimal reuse of your tokens so it matches --- */
+  :root{
+    --brand-dark:#004d7a; --brand-mid:#008793; --paper:#f5f7fb; --ink:#1f2937;
+    --card:#ffffff; --br:#e5e7eb; --shadow:0 6px 20px rgba(0,0,0,.08);
+    --blue-bg:#e3f2fd; --green-bg:#f1f8e9; --blue-br:#bbdefb; --green-br:#c5e1a5;
+  }
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
+  .shell{max-width:1100px;margin:24px auto;padding:0 16px}
+  .topnav{display:flex;gap:8px;margin-bottom:12px}
+  .tab{display:inline-block;padding:8px 12px;border:1px solid var(--br);border-radius:10px;background:#fff;text-decoration:none;color:#0b3140;font-weight:600}
+  .tab.active{background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));color:#fff;border-color:transparent}
+  .container{background:var(--card);border:1px solid var(--br);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .header{background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));color:#fff;padding:22px;text-align:center}
+  .content{padding:22px}
+  h1{margin:0 0 6px;font-size:28px}
+  .muted{color:#6b7280}
+  /* Summary table */
+  table{width:100%;border-collapse:collapse;margin-top:14px;border:1px solid var(--br)}
+  th{background:var(--brand-dark);color:#fff;text-align:left;padding:10px}
+  td{padding:10px;border-bottom:1px solid var(--br);vertical-align:top}
+  /* Weekly cards */
+  .week{border:1px solid var(--br);border-radius:12px;background:#fff;margin:14px 0;overflow:hidden}
+  .week .w-h{padding:12px 16px;background:var(--blue-bg);border-bottom:1px solid var(--blue-br);display:flex;justify-content:space-between;align-items:center}
+  .week .w-h h3{margin:0;font-size:16px;color:#0b3140}
+  .week .w-b{padding:16px}
+  .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .field{background:#f8fafc;border:1px solid var(--br);border-radius:10px;padding:10px}
+  .field h4{margin:0 0 6px 0;font-size:13px;color:#0b3140}
+  .field p{margin:0;font-size:14px}
+  /* Back link */
+  .breadcrumbs{margin:8px 0 16px}
+  .breadcrumbs a{color:#0b3140}
+  @media print{.topnav{display:none}}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <!-- Tabs -->
+    <nav class="topnav" aria-label="Sections">
+      <a class="tab" href="./index.html">Project Charter</a>
+      <a class="tab active" href="./status.html" aria-current="page">Status Reports</a>
+    </nav>
+
+    <div class="container">
+      <div class="header">
+        <h1>Status Reports</h1>
+        <p class="muted">Weekly progress tracking for “Landing an Entry-Level IT Job”.</p>
+      </div>
+      <div class="content">
+
+        <!-- At-a-glance summary -->
+        <h2>Summary</h2>
+        <table>
+          <thead><tr><th>Week</th><th>Percent Complete</th><th>Highlights</th><th>Risks / Blocks</th></tr></thead>
+          <tbody>
+            <!-- Duplicate this <tr> each week -->
+            <tr><td>Week 1 (Sep 23–29)</td><td>8%</td><td>Set up repo & charter; wrote WBS D1.</td><td>Time conflict on Thu.</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Detailed weekly sections (duplicate & edit per week) -->
+        <article class="week" id="week-01">
+          <div class="w-h">
+            <h3>Week 1 — Sep 23–29</h3>
+            <div class="muted">Overall: 8%</div>
+          </div>
+          <div class="w-b">
+            <div class="grid">
+              <div class="field">
+                <h4>Planned</h4>
+                <p>Complete Section 6 deliverables table; add Open/Close logic.</p>
+              </div>
+              <div class="field">
+                <h4>Done</h4>
+                <p>Section 6 WBS updated, added D5 (IT Support Path), improved styling.</p>
+              </div>
+              <div class="field">
+                <h4>Next</h4>
+                <p>Start NetAcad IT Support path modules; collect screenshots.</p>
+              </div>
+              <div class="field">
+                <h4>Risks / Mitigations</h4>
+                <p>Risk: time squeeze. Mitigation: 45-min daily sprint + Sunday catch-up.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Add Week 2, Week 3, ... below this line -->
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
