@@ -283,7 +283,6 @@ details.deliv5 .wbs-workpkg td{ border-left-color:#0d9488 }
   .tool-gallery{ grid-template-columns: 1fr; }
 }
 
-
 </style>
 </head>
 <body>
@@ -298,7 +297,7 @@ details.deliv5 .wbs-workpkg td{ border-left-color:#0d9488 }
  			<button id="closeAll" type="button" class="toc-btn">Close all</button>
 		</div>
         <ul class="toc" id="sideToc">
-          <li><a href="status.html" target="_blank">Status Reports</a></li>
+          <li><a href="status.html" target="_blank" rel="noopener">Status Reports</a></li>
 		  <li><a href="#student-info">Student Information</a></li>
           <li><a href="#section1">1. Title & Description</a></li>
           <li><a href="#section2">2. Vision, Mission & Strategy</a></li>
@@ -878,7 +877,7 @@ details.deliv5 .wbs-workpkg td{ border-left-color:#0d9488 }
     // ===== Sidebar TOC behavior: smooth scroll + robust active highlighting + aria-current =====
     const sectionIds = ['student-info','section1','section2','section3','section4','section5','section6','section7','section8','section9','section10','section11','footer-note'];
     const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-    const navLinks = Array.from(document.querySelectorAll('#sideToc a'));
+    const navLinks = Array.from(document.querySelectorAll('#sideToc a[href^="#"]'));
     const SCROLL_OFFSET = 120; // must match CSS scroll-margin-top
 
     function setActive(id){
