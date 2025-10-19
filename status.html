@@ -39,6 +39,18 @@
   .breadcrumbs{margin:8px 0 16px}
   .breadcrumbs a{color:#0b3140}
   @media print{.topnav{display:none}}
+  /* simple button link */
+.btn{display:inline-block;padding:8px 12px;border:1px solid var(--br);border-radius:10px;
+     text-decoration:none;background:#fff;font-weight:600}
+.btn:hover{background:#f7fafc}
+.pdf{background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));color:#fff;border-color:transparent}
+/* PDF button grid */
+.pdf-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:12px;
+  margin:12px 0 20px;
+}
 </style>
 </head>
 <body>
@@ -48,56 +60,92 @@
       <a class="tab" href="./index.html">Project Charter</a>
       <a class="tab active" href="./status.html" aria-current="page">Status Reports</a>
     </nav>
+    
+<!-- All PDF Status Reports -->
+<section aria-labelledby="all-pdfs" style="padding:0 2px">
+  <h2 id="all-pdfs" style="margin:6px 0 8px">Status Reports (PDF)</h2>
+  <p class="muted">Click to open each report in a new tab.</p>
+  <div class="pdf-grid">
+    <a class="btn pdf" href="Reports/Status%20Report%20Week%206.pdf" target="_blank" rel="noopener noreferrer">Week 6 (PDF)</a>
+    <a class="btn pdf" href="Reports/Status%20Report%20Week%207.pdf" target="_blank" rel="noopener noreferrer">Week 7 (PDF)</a>
+  </div>
+</section>
 
-    <div class="container">
-      <div class="header">
-        <h1>Status Reports</h1>
-        <p class="muted">Weekly progress tracking for “Landing an Entry-Level IT Job”.</p>
+<!-- Week 6 -->
+<article class="week" id="week-06">
+  <div class="w-h">
+    <h3>Week 6 — Oct 28–Nov 3</h3>
+    <div class="muted">Overall: 45%</div>
+  </div>
+  <div class="w-b">
+    <div class="grid">
+      <div class="field">
+        <h4>Planned</h4>
+        <p>Finish NetAcad module + add screenshots.</p>
       </div>
-      <div class="content">
-
-        <!-- At-a-glance summary -->
-        <h2>Summary</h2>
-        <table>
-          <thead><tr><th>Week</th><th>Percent Complete</th><th>Highlights</th><th>Risks / Blocks</th></tr></thead>
-          <tbody>
-            <!-- Duplicate this <tr> each week -->
-            <tr><td>Week 1 (Sep 23–29)</td><td>8%</td><td>Set up repo & charter; wrote WBS D1.</td><td>Time conflict on Thu.</td></tr>
-          </tbody>
-        </table>
-
-        <!-- Detailed weekly sections (duplicate & edit per week) -->
-        <article class="week" id="week-01">
-          <div class="w-h">
-            <h3>Week 1 — Sep 23–29</h3>
-            <div class="muted">Overall: 8%</div>
-          </div>
-          <div class="w-b">
-            <div class="grid">
-              <div class="field">
-                <h4>Planned</h4>
-                <p>Complete Section 6 deliverables table; add Open/Close logic.</p>
-              </div>
-              <div class="field">
-                <h4>Done</h4>
-                <p>Section 6 WBS updated, added D5 (IT Support Path), improved styling.</p>
-              </div>
-              <div class="field">
-                <h4>Next</h4>
-                <p>Start NetAcad IT Support path modules; collect screenshots.</p>
-              </div>
-              <div class="field">
-                <h4>Risks / Mitigations</h4>
-                <p>Risk: time squeeze. Mitigation: 45-min daily sprint + Sunday catch-up.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Add Week 2, Week 3, ... below this line -->
-
+      <div class="field">
+        <h4>Done</h4>
+        <p>Completed Packet Tracer lab; added 3 screenshots.</p>
+      </div>
+      <div class="field">
+        <h4>Next</h4>
+        <p>Draft resume updates; set mock interview.</p>
+      </div>
+      <div class="field">
+        <h4>Risks / Mitigations</h4>
+        <p>Risk: midterms. Mitigation: 30-min daily block.</p>
+      </div>
+      <div class="field">
+        <h4>PDF Report</h4>
+        <p>
+          <a class="btn pdf"
+             href="Reports/Status%20Report%20Week%206.pdf"
+             target="_blank" rel="noopener noreferrer">
+            Open Week 6 PDF
+          </a>
+        </p>
       </div>
     </div>
   </div>
+</article>
+
+<!-- Week 7 -->
+<article class="week" id="week-07">
+  <div class="w-h">
+    <h3>Week 7 — Nov 4–10</h3>
+    <div class="muted">Overall: 52%</div>
+  </div>
+  <div class="w-b">
+    <div class="grid">
+      <div class="field">
+        <h4>Planned</h4>
+        <p>Finish IT Support path core course.</p>
+      </div>
+      <div class="field">
+        <h4>Done</h4>
+        <p>Completed OS basics; drafted portfolio section.</p>
+      </div>
+      <div class="field">
+        <h4>Next</h4>
+        <p>Schedule two feedback sessions.</p>
+      </div>
+      <div class="field">
+        <h4>Risks / Mitigations</h4>
+        <p>Risk: schedule conflicts. Mitigation: book early slots.</p>
+      </div>
+      <div class="field">
+        <h4>PDF Report</h4>
+        <p>
+          <a class="btn pdf"
+             href="Reports/Status%20Report%20Week%207.pdf"
+             target="_blank" rel="noopener noreferrer">
+            Open Week 7 PDF
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
 </body>
 </html>
