@@ -6,6 +6,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+  /* collapsible PDF block */
+.pdf-block{ border:1px solid var(--br); border-radius:10px; background:#fff }
+.pdf-block summary{
+  list-style:none;
+  cursor:pointer;
+  padding:10px 12px;
+  border-radius:10px;
+  font-weight:600;
+  background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));
+  color:#fff;
+  display:flex; align-items:center; gap:8px;
+}
+.pdf-block summary::-webkit-details-marker{ display:none }
+.pdf-block .pdf-body{ padding:10px 0 0 }
+.pdf-frame{ width:100%; height:800px; border:1px solid var(--br); border-radius:10px }
+
+/* small chevron */
+.pdf-block summary .chev{ font-size:14px; opacity:.9; transform:translateY(-1px) }
+details[open] .chev{ transform:rotate(90deg) translateY(-1px) }
+
   /* --- minimal reuse of your tokens so it matches --- */
   :root{
     --brand-dark:#004d7a; --brand-mid:#008793; --paper:#f5f7fb; --ink:#1f2937;
@@ -60,6 +80,16 @@
       <a class="tab" href="./index.html">Project Charter</a>
       <a class="tab active" href="./status.html" aria-current="page">Status Reports</a>
     </nav>
+
+<!-- NEW: page card wrapper -->
+<div class="container">
+  <div class="header">
+    <h1>Status Reports</h1>
+    <p class="muted">Weekly progress tracking for “Landing an Entry-Level IT Job”.</p>
+  </div>
+  <div class="content">
+    <!-- ⬇️ Move your existing sections from here down (PDF button grid, Week 6, Week 7, etc.) -->
+
     
 <!-- All PDF Status Reports -->
 <section aria-labelledby="all-pdfs" style="padding:0 2px">
@@ -134,18 +164,34 @@
         </table>
       </div>
 
-      <!-- PDF link -->
       <div class="field">
-        <h4>PDF Report</h4>
-        <p>
-          <a class="btn pdf" href="Reports/Status%20Report%20Week%206.pdf" target="_blank" rel="noopener noreferrer">
-            Open Week 6 PDF
-          </a>
-        </p>
-      </div>
-    </div>
-  </div>
-</article>
+  <h4>PDF Report</h4>
+
+  <!-- keep open-in-new-tab link -->
+  <p>
+    <a class="btn pdf"
+       href="Reports/Status%20Report%20Week%206.pdf"
+       target="_blank" rel="noopener noreferrer">
+      Open Week 6 PDF
+    </a>
+  </p>
+
+        <!-- collapsible inline viewer -->
+      <details class="pdf-block">
+        <summary><span class="chev">▶</span> View Week 6 PDF inline</summary>
+        <div class="pdf-body">
+          <iframe
+            class="pdf-frame"
+            src="Reports/Status%20Report%20Week%206.pdf#view=FitH"
+            title="Status Report Week 6">
+          </iframe>
+        </div>
+      </details>
+    </div> <!-- .field -->
+
+  </div> <!-- .grid -->
+</div> <!-- .w-b -->
+</article> <!-- #week-06 -->
 
 
 <!-- Week 7 -->
@@ -182,7 +228,7 @@
       <div class="field">
         <h4>Plan for Next Week</h4>
         <p>1) Refine deliverables for charter<br>
-           2) Continue powering through Module 2 & 3 of networking basics<br>
+           2) Continue powering through Module 2 &amp; 3 of networking basics<br>
            3) Get feedback from groupmates about my project</p>
       </div>
 
@@ -212,18 +258,34 @@
         </table>
       </div>
 
-      <!-- PDF Link -->
+      <!-- PDF Link + collapsible viewer -->
       <div class="field">
         <h4>PDF Report</h4>
         <p>
-          <a class="btn pdf" href="Reports/Status%20Report%20Week%207.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="btn pdf"
+             href="Reports/Status%20Report%20Week%207.pdf"
+             target="_blank" rel="noopener noreferrer">
             Open Week 7 PDF
           </a>
         </p>
+        <details class="pdf-block">
+          <summary><span class="chev">▶</span> View Week 7 PDF inline</summary>
+          <div class="pdf-body">
+            <iframe
+              class="pdf-frame"
+              src="Reports/Status%20Report%20Week%207.pdf#view=FitH"
+              title="Status Report Week 7">
+            </iframe>
+          </div>
+        </details>
       </div>
-    </div>
-  </div>
-</article>
 
+    </div> <!-- .grid -->
+  </div> <!-- .w-b -->
+</article> <!-- #week-07 -->
+  </div>
+  </div>
+</div> <!-- .shell inner container if any -->
 </body>
 </html>
+
