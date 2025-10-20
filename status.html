@@ -19,8 +19,14 @@
   display:flex; align-items:center; gap:8px;
 }
 .pdf-block summary::-webkit-details-marker{ display:none }
-.pdf-block .pdf-body{ padding:10px 0 0 }
-.pdf-frame{ width:100%; height:800px; border:1px solid var(--br); border-radius:10px }
+.pdf-block .pdf-body{ padding:8px 0 0; }
+.pdf-frame{
+  width:100%;
+  height:clamp(420px, 75vh, 900px); /* mobile -> desktop */
+  border:1px solid var(--br);
+  border-radius:10px;
+}
+
 
 /* small chevron */
 .pdf-block summary .chev{ font-size:14px; opacity:.9; transform:translateY(-1px) }
@@ -181,10 +187,11 @@ details[open] .chev{ transform:rotate(90deg) translateY(-1px) }
         <summary><span class="chev">▶</span> View Week 6 PDF inline</summary>
         <div class="pdf-body">
           <iframe
-            class="pdf-frame"
-            src="Reports/Status%20Report%20Week%206.pdf#view=FitH"
-            title="Status Report Week 6">
-          </iframe>
+  class="pdf-frame"
+  src="Reports/Status%20Report%20Week%206.pdf#view=FitH&pagemode=none"
+  title="Status Report Week 6"
+  loading="lazy"
+></iframe>
         </div>
       </details>
     </div> <!-- .field -->
@@ -273,9 +280,11 @@ details[open] .chev{ transform:rotate(90deg) translateY(-1px) }
           <div class="pdf-body">
             <iframe
               class="pdf-frame"
-              src="Reports/Status%20Report%20Week%207.pdf#view=FitH"
-              title="Status Report Week 7">
-            </iframe>
+              src="Reports/Status%20Report%20Week%207.pdf#view=FitH&pagemode=none"
+              title="Status Report Week 7"
+              loading="lazy"
+            ></iframe>
+
           </div>
         </details>
       </div>
