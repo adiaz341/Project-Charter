@@ -77,6 +77,20 @@ details[open] .chev{ transform:rotate(90deg) translateY(-1px) }
   gap:12px;
   margin:12px 0 20px;
 }
+/* Collapsible week blocks */
+.week-block{ border:1px solid var(--br); border-radius:12px; background:#fff; margin:14px 0; overflow:hidden }
+.week-block summary{
+  list-style:none; cursor:pointer; user-select:none;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px 14px; border-bottom:1px solid var(--br);
+  background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid)); color:#fff; font-weight:700;
+}
+.week-block summary::-webkit-details-marker{ display:none }
+.week-title{ display:flex; align-items:center; gap:8px }
+.chev{ font-size:14px; opacity:.9; transform:translateY(-1px); transition:transform .2s ease }
+details[open] .chev{ transform:rotate(90deg) translateY(-1px) }
+.week-actions .btn.small{ padding:6px 10px; font-size:13px; border-radius:8px }
+.week-body{ padding:10px }
 </style>
 </head>
 <body>
@@ -116,60 +130,94 @@ details[open] .chev{ transform:rotate(90deg) translateY(-1px) }
           </div>
         </section>
 
-        <!-- Week 6 -->
-        <section id="week-06" aria-labelledby="week-06-h" style="margin-bottom:28px">
-          <h2 id="week-06-h" style="margin:0 0 8px">Week 6 — Sept 23–30, 2025</h2>
-          <p style="margin:6px 0 10px">
-            <a class="btn pdf" href="Reports/Status%20Report%20Week%206.pdf" target="_blank" rel="noopener noreferrer">
-              Open Week 6 PDF in new tab
-            </a>
-          </p>
-          <iframe class="pdf-frame"
-                  src="Reports/Status%20Report%20Week%206.pdf#view=FitH&pagemode=none"
-                  title="Status Report Week 6" loading="lazy"></iframe>
-        </section>
+        <!-- Optional: Expand/Collapse all -->
+<div class="toolbar" style="display:flex;gap:8px;margin:10px 0 16px">
+  <button id="expand-all" class="btn">Expand all</button>
+  <button id="collapse-all" class="btn">Collapse all</button>
+</div>
 
-        <!-- Week 7 -->
-        <section id="week-07" aria-labelledby="week-07-h" style="margin-bottom:28px">
-          <h2 id="week-07-h" style="margin:0 0 8px">Week 7 — Oct 6–13, 2025</h2>
-          <p style="margin:6px 0 10px">
-            <a class="btn pdf" href="Reports/Status%20Report%20Week%207.pdf" target="_blank" rel="noopener noreferrer">
-              Open Week 7 PDF in new tab
-            </a>
-          </p>
-          <iframe class="pdf-frame"
-                  src="Reports/Status%20Report%20Week%207.pdf#view=FitH&pagemode=none"
-                  title="Status Report Week 7" loading="lazy"></iframe>
-        </section>
+<!-- Week 6 -->
+<details id="week-06" class="week-block">
+  <summary>
+    <span class="week-title"><span class="chev">▶</span> Week 6 — Sept 23–30, 2025</span>
+    <span class="week-actions">
+      <a class="btn small pdf" href="Reports/Status%20Report%20Week%206.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+    </span>
+  </summary>
+  <div class="week-body">
+    <iframe class="pdf-frame"
+            src="Reports/Status%20Report%20Week%206.pdf#view=FitH&pagemode=none"
+            title="Status Report Week 6" loading="lazy"></iframe>
+  </div>
+</details>
 
-        <!-- Week 8 -->
-        <section id="week-08" aria-labelledby="week-08-h" style="margin-bottom:28px">
-          <h2 id="week-08-h" style="margin:0 0 8px">Week 8 — Oct 14–20, 2025</h2>
-          <p style="margin:6px 0 10px">
-            <a class="btn pdf" href="Reports/Status%20Report%20Week%208.pdf" target="_blank" rel="noopener noreferrer">
-              Open Week 8 PDF in new tab
-            </a>
-          </p>
-          <iframe class="pdf-frame"
-                  src="Reports/Status%20Report%20Week%208.pdf#view=FitH&pagemode=none"
-                  title="Status Report Week 8" loading="lazy"></iframe>
-        </section>
+<!-- Week 7 -->
+<details id="week-07" class="week-block">
+  <summary>
+    <span class="week-title"><span class="chev">▶</span> Week 7 — Oct 6–13, 2025</span>
+    <span class="week-actions">
+      <a class="btn small pdf" href="Reports/Status%20Report%20Week%207.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+    </span>
+  </summary>
+  <div class="week-body">
+    <iframe class="pdf-frame"
+            src="Reports/Status%20Report%20Week%207.pdf#view=FitH&pagemode=none"
+            title="Status Report Week 7" loading="lazy"></iframe>
+  </div>
+</details>
 
-        <!-- Week 9 -->
-        <section id="week-09" aria-labelledby="week-09-h" style="margin-bottom:28px">
-          <h2 id="week-09-h" style="margin:0 0 8px">Week 9 — Oct 21–27, 2025</h2>
-          <p style="margin:6px 0 10px">
-            <a class="btn pdf" href="Reports/Status%20Report%20Week%209.pdf" target="_blank" rel="noopener noreferrer">
-              Open Week 9 PDF in new tab
-            </a>
-          </p>
-          <iframe class="pdf-frame"
-                  src="Reports/Status%20Report%20Week%209.pdf#view=FitH&pagemode=none"
-                  title="Status Report Week 9" loading="lazy"></iframe>
+<!-- Week 8 -->
+<details id="week-08" class="week-block">
+  <summary>
+    <span class="week-title"><span class="chev">▶</span> Week 8 — Oct 14–20, 2025</span>
+    <span class="week-actions">
+      <a class="btn small pdf" href="Reports/Status%20Report%20Week%208.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+    </span>
+  </summary>
+  <div class="week-body">
+    <iframe class="pdf-frame"
+            src="Reports/Status%20Report%20Week%208.pdf#view=FitH&pagemode=none"
+            title="Status Report Week 8" loading="lazy"></iframe>
+  </div>
+</details>
+
+<!-- Week 9 -->
+<details id="week-09" class="week-block">
+  <summary>
+    <span class="week-title"><span class="chev">▶</span> Week 9 — Oct 21–27, 2025</span>
+    <span class="week-actions">
+      <a class="btn small pdf" href="Reports/Status%20Report%20Week%209.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+    </span>
+  </summary>
+  <div class="week-body">
+    <iframe class="pdf-frame"
+            src="Reports/Status%20Report%20Week%209.pdf#view=FitH&pagemode=none"
+            title="Status Report Week 9" loading="lazy"></iframe>
+  </div>
+</details>
+
         </section>
       </div> <!-- /.content -->
     </div> <!-- /.container -->
   </div> <!-- /.shell -->
+
+  <script>
+  const weeks = () => document.querySelectorAll('details.week-block');
+  document.getElementById('expand-all')?.addEventListener('click', () => weeks().forEach(d => d.open = true));
+  document.getElementById('collapse-all')?.addEventListener('click', () => weeks().forEach(d => d.open = false));
+
+  // If the URL has #week-07 etc., open that week on load
+  window.addEventListener('DOMContentLoaded', () => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el && el.tagName.toLowerCase() === 'details') {
+        el.open = true;
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
 
