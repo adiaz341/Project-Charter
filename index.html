@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alejandro Diaz — IT Portfolio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-dark:#004d7a; --brand-mid:#008793; --paper:#f5f7fb; --ink:#0b3140;
+    --card:#ffffff; --br:#e5e7eb; --shadow:0 10px 30px rgba(0,0,0,.10);
+    --pill:#e3f2fd; --pill2:#f1f8e9;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .shell{max-width:1100px;margin:0 auto;padding:20px}
+  /* Top nav */
+  .topnav{display:flex;gap:10px;justify-content:flex-end}
+  .tab{display:inline-block;padding:8px 12px;border:1px solid var(--br);border-radius:10px;background:#fff;text-decoration:none;color:var(--ink);font-weight:600}
+  .tab:hover{background:#f7fafc}
+  /* Hero */
+  .hero{
+    margin-top:28px;border-radius:20px;overflow:hidden;color:#fff;
+    background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));
+    box-shadow:var(--shadow)
+  }
+  .hero-inner{padding:36px}
+  h1{margin:0 0 8px;font-size:36px}
+  .lead{margin:0 0 18px;font-size:18px;opacity:.95}
+  .cta{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.25)}
+  .btn.primary{background:#fff;color:var(--ink)}
+  .btn.ghost{background:transparent;color:#fff}
+  .btn.ghost:hover{background:rgba(255,255,255,.12)}
+  /* Grid cards */
+  .grid{display:grid;gap:16px;margin:22px 0;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{background:#fff;border:1px solid var(--br);border-radius:16px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+  .card h3{margin:0 0 4px;font-size:18px}
+  .muted{color:#6b7280;font-size:14px;margin:0}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{font-size:12px;font-weight:600;padding:4px 8px;border-radius:999px;background:var(--pill);border:1px solid #bbdefb}
+  .chip.alt{background:var(--pill2);border-color:#c5e1a5}
+  .card .actions{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .pill-link{display:inline-block;padding:8px 12px;border-radius:10px;border:1px solid var(--br);text-decoration:none;font-weight:600;color:var(--ink)}
+  .pill-link:hover{background:#f7fafc}
+  footer{margin:28px 0 10px;text-align:center;color:#6b7280;font-size:13px}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <!-- Top nav (same across pages) -->
+    <nav class="topnav" aria-label="Primary">
+      <a class="tab" href="./index.html">Home</a>
+      <a class="tab" href="./charter.html">Project Charter</a>
+      <a class="tab" href="./status.html">Status Reports</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Hi, I’m Alejandro 👋</h1>
+        <p class="lead">Aspiring IT Support / Networking / Cybersecurity professional. Explore my charter, weekly status reports, interview insights, closure docs, STAR stories, and peer reviews.</p>
+        <div class="cta">
+          <a class="btn primary" href="./charter.html">Open Project Charter</a>
+          <a class="btn ghost" href="./status.html">See Status Reports</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Six blocks -->
+    <section class="grid" aria-label="Portfolio Sections">
+      <!-- 1. Project Charter -->
+      <article class="card">
+        <h3>Project Charter</h3>
+        <p class="muted">Scope, objectives, deliverables, WBS, timeline, and success criteria.</p>
+        <div class="chips"><span class="chip">WBS</span><span class="chip alt">Schedule</span></div>
+        <div class="actions">
+          <a class="pill-link" href="./charter.html">Open Charter</a>
+          <a class="pill-link" href="./charter.html#section6">Deliverables</a>
+        </div>
+      </article>
+
+      <!-- 2. Status Reports -->
+      <article class="card">
+        <h3>Status Reports</h3>
+        <p class="muted">Weekly PDFs embedded and linked for quick review.</p>
+        <div class="chips"><span class="chip">Weeks 6–14</span><span class="chip alt">PDF</span></div>
+        <div class="actions">
+          <a class="pill-link" href="./status.html">Open Status Page</a>
+          <a class="pill-link" href="./status.html#all-pdfs">All PDFs</a>
+        </div>
+      </article>
+
+      <!-- 3. Stakeholder Interviews -->
+      <article class="card">
+        <h3>Stakeholder Interviews</h3>
+        <p class="muted">Notes & insights from IT professionals to validate goals and scope.</p>
+        <div class="chips"><span class="chip">Qualitative</span><span class="chip alt">Insights</span></div>
+        <div class="actions">
+          <a class="pill-link" href="./interviews.html">Open Interviews</a>
+        </div>
+      </article>
+
+      <!-- 4. Closure Documents -->
+      <article class="card">
+        <h3>Closure Documents</h3>
+        <p class="muted">Final report, lessons learned, and evidence of deliverables.</p>
+        <div class="chips"><span class="chip">Lessons Learned</span><span class="chip alt">Sign-off</span></div>
+        <div class="actions">
+          <a class="pill-link" href="./closure.html">Open Closure</a>
+        </div>
+      </article>
+
+      <!-- 5. STAR Stories -->
+      <article class="card">
+        <h3>STAR Stories</h3>
+        <p class="muted">Interview-ready stories aligned to Help Desk / SOC roles.</p>
+        <div class="chips"><span class="chip">Situation–Task–Action–Result</span></div>
+        <div class="actions">
+          <a class="pill-link" href="./star-stories.html">Open STAR Stories</a>
+        </div>
+      </article>
+
+      <!-- 6. Peer Reviews -->
+      <article class="card">
+        <h3>Peer Reviews</h3>
+        <p class="muted">Feedback from classmates and mentors with action items.</p>
+        <div class="chips"><span class="chip">Feedback</span><span class="chip alt">Revisions</span></div>
+        <div class="actions">
+          <a class="pill-link" href="./peer-reviews.html">Open Peer Reviews</a>
+        </div>
+      </article>
+    </section>
+
+    <footer>© Alejandro Diaz · Portfolio & Project Charter</footer>
+  </div>
+</body>
+</html>
