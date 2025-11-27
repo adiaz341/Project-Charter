@@ -1,138 +1,505 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Alejandro Diaz — IT Portfolio</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --brand-dark:#004d7a; --brand-mid:#008793; --paper:#f5f7fb; --ink:#0b3140;
-    --card:#ffffff; --br:#e5e7eb; --shadow:0 10px 30px rgba(0,0,0,.10);
-    --pill:#e3f2fd; --pill2:#f1f8e9;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-  .shell{max-width:1100px;margin:0 auto;padding:20px}
-  /* Top nav */
-  .topnav{display:flex;gap:10px;justify-content:flex-end}
-  .tab{display:inline-block;padding:8px 12px;border:1px solid var(--br);border-radius:10px;background:#fff;text-decoration:none;color:var(--ink);font-weight:600}
-  .tab:hover{background:#f7fafc}
-  /* Hero */
-  .hero{
-    margin-top:28px;border-radius:20px;overflow:hidden;color:#fff;
-    background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));
-    box-shadow:var(--shadow)
-  }
-  .hero-inner{padding:36px}
-  h1{margin:0 0 8px;font-size:36px}
-  .lead{margin:0 0 18px;font-size:18px;opacity:.95}
-  .cta{display:flex;flex-wrap:wrap;gap:10px}
-  .btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.25)}
-  .btn.primary{background:#fff;color:var(--ink)}
-  .btn.ghost{background:transparent;color:#fff}
-  .btn.ghost:hover{background:rgba(255,255,255,.12)}
-  /* Grid cards */
-  .grid{display:grid;gap:16px;margin:22px 0;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-  .card{background:#fff;border:1px solid var(--br);border-radius:16px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
-  .card h3{margin:0 0 4px;font-size:18px}
-  .muted{color:#6b7280;font-size:14px;margin:0}
-  .chips{display:flex;gap:8px;flex-wrap:wrap}
-  .chip{font-size:12px;font-weight:600;padding:4px 8px;border-radius:999px;background:var(--pill);border:1px solid #bbdefb}
-  .chip.alt{background:var(--pill2);border-color:#c5e1a5}
-  .card .actions{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
-  .pill-link{display:inline-block;padding:8px 12px;border-radius:10px;border:1px solid var(--br);text-decoration:none;font-weight:600;color:var(--ink)}
-  .pill-link:hover{background:#f7fafc}
-  footer{margin:28px 0 10px;text-align:center;color:#6b7280;font-size:13px}
-</style>
+  <meta charset="utf-8">
+  <title>IT Project Portfolio — Alejandro Diaz</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand-dark:#004d7a;
+      --brand-mid:#008793;
+      --accent:#00c9a7;
+      --paper:#f5f7fb;
+      --ink:#1f2937;
+      --card:#ffffff;
+      --br:#e5e7eb;
+      --shadow:0 8px 30px rgba(15,23,42,.12);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(circle at top,#e0f2fe 0,#f5f7fb 45%,#eef2ff 100%);
+      color:var(--ink);
+    }
+
+    .shell{
+      max-width:1120px;
+      margin:24px auto 48px;
+      padding:0 16px 32px;
+    }
+
+    /* Top mini-nav */
+    .topnav{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      margin-bottom:12px;
+      font-size:14px;
+    }
+    .topnav a{
+      text-decoration:none;
+      color:#0b3140;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .topnav a:hover{
+      border-color:rgba(15,23,42,.12);
+      background:#ffffffaa;
+    }
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));
+      color:#fff;
+      border-radius:24px;
+      padding:24px 22px 26px;
+      box-shadow:0 16px 45px rgba(15,23,42,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -60px -80px;
+      height:180px;
+      background:radial-gradient(circle at 20% 0,rgba(255,255,255,.15),transparent 60%),
+                 radial-gradient(circle at 80% 120%,rgba(0,201,167,.25),transparent 70%);
+      opacity:.9;
+    }
+    .hero-inner{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px 32px;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+    .hero-main{
+      max-width:640px;
+    }
+    .hero-kicker{
+      font-size:13px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:.85;
+      margin-bottom:6px;
+    }
+    .hero-title{
+      margin:0 0 4px;
+      font-size:28px;
+      line-height:1.1;
+    }
+    @media (min-width:768px){
+      .hero-title{font-size:32px;}
+    }
+    .hero-sub{
+      margin:0;
+      font-size:14px;
+      max-width:560px;
+      opacity:.95;
+    }
+    .hero-sub strong{color:#e0f2fe;}
+
+    .hero-actions{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .pill-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-size:14px;
+      font-weight:600;
+      text-decoration:none;
+      cursor:pointer;
+    }
+    .pill-btn.primary{
+      background:#fff;
+      color:#0b3140;
+      box-shadow:0 10px 25px rgba(15,23,42,.28);
+    }
+    .pill-btn.primary span.icon{
+      font-size:16px;
+    }
+    .pill-btn.secondary{
+      background:transparent;
+      border-color:rgba(255,255,255,.45);
+      color:#e5f2ff;
+    }
+    .pill-btn.secondary:hover{
+      background:rgba(15,23,42,.2);
+    }
+
+    .hero-meta{
+      font-size:13px;
+      max-width:260px;
+      line-height:1.5;
+      opacity:.93;
+      padding:10px 12px;
+      border-radius:14px;
+      background:linear-gradient(145deg,rgba(15,23,42,.22),rgba(15,23,42,.1));
+      border:1px solid rgba(148,163,184,.5);
+    }
+    .hero-meta strong{color:#e0f2fe;}
+
+    /* Grid of cards */
+    .section-heading{
+      margin:24px 4px 10px;
+      font-size:18px;
+      font-weight:700;
+      color:#0b3140;
+    }
+    .section-sub{
+      margin:0 4px 18px;
+      font-size:14px;
+      color:#6b7280;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:18px;
+      border:1px solid rgba(148,163,184,.35);
+      box-shadow:0 10px 30px rgba(15,23,42,.08);
+      padding:14px 14px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:auto -40px -60px;
+      height:90px;
+      background:radial-gradient(circle at 10% 0,rgba(56,189,248,.18),transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .card-inner{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .card-head{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .card-head h3{
+      margin:0;
+      font-size:15px;
+      color:#0b3140;
+    }
+    .card-icon{
+      width:32px;
+      height:32px;
+      flex-shrink:0;
+      opacity:0.98;
+      filter:drop-shadow(0 3px 6px rgba(15,23,42,.3));
+    }
+    .card p.muted{
+      margin:0;
+      font-size:13px;
+      color:#6b7280;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:2px;
+    }
+    .chip{
+      font-size:11px;
+      padding:3px 8px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.65);
+      background:#f9fafb;
+      color:#374151;
+      white-space:nowrap;
+    }
+    .chip.alt{
+      border-color:rgba(45,212,191,.8);
+      background:rgba(209,250,229,.8);
+      color:#047857;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:4px;
+    }
+    .pill-link{
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      text-decoration:none;
+      border:1px solid rgba(148,163,184,.6);
+      color:#0b3140;
+      background:rgba(255,255,255,.95);
+    }
+    .pill-link:hover{
+      border-color:var(--brand-mid);
+      box-shadow:0 4px 14px rgba(15,23,42,.16);
+    }
+    .pill-link span.icon{
+      font-size:14px;
+    }
+
+    @media (hover:hover){
+      .card:hover{
+        transform:translateY(-2px);
+        box-shadow:0 16px 40px rgba(15,23,42,.16);
+        border-color:rgba(59,130,246,.65);
+        transition:.18s ease-out;
+      }
+    }
+
+    /* Footer-ish note */
+    .footer-note{
+      margin:26px 4px 0;
+      font-size:12px;
+      color:#9ca3af;
+    }
+  </style>
 </head>
 <body>
   <div class="shell">
-    <!-- Top nav (same across pages) -->
-    <nav class="topnav" aria-label="Primary">
-      <a class="tab" href="./index.html">Home</a>
-      <a class="tab" href="./charter.html">Project Charter</a>
-      <a class="tab" href="./status.html">Status Reports</a>
+
+    <!-- Tiny top nav -->
+    <nav class="topnav" aria-label="Quick links">
+      <a href="./index.html">Home</a>
+      <a href="./charter.html">Project Charter</a>
+      <a href="./status.html">Status Reports</a>
     </nav>
 
     <!-- Hero -->
-    <section class="hero">
+    <header class="hero">
       <div class="hero-inner">
-        <h1>Hi, I’m Alejandro 👋</h1>
-        <h2>Landing an Entry-Level IT Job</h2>
-        <div class="cta">
-          <a class="btn primary" href="./charter.html">Open Project Charter</a>
-          <a class="btn ghost" href="./status.html">See Status Reports</a>
+        <div class="hero-main">
+          <div class="hero-kicker">IT Project Portfolio · Fall 2025</div>
+          <h1 class="hero-title">Landing an Entry-Level IT Job</h1>
+          <p class="hero-sub">
+            A structured project to build an <strong>IT portfolio</strong>, earn <strong>industry badges &amp; certifications</strong>, and
+            collect <strong>real feedback</strong> to become job-ready for help desk / IT support roles.
+          </p>
+
+          <div class="hero-actions">
+            <a class="pill-btn primary" href="./charter.html">
+              <span class="icon">📄</span>
+              <span>View Project Charter</span>
+            </a>
+            <a class="pill-btn secondary" href="./status.html">
+              <span class="icon">📊</span>
+              <span>Status Reports</span>
+            </a>
+          </div>
         </div>
+
+        <aside class="hero-meta">
+          <div><strong>Student:</strong> Alejandro Diaz</div>
+          <div><strong>Course:</strong> Managing IT Projects</div>
+          <div><strong>Focus:</strong> IT Support · Networking · Cybersecurity</div>
+        </aside>
       </div>
-    </section>
+    </header>
 
-    <!-- Six blocks -->
-    <section class="grid" aria-label="Portfolio Sections">
-      <!-- 1. Project Charter -->
+    <!-- Section heading -->
+    <h2 class="section-heading">Project Sections</h2>
+    <p class="section-sub">
+      Use these blocks to jump into each part of the project: planning, execution, tracking, closure, and interview prep.
+    </p>
+
+    <!-- Card grid -->
+    <main class="cards" aria-label="Project sections">
+
+      <!-- Project Charter -->
       <article class="card">
-        <h3>Project Charter</h3>
-        <p class="muted">Scope, objectives, deliverables, WBS, timeline, and success criteria.</p>
-        <div class="chips"><span class="chip">WBS</span><span class="chip alt">Schedule</span></div>
-        <div class="actions">
-          <a class="pill-link" href="./charter.html">Open Charter</a>
-          <a class="pill-link" href="./charter.html#section6">Deliverables</a>
+        <div class="card-inner">
+          <div class="card-head">
+            <img class="card-icon"
+                 src="https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/file-description.svg"
+                 alt="">
+            <h3>Project Charter</h3>
+          </div>
+          <p class="muted">
+            Scope, objectives, deliverables, WBS, schedule, and how success is defined for
+            “Landing an Entry-Level IT Job”.
+          </p>
+          <div class="chips">
+            <span class="chip">Scope &amp; Goals</span>
+            <span class="chip alt">WBS &amp; Schedule</span>
+          </div>
+          <div class="actions">
+            <a class="pill-link" href="./charter.html">
+              <span class="icon">↗</span><span>Open Charter</span>
+            </a>
+            <a class="pill-link" href="./charter.html#section6">
+              <span class="icon">✅</span><span>Deliverables (Sec. 6)</span>
+            </a>
+          </div>
         </div>
       </article>
 
-      <!-- 2. Status Reports -->
+      <!-- Status Reports -->
       <article class="card">
-        <h3>Status Reports</h3>
-        <p class="muted">Weekly PDFs embedded and linked for quick review.</p>
-        <div class="chips"><span class="chip">Weeks 6–14</span><span class="chip alt">PDF</span></div>
-        <div class="actions">
-          <a class="pill-link" href="./status.html">Open Status Page</a>
-          <a class="pill-link" href="./status.html#all-pdfs">All PDFs</a>
+        <div class="card-inner">
+          <div class="card-head">
+            <img class="card-icon"
+                 src="https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/chart-bar.svg"
+                 alt="">
+            <h3>Status Reports</h3>
+          </div>
+          <p class="muted">
+            Weekly PDF status reports with embedded viewers showing progress, risks,
+            and upcoming milestones.
+          </p>
+          <div class="chips">
+            <span class="chip">Weeks 6–14</span>
+            <span class="chip alt">Progress Tracking</span>
+          </div>
+          <div class="actions">
+            <a class="pill-link" href="./status.html">
+              <span class="icon">📊</span><span>Open Status Page</span>
+            </a>
+            <a class="pill-link" href="./status.html#all-pdfs">
+              <span class="icon">📁</span><span>All PDFs</span>
+            </a>
+          </div>
         </div>
       </article>
 
-      <!-- 3. Stakeholder Interviews -->
+      <!-- Stakeholder Interviews -->
       <article class="card">
-        <h3>Stakeholder Interviews</h3>
-        <p class="muted">Notes & insights from stakeholders to validate goals and scope.</p>
-        <div class="chips"><span class="chip">Qualitative</span><span class="chip alt">Insights</span></div>
-        <div class="actions">
-          <a class="pill-link" href="./interviews.html">Open Interviews</a>
+        <div class="card-inner">
+          <div class="card-head">
+            <img class="card-icon"
+                 src="https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/users.svg"
+                 alt="">
+            <h3>Stakeholder Interviews</h3>
+          </div>
+          <p class="muted">
+            Notes and insights from IT professionals about hiring expectations, must-have skills,
+            and how to stand out.
+          </p>
+          <div class="chips">
+            <span class="chip">Industry Input</span>
+            <span class="chip alt">Requirements Validation</span>
+          </div>
+          <div class="actions">
+            <a class="pill-link" href="./interviews.html">
+              <span class="icon">🗣</span><span>View Interviews</span>
+            </a>
+          </div>
         </div>
       </article>
 
-      <!-- 4. Closure Documents -->
+      <!-- Closure Documents -->
       <article class="card">
-        <h3>Closure Documents</h3>
-        <p class="muted">Final report, lessons learned, and evidence of deliverables.</p>
-        <div class="chips"><span class="chip">Lessons Learned</span><span class="chip alt">Sign-off</span></div>
-        <div class="actions">
-          <a class="pill-link" href="./closure.html">Open Closure</a>
+        <div class="card-inner">
+          <div class="card-head">
+            <img class="card-icon"
+                 src="https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/checkup-list.svg"
+                 alt="">
+            <h3>Closure Documents</h3>
+          </div>
+          <p class="muted">
+            Final evaluation of project outcomes, lessons learned, and evidence that
+            key deliverables were completed.
+          </p>
+          <div class="chips">
+            <span class="chip">Lessons Learned</span>
+            <span class="chip alt">Project Closure</span>
+          </div>
+          <div class="actions">
+            <a class="pill-link" href="./closure.html">
+              <span class="icon">📘</span><span>Open Closure Docs</span>
+            </a>
+          </div>
         </div>
       </article>
 
-      <!-- 5. STAR Stories -->
+      <!-- STAR Stories -->
       <article class="card">
-        <h3>STAR Stories</h3>
-        <p class="muted">Interview-ready stories.</p>
-        <div class="chips"><span class="chip">Situation–Task–Action–Result</span></div>
-        <div class="actions">
-          <a class="pill-link" href="./star-stories.html">Open STAR Stories</a>
+        <div class="card-inner">
+          <div class="card-head">
+            <img class="card-icon"
+                 src="https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/star.svg"
+                 alt="">
+            <h3>STAR Stories</h3>
+          </div>
+          <p class="muted">
+            Situation–Task–Action–Result stories built from this project to use in
+            help desk and IT support interviews.
+          </p>
+          <div class="chips">
+            <span class="chip">Interview Prep</span>
+            <span class="chip alt">Behavioral Stories</span>
+          </div>
+          <div class="actions">
+            <a class="pill-link" href="./star-stories.html">
+              <span class="icon">⭐</span><span>View STAR Stories</span>
+            </a>
+          </div>
         </div>
       </article>
 
-      <!-- 6. Peer Reviews -->
+      <!-- Peer Reviews -->
       <article class="card">
-        <h3>Peer Reviews</h3>
-        <p class="muted">Feedback from classmates.</p>
-        <div class="chips"><span class="chip">Feedback</span><span class="chip alt">Revisions</span></div>
-        <div class="actions">
-          <a class="pill-link" href="./peer-reviews.html">Open Peer Reviews</a>
+        <div class="card-inner">
+          <div class="card-head">
+            <img class="card-icon"
+                 src="https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/message-circle-check.svg"
+                 alt="">
+            <h3>Peer Reviews</h3>
+          </div>
+          <p class="muted">
+            Feedback from classmates and reviewers on the portfolio, charter, and
+            overall job-readiness.
+          </p>
+          <div class="chips">
+            <span class="chip">Feedback</span>
+            <span class="chip alt">Continuous Improvement</span>
+          </div>
+          <div class="actions">
+            <a class="pill-link" href="./peer-reviews.html">
+              <span class="icon">💬</span><span>Open Peer Reviews</span>
+            </a>
+          </div>
         </div>
       </article>
-    </section>
 
-    <footer>© Alejandro Diaz · Portfolio & Project Charter</footer>
+    </main>
+
+    <p class="footer-note">
+      Tip: you can link this portfolio in your resume as a “Live Project Site” to show hiring managers your process
+      from planning to closure.
+    </p>
   </div>
 </body>
 </html>
