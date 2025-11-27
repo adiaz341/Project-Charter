@@ -201,27 +201,25 @@
       flex-direction:column;
       gap:8px;
     }
+
     .card-head{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:4px;
-}
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:4px;
+    }
+    .card-emoji{
+      font-size:26px;
+      line-height:1;
+      flex-shrink:0;
+      filter:drop-shadow(0 2px 4px rgba(0,0,0,.18));
+    }
 
-.card-emoji{
-  font-size:26px;
-  line-height:1;
-  flex-shrink:0;
-  filter:drop-shadow(0 2px 4px rgba(0,0,0,.18));
-}
-
-.card-icon{
-  width:34px;
-  height:34px;
-  opacity:0.95;
-  flex-shrink:0;
-  filter:drop-shadow(0 3px 6px rgba(0,0,0,.20));
-}
+    .card h3{
+      margin:0;
+      font-size:18px;
+      color:#0b3140;
+    }
 
     .card p.muted{
       margin:0;
@@ -345,119 +343,141 @@
 
       <!-- Project Charter -->
       <article class="card">
-  <div class="card-head">
-  <img class="card-icon" src="..." alt="">
-  <h3>Project Charter</h3>
-</div>
-    <p class="muted">Scope, objectives, deliverables, WBS, schedule, and success criteria.</p>
+        <div class="card-inner">
+          <div class="card-head">
+            <span class="card-emoji">📄</span>
+            <h3>Project Charter</h3>
+          </div>
+          <p class="muted">Scope, objectives, deliverables, WBS, schedule, and success criteria.</p>
 
-    <div class="chips">
-      <span class="chip">Scope &amp; Goals</span>
-      <span class="chip alt">WBS &amp; Schedule</span>
-    </div>
+          <div class="chips">
+            <span class="chip">Scope &amp; Goals</span>
+            <span class="chip alt">WBS &amp; Schedule</span>
+          </div>
 
-    <div class="actions">
-      <a class="pill-link" href="./charter.html">Open Charter</a>
-      <a class="pill-link" href="./charter.html#section6">Deliverables</a>
-    </div>
-  </div>
-</article>
+          <div class="actions">
+            <a class="pill-link" href="./charter.html">
+              <span class="icon">↗</span><span>Open Charter</span>
+            </a>
+            <a class="pill-link" href="./charter.html#section6">
+              <span class="icon">🎯</span><span>Deliverables</span>
+            </a>
+          </div>
+        </div>
+      </article>
 
       <!-- Status Reports -->
       <article class="card">
-  <div class="card-head">
-  <span class="card-emoji">📊</span>
-  <h3>Status Reports</h3>
-</div>
-    <p class="muted">Weekly PDFs with embedded viewers showing progress and risks.</p>
+        <div class="card-inner">
+          <div class="card-head">
+            <span class="card-emoji">📊</span>
+            <h3>Status Reports</h3>
+          </div>
+          <p class="muted">Weekly PDFs with embedded viewers showing progress and risks.</p>
 
-    <div class="chips">
-      <span class="chip">Weeks 6–14</span>
-      <span class="chip alt">Progress Tracking</span>
-    </div>
+          <div class="chips">
+            <span class="chip">Weeks 6–14</span>
+            <span class="chip alt">Progress Tracking</span>
+          </div>
 
-    <div class="actions">
-      <a class="pill-link" href="./status.html">Open Status Page</a>
-      <a class="pill-link" href="./status.html#all-pdfs">All PDFs</a>
-    </div>
-  </div>
-</article>
+          <div class="actions">
+            <a class="pill-link" href="./status.html">
+              <span class="icon">↗</span><span>Open Status Page</span>
+            </a>
+            <a class="pill-link" href="./status.html#all-pdfs">
+              <span class="icon">📂</span><span>All PDFs</span>
+            </a>
+          </div>
+        </div>
+      </article>
 
       <!-- Stakeholder Interviews -->
       <article class="card">
-  <div class="card-head">
-  <span class="card-emoji">👥</span>
-  <h3>Stakeholder Interviews</h3>
-</div>
-    <p class="muted">Professional interviews validating goals, scope, and required IT skills.</p>
+        <div class="card-inner">
+          <div class="card-head">
+            <span class="card-emoji">👥</span>
+            <h3>Stakeholder Interviews</h3>
+          </div>
+          <p class="muted">Professional interviews validating goals, scope, and required IT skills.</p>
 
-    <div class="chips">
-      <span class="chip">Industry Input</span>
-      <span class="chip alt">Insights</span>
-    </div>
+          <div class="chips">
+            <span class="chip">Industry Input</span>
+            <span class="chip alt">Insights</span>
+          </div>
 
-    <div class="actions">
-      <a class="pill-link" href="./interviews.html">Open Interviews</a>
-    </div>
-  </div>
-</article>
-
+          <div class="actions">
+            <a class="pill-link" href="./interviews.html">
+              <span class="icon">↗</span><span>Open Interviews</span>
+            </a>
+          </div>
+        </div>
+      </article>
 
       <!-- Closure Documents -->
-      <div class="card-head">
-  <span class="card-emoji">✅</span>
-  <h3>Closure Documents</h3>
-</div>
-    <p class="muted">Lessons learned, final evaluation, evidence of completed deliverables.</p>
-    <div class="chips">
-      <span class="chip">Lessons Learned</span>
-      <span class="chip alt">Closing Actions</span>
-    </div>
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-head">
+            <span class="card-emoji">✅</span>
+            <h3>Closure Documents</h3>
+          </div>
+          <p class="muted">Lessons learned, final evaluation, evidence of completed deliverables.</p>
 
-    <div class="actions">
-      <a class="pill-link" href="./closure.html">Open Closure Docs</a>
-    </div>
-  </div>
-</article>
+          <div class="chips">
+            <span class="chip">Lessons Learned</span>
+            <span class="chip alt">Closing Actions</span>
+          </div>
+
+          <div class="actions">
+            <a class="pill-link" href="./closure.html">
+              <span class="icon">↗</span><span>Open Closure Docs</span>
+            </a>
+          </div>
+        </div>
+      </article>
 
       <!-- STAR Stories -->
       <article class="card">
-  <div class="card-head">
-  <span class="card-emoji">⭐</span>
-  <h3>STAR Stories</h3>
-</div>
+        <div class="card-inner">
+          <div class="card-head">
+            <span class="card-emoji">⭐</span>
+            <h3>STAR Stories</h3>
+          </div>
+          <p class="muted">Behavioral interview stories built using real project experience.</p>
 
-    <p class="muted">Behavioral interview stories built using real project experience.</p>
+          <div class="chips">
+            <span class="chip">Interview Prep</span>
+            <span class="chip alt">STAR Format</span>
+          </div>
 
-    <div class="chips">
-      <span class="chip">Interview Prep</span>
-      <span class="chip alt">STAR Format</span>
-    </div>
-
-    <div class="actions">
-      <a class="pill-link" href="./star-stories.html">Open STAR Stories</a>
-    </div>
-  </div>
-</article>
+          <div class="actions">
+            <a class="pill-link" href="./star-stories.html">
+              <span class="icon">↗</span><span>Open STAR Stories</span>
+            </a>
+          </div>
+        </div>
+      </article>
 
       <!-- Peer Reviews -->
       <article class="card">
-  <div class="card-head">
-  <span class="card-emoji">💬</span>
-  <h3>Peer Reviews</h3>
-</div>
-    <p class="muted">Feedback from classmates and reviewers with improvement actions.</p>
+        <div class="card-inner">
+          <div class="card-head">
+            <span class="card-emoji">💬</span>
+            <h3>Peer Reviews</h3>
+          </div>
+          <p class="muted">Feedback from classmates and reviewers with improvement actions.</p>
 
-    <div class="chips">
-      <span class="chip">Feedback</span>
-      <span class="chip alt">Continuous Improvement</span>
-    </div>
+          <div class="chips">
+            <span class="chip">Feedback</span>
+            <span class="chip alt">Continuous Improvement</span>
+          </div>
 
-    <div class="actions">
-      <a class="pill-link" href="./peer-reviews.html">Open Peer Reviews</a>
-    </div>
-  </div>
-</article>
+          <div class="actions">
+            <a class="pill-link" href="./peer-reviews.html">
+              <span class="icon">↗</span><span>Open Peer Reviews</span>
+            </a>
+          </div>
+        </div>
+      </article>
 
     </main>
 
