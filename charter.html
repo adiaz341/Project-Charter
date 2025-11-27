@@ -14,7 +14,29 @@
       --muted:#6b7280; --ring:#93c5fd; --card:#ffffff; --br:#e5e7eb; --shadow:0 6px 20px rgba(0,0,0,.08);
       --deliv1:#e3f2fd; --deliv2:#f1f8e9; --deliv3:#fff8e1; --deliv4:#fce4ec; --deliv5:#e0f2f1;
     }
-    /* Collapsible sections: header is the toggle */
+        
+	  /* Simple top nav to return to landing page */
+    .topnav{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      margin-bottom:12px;
+      font-size:14px;
+    }
+    .topnav a{
+      text-decoration:none;
+      color:#0b3140;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .topnav a:hover{
+      border-color:rgba(15,23,42,.12);
+      background:#ffffffaa;
+    }
+
+	  
+	  /* Collapsible sections: header is the toggle */
 .section { position: relative; }
 .section .section-header {
   cursor: pointer;
@@ -288,7 +310,13 @@ details.deliv5 .wbs-workpkg td{ border-left-color:#0d9488 }
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
   <div class="shell">
+    <!-- Top nav to go back to landing page -->
+    <nav class="topnav" aria-label="Quick links">
+      <a href="./index.html">🏠 Back to Landing Page</a>
+      <a href="./status.html">📊 Status Reports</a>
+    </nav>
     <div class="layout">
+
       <!-- Sidebar TOC -->
       <aside class="sidebar" aria-label="Section navigation">
         <h3>On this page</h3>
