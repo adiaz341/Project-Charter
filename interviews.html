@@ -18,6 +18,7 @@
   .topnav{
     display:flex;
     justify-content:flex-end;
+    flex-wrap:wrap;
     gap:10px;
     margin-bottom:16px;
     font-size:14px;
@@ -47,11 +48,77 @@
   .card{
     background:white;
     border-radius:14px;
-    padding:20px;
+    padding:20px 22px 24px;
     margin-top:20px;
     border:1px solid #e5e7eb;
     box-shadow:0 6px 20px rgba(0,0,0,.06);
     min-height:200px;
+    border-left:4px solid #166534; /* green accent */
+  }
+
+  /* Interview template styles */
+  .interview-template-title{
+    margin-top:0;
+    margin-bottom:12px;
+    font-size:20px;
+    color:#0b3140;
+  }
+
+  .interview-template-help{
+    margin:0 0 16px;
+    font-size:14px;
+    color:#4b5563;
+  }
+
+  .interview-table-wrapper{
+    overflow-x:auto;
+  }
+
+  .interview-table{
+    width:100%;
+    border-collapse:collapse;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 0 0 1px #e5e7eb;
+  }
+
+  .interview-table thead{
+    background:#166534; /* deep green header */
+    color:#ffffff;
+  }
+
+  .interview-table th,
+  .interview-table td{
+    padding:10px 14px;
+    text-align:left;
+    font-size:14px;
+  }
+
+  .interview-table th{
+    font-weight:600;
+  }
+
+  .interview-table tbody tr{
+    background:#ffffff;
+  }
+
+  .interview-table tbody tr:nth-child(even){
+    background:#f9fafb;
+  }
+
+  .interview-table tbody tr + tr td{
+    border-top:1px solid #e5e7eb;
+  }
+
+  .interview-table .field-label{
+    font-weight:600;
+    width:30%;
+    white-space:nowrap;
+  }
+
+  @media (max-width:600px){
+    .card{padding:16px 14px;}
+    .interview-template-title{font-size:18px;}
   }
 </style>
 </head>
@@ -71,7 +138,46 @@
     <p>Insights from IT professionals.</p>
   </header>
 
-  <div class="card"></div>
+  <div class="card">
+    <h2 class="interview-template-title">Interview Summary Template</h2>
+    <p class="interview-template-help">
+      Use this table to document each stakeholder interview. Fill in one copy of the
+      template per interview.
+    </p>
+
+    <div class="interview-table-wrapper">
+      <table class="interview-table">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="field-label">Name</td>
+            <td>Stakeholder&rsquo;s full name and title/role.</td>
+          </tr>
+          <tr>
+            <td class="field-label">Date of Meeting</td>
+            <td>When the interview took place.</td>
+          </tr>
+          <tr>
+            <td class="field-label">Selection Rationale</td>
+            <td>Why did you select this person? What makes them a relevant stakeholder?</td>
+          </tr>
+          <tr>
+            <td class="field-label">Conversation Summary</td>
+            <td>Briefly summarize the conversation (3–5 paragraphs).</td>
+          </tr>
+          <tr>
+            <td class="field-label">Key Insights</td>
+            <td>What valuable insights or perspectives did they provide?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 </div>
 </body>
