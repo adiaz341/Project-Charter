@@ -52,10 +52,9 @@
     margin-top:20px;
     border:1px solid #e5e7eb;
     box-shadow:0 6px 20px rgba(0,0,0,.06);
-    border-left:4px solid #166534; /* green accent */
+    border-left:4px solid #166534;
   }
 
-  /* Interview template styles */
   .interview-template-title{
     margin-top:0;
     margin-bottom:8px;
@@ -67,20 +66,17 @@
     font-size:14px;
     color:#4b5563;
   }
-
   .interview-instance{
     margin-top:18px;
   }
   .interview-instance-title{
     margin:0 0 8px;
     font-size:16px;
-    color:#14532d; /* dark green */
+    color:#14532d;
     font-weight:600;
   }
 
-  .interview-table-wrapper{
-    overflow-x:auto;
-  }
+  .interview-table-wrapper{overflow-x:auto;}
 
   .interview-table{
     width:100%;
@@ -89,44 +85,23 @@
     overflow:hidden;
     box-shadow:0 0 0 1px #e5e7eb;
   }
-
   .interview-table thead{
-    background:#166534; /* deep green header */
-    color:#ffffff;
+    background:#166534;
+    color:white;
   }
-
   .interview-table th,
   .interview-table td{
     padding:10px 14px;
-    text-align:left;
     font-size:14px;
+    text-align:left;
   }
-
-  .interview-table th{
-    font-weight:600;
-  }
-
-  .interview-table tbody tr{
-    background:#ffffff;
-  }
-
   .interview-table tbody tr:nth-child(even){
     background:#f9fafb;
   }
-
-  .interview-table tbody tr + tr td{
-    border-top:1px solid #e5e7eb;
-  }
-
-  .interview-table .field-label{
+  .field-label{
     font-weight:600;
     width:30%;
     white-space:nowrap;
-  }
-
-  @media (max-width:600px){
-    .card{padding:16px 14px;}
-    .interview-template-title{font-size:18px;}
   }
 </style>
 </head>
@@ -143,121 +118,130 @@
 
   <header class="header">
     <h1>Stakeholder Interviews</h1>
-    <p>Insights from working professionals.</p>
+    <p>Insights from IT and business professionals.</p>
   </header>
 
   <div class="card">
     <h2 class="interview-template-title">Interview Summaries</h2>
     <p class="interview-template-help">
-      Use one table for each interview you conducted. Replace the placeholder text
-      with your actual notes.
+      Below are completed summaries for each interview conducted.
     </p>
 
-    <!-- Interview 1 -->
+
+    <!-- INTERVIEW 1 -->
     <section class="interview-instance">
-      <h3 class="interview-instance-title">Interview 1</h3>
+      <h3 class="interview-instance-title">Interview 1 — Ray Garcia</h3>
+
       <div class="interview-table-wrapper">
         <table class="interview-table">
           <thead>
-            <tr>
-              <th>Field</th>
-              <th>Description</th>
-            </tr>
+            <tr><th>Field</th><th>Description</th></tr>
           </thead>
           <tbody>
             <tr>
               <td class="field-label">Name</td>
-              <td>Stakeholder&rsquo;s full name and title/role.</td>
+              <td>Ray Garcia — Project Manager at AltaMed</td>
             </tr>
             <tr>
               <td class="field-label">Date of Meeting</td>
-              <td>When the interview took place.</td>
+              <td>November 30, 2025</td>
             </tr>
             <tr>
               <td class="field-label">Selection Rationale</td>
-              <td>Why did you select this person? What makes them a relevant stakeholder?</td>
+              <td>Ray was selected due to his industry expertise in IT and project management. His experience provides valuable guidance as I expand my foundational IT skills and evaluate potential career paths.</td>
             </tr>
             <tr>
               <td class="field-label">Conversation Summary</td>
-              <td>Briefly summarize the conversation (3–5 paragraphs).</td>
+              <td>
+                The meeting began with introductions and an overview of my project goals. I explained the coursework I am completing through Cisco’s Networking Academy, which includes networking, cybersecurity, and IT support fundamentals. Ray acknowledged the importance of these foundations but encouraged me to eventually choose a specific path to develop deeper expertise.<br><br>
+                He described his responsibilities as a project manager at AltaMed and introduced tools his team uses—such as Monday.com—to coordinate project activities. He emphasized that gaining familiarity with industry tools is beneficial early on, as they translate directly into real-world tasks.<br><br>
+                After giving permission to record the interview questions, Ray shared reflections on his career journey, including how he first entered IT in the late 1980s. He highlighted the importance of persistence, continuous learning, and adaptability. He concluded by stressing the need for certifications to increase competitiveness for advanced roles and the importance of hands-on experience to strengthen fundamental IT skills.
+              </td>
             </tr>
             <tr>
               <td class="field-label">Key Insights</td>
-              <td>What valuable insights or perspectives did they provide?</td>
+              <td>Ray emphasized the value of earning certifications, developing project management skills, and pursuing consistent hands-on experience. He also highlighted the importance of embracing mistakes as learning opportunities and building confidence through real technical practice.</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- Interview 2 -->
+
+    <!-- INTERVIEW 2 -->
     <section class="interview-instance">
-      <h3 class="interview-instance-title">Interview 2</h3>
+      <h3 class="interview-instance-title">Interview 2 — Maricela Garcia</h3>
+
       <div class="interview-table-wrapper">
         <table class="interview-table">
           <thead>
-            <tr>
-              <th>Field</th>
-              <th>Description</th>
-            </tr>
+            <tr><th>Field</th><th>Description</th></tr>
           </thead>
           <tbody>
             <tr>
               <td class="field-label">Name</td>
-              <td>Stakeholder&rsquo;s full name and title/role.</td>
+              <td>Maricela Garcia — Systems Administrator, Altura Medical Group</td>
             </tr>
             <tr>
               <td class="field-label">Date of Meeting</td>
-              <td>When the interview took place.</td>
+              <td>November 30, 2025</td>
             </tr>
             <tr>
               <td class="field-label">Selection Rationale</td>
-              <td>Why did you select this person? What makes them a relevant stakeholder?</td>
+              <td>Maricela was chosen because her role as a Systems Administrator involves responsibilities highly relevant to IT infrastructure. Her experience provided valuable insight into troubleshooting, network configuration, and the importance of teamwork in complex technical environments.</td>
             </tr>
             <tr>
               <td class="field-label">Conversation Summary</td>
-              <td>Briefly summarize the conversation (3–5 paragraphs).</td>
+              <td>
+                The conversation began with an introduction and explanation of my project. Maricela was supportive and expressed interest in my chosen deliverables, asking thoughtful questions about why I selected them. She agreed that while not every foundational skill needs to be mastered initially, establishing broad competency creates a strong base for future specialization.<br><br>
+                Maricela described her daily role managing systems and troubleshooting issues for clients. She emphasized the importance of reliability and teamwork within her department, noting that her colleagues work cohesively and support one another when complex issues arise.<br><br>
+                After granting permission to record the interview questions, she provided professional and thoughtful responses. Toward the end, I asked about hiring opportunities, and she encouraged me by saying, “Let me know when you are close to finishing college and can work full-time,” which left me optimistic about my career prospects.
+              </td>
             </tr>
             <tr>
               <td class="field-label">Key Insights</td>
-              <td>What valuable insights or perspectives did they provide?</td>
+              <td>Maricela highlighted the importance of continuous learning and open-mindedness. She emphasized that growth often comes from pushing beyond areas of uncertainty and that teamwork and collaboration can expand opportunities and strengthen professional networks.</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- Interview 3 -->
+
+    <!-- INTERVIEW 3 -->
     <section class="interview-instance">
-      <h3 class="interview-instance-title">Interview 3</h3>
+      <h3 class="interview-instance-title">Interview 3 — Adam Holguin Jr.</h3>
+
       <div class="interview-table-wrapper">
         <table class="interview-table">
           <thead>
-            <tr>
-              <th>Field</th>
-              <th>Description</th>
-            </tr>
+            <tr><th>Field</th><th>Description</th></tr>
           </thead>
           <tbody>
             <tr>
               <td class="field-label">Name</td>
-              <td>Stakeholder&rsquo;s full name and title/role.</td>
+              <td>Adam Holguin Jr. — Service Manager at Supply Solutions</td>
             </tr>
             <tr>
               <td class="field-label">Date of Meeting</td>
-              <td>When the interview took place.</td>
+              <td>December 1, 2025</td>
             </tr>
             <tr>
               <td class="field-label">Selection Rationale</td>
-              <td>Why did you select this person? What makes them a relevant stakeholder?</td>
+              <td>Adam was selected due to his role as a mentor and experienced service manager. Although outside of IT, his business-oriented perspective highlights how technical work connects to organizational goals, emphasizing communication, customer service, and leadership—skills essential to IT professionals.</td>
             </tr>
             <tr>
               <td class="field-label">Conversation Summary</td>
-              <td>Briefly summarize the conversation (3–5 paragraphs).</td>
+              <td>
+                The conversation began with an overview of my project and some of the hands-on assignments I have completed. Adam expressed genuine surprise at how much I had learned and congratulated me on my progress, which set a positive tone for the discussion.<br><br>
+                When describing his role, Adam explained that he manages the servicing of floor scrubbers, pressure washers, janitorial machines, and sanitation equipment. He began as a mobile technician, developing both technical and communication skills before earning the position of service manager through dedication and hard work.<br><br>
+                We then discussed his interactions with IT professionals. Adam explained that IT staff have resolved many challenges for him but emphasized that the most effective IT support comes from those who communicate clearly and avoid technical jargon. He noted that analogies are powerful tools for helping non-technical individuals understand issues.<br><br>
+                After recording his responses to the formal questions, I showed him some of my coursework. Although the technical material looked unfamiliar to him, he expressed confidence in my understanding and encouraged me to continue progressing.
+              </td>
             </tr>
             <tr>
               <td class="field-label">Key Insights</td>
-              <td>What valuable insights or perspectives did they provide?</td>
+              <td>Adam emphasized the importance of communication, especially simplifying complex information for non-technical audiences. He highlighted perseverance, hands-on experience, and leadership as key elements in career growth. His perspective reinforced the importance of aligning technical skills with business needs.</td>
             </tr>
           </tbody>
         </table>
