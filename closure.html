@@ -73,23 +73,6 @@
     color:#6b7280;
   }
 
-  .export-btn {
-    border:none;
-    border-radius:999px;
-    padding:8px 16px;
-    font-size:14px;
-    cursor:pointer;
-    background:#10b981;
-    color:white;
-    box-shadow:0 4px 10px rgba(16,185,129,.3);
-    display:flex;
-    align-items:center;
-    gap:6px;
-  }
-  .export-btn:hover {
-    filter:brightness(1.05);
-  }
-
   .section-number{
     font-weight:700;
     margin-top:20px;
@@ -368,6 +351,224 @@
       <div class="field">
         <label for="schedule">4.2 Schedule Performance</label>
         <textarea id="schedule" placeholder="Did you meet your milestones? What caused delays?"></textarea>
+      </div>
+
+      <!-- 5. Quality & Requirements -->
+      <div class="section-number">5. Quality &amp; Requirements</div>
+      <div class="section-heading">5.1 Product / Service Quality</div>
+      <div class="field">
+        <textarea id="quality" placeholder="Describe the overall quality of the final deliverables. Were quality standards met?"></textarea>
+      </div>
+
+      <div class="section-heading">5.2 Requirements Coverage</div>
+      <div class="field">
+        <textarea id="requirements" placeholder="How well did the final solution meet the original requirements and acceptance criteria?"></textarea>
+      </div>
+
+      <!-- 6. Stakeholder Engagement -->
+      <div class="section-number">6. Stakeholder Engagement</div>
+      <div class="section-heading">Stakeholder Feedback &amp; Satisfaction</div>
+      <p class="section-subtitle">
+        Capture key stakeholder feedback and their satisfaction with the final outcome.
+      </p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+          <tr>
+            <th style="width:25%;">Stakeholder / Group</th>
+            <th style="width:20%;">Role</th>
+            <th style="width:20%;">Satisfaction (1–5)</th>
+            <th>Comments</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input type="text" placeholder="Sponsor, client, users..."></td>
+            <td><input type="text" placeholder="e.g., Sponsor"></td>
+            <td><input type="text" placeholder="4"></td>
+            <td><input type="text" placeholder="Short summary of feedback"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 7. Risks & Issues -->
+      <div class="section-number">7. Risks &amp; Issues</div>
+      <div class="section-heading">Risk &amp; Issue Summary</div>
+      <p class="section-subtitle">
+        Document major risks and issues that impacted the project and how they were handled.
+      </p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+          <tr>
+            <th style="width:18%;">ID</th>
+            <th style="width:30%;">Description</th>
+            <th style="width:18%;">Impact</th>
+            <th style="width:18%;">Response</th>
+            <th>Outcome</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input type="text" placeholder="R1 / I1"></td>
+            <td><input type="text" placeholder="Describe the risk or issue"></td>
+            <td><input type="text" placeholder="High / Med / Low"></td>
+            <td><input type="text" placeholder="Avoid, mitigate, accept..."></td>
+            <td><input type="text" placeholder="What happened in the end?"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 8. Lessons Learned -->
+      <div class="section-number">8. Lessons Learned</div>
+      <div class="section-heading">What Went Well</div>
+      <div class="field">
+        <textarea id="lessons-good" placeholder="Describe practices, decisions, or tools that worked particularly well and should be repeated."></textarea>
+      </div>
+
+      <div class="section-heading">What Could Be Improved</div>
+      <div class="field">
+        <textarea id="lessons-bad" placeholder="Describe what did not go well and suggestions for improvement on future projects."></textarea>
+      </div>
+
+      <!-- 9. Benefits Realization -->
+      <div class="section-number">9. Benefits Realization</div>
+      <div class="section-heading">Business Outcomes &amp; Impact</div>
+      <div class="field">
+        <textarea id="benefits" placeholder="Summarize the benefits delivered (e.g., cost savings, time savings, quality improvements, customer satisfaction)."></textarea>
+      </div>
+
+      <!-- 10. Handover & Transition -->
+      <div class="section-number">10. Handover &amp; Transition</div>
+      <div class="section-heading">Operational Handover</div>
+      <div class="field">
+        <textarea id="handover" placeholder="Describe how deliverables were handed off to operations/support and any training completed."></textarea>
+      </div>
+
+      <div class="section-heading">Support &amp; Maintenance Plan</div>
+      <div class="field">
+        <textarea id="support" placeholder="Outline who owns the product/service now, and how support and maintenance will be handled."></textarea>
+      </div>
+
+      <!-- 11. Outstanding Items -->
+      <div class="section-number">11. Outstanding Items</div>
+      <div class="section-heading">Open Actions / Follow-on Work</div>
+      <p class="section-subtitle">
+        List any remaining work or follow-up tasks that need to be completed after project closure.
+      </p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+          <tr>
+            <th style="width:30%;">Item</th>
+            <th style="width:20%;">Owner</th>
+            <th style="width:20%;">Due Date</th>
+            <th>Status / Notes</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input type="text" placeholder="e.g., Final training session"></td>
+            <td><input type="text" placeholder="Name / role"></td>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="Planned / In progress / Done"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 12. Project Archive -->
+      <div class="section-number">12. Project Archive</div>
+      <div class="section-heading">Documentation &amp; Asset Storage</div>
+      <div class="field">
+        <textarea id="archive" placeholder="Where are key project documents, code, designs, and other assets stored for future reference?"></textarea>
+      </div>
+
+      <!-- 13. Sign-Off -->
+      <div class="section-number">13. Sign-Off</div>
+      <div class="section-heading">Approvals</div>
+      <p class="section-subtitle">
+        Capture formal approval that the project is complete and accepted.
+      </p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+          <tr>
+            <th style="width:30%;">Name</th>
+            <th style="width:25%;">Role</th>
+            <th style="width:20%;">Date</th>
+            <th>Signature / Notes</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input type="text" placeholder="Sponsor"></td>
+            <td><input type="text" placeholder="Project Sponsor"></td>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="Approved, pending, etc."></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Project Manager"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 14. Appendices / Supporting Documentation -->
+      <div class="section-number">14. Appendices / Supporting Documentation</div>
+      <div class="section-heading">Reference Materials</div>
+      <p class="section-subtitle">
+        List any additional documents, diagrams, datasets, or resources that support this closure document.
+      </p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+          <tr>
+            <th style="width:30%;">Document / Asset</th>
+            <th style="width:20%;">Type</th>
+            <th style="width:25%;">Location / Link</th>
+            <th>Notes</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input type="text" placeholder="e.g., Final presentation slides"></td>
+            <td><input type="text" placeholder="Slide deck, report, code..."></td>
+            <td><input type="text" placeholder="SharePoint, GitHub URL, folder path"></td>
+            <td><input type="text" placeholder="Relevance or key info"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
