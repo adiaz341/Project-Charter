@@ -51,7 +51,105 @@
     margin-top:20px;
     border:1px solid #e5e7eb;
     box-shadow:0 6px 20px rgba(0,0,0,.06);
-    min-height:200px;
+  }
+
+  .card h2{
+    margin:0 0 8px;
+    font-size:20px;
+  }
+  .card > p{
+    margin:0 0 12px;
+    font-size:14px;
+    color:#4b5563;
+  }
+
+  .section-title{
+    font-size:18px;
+    margin:0 0 12px;
+    font-weight:600;
+    color:#111827;
+  }
+
+  .org-tips{
+    margin-top:12px;
+    padding:14px 16px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#e0f2fe,#eff6ff);
+    border:1px solid #bfdbfe;
+    font-size:14px;
+  }
+  .org-tips h3{
+    margin:0 0 8px;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .org-tips ul{
+    margin:0;
+    padding-left:18px;
+  }
+  .org-tips li{
+    margin:2px 0;
+  }
+
+  /* STAR story layout */
+  .group-title{
+    font-size:16px;
+    font-weight:600;
+    margin:0 0 8px;
+    color:#111827;
+  }
+
+  .star-story{
+    margin-top:18px;
+    padding:18px;
+    border-radius:12px;
+    border:1px solid #e5e7eb;
+    background:#f9fafb;
+  }
+  .star-story + .star-story{
+    border-top:3px solid #d1d5db; /* visual divider between stories */
+    padding-top:26px;
+    margin-top:26px;
+  }
+
+  .star-story-header{
+    margin-bottom:8px;
+  }
+  .star-story-title{
+    font-size:15px;
+    font-weight:600;
+    color:#111827;
+  }
+
+  .star-meta p{
+    margin:4px 0;
+    font-size:13px;
+    color:#374151;
+  }
+
+  .star-section{
+    margin-top:10px;
+  }
+  .star-section h4{
+    margin:0 0 3px;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:#6b7280;
+  }
+  .star-section p{
+    margin:0;
+    font-size:14px;
+    line-height:1.5;
+    color:#111827;
+  }
+
+  .star-note{
+    margin-top:16px;
+    font-size:12px;
+    color:#6b7280;
   }
 </style>
 </head>
@@ -68,10 +166,112 @@
 
   <header class="header">
     <h1>STAR Stories</h1>
-    <p>Your behavioral interview story collection.</p>
+    <p>Your collection of behavioral interview stories using the STAR method.</p>
   </header>
 
-  <div class="card"></div>
+  <!-- Instructions / Format -->
+  <section class="card">
+    <h2>Submission Format</h2>
+    <p>Create a STAR story for each prompt using the required elements below.</p>
+
+    <ul>
+      <li><strong>Story Title:</strong> Clear, descriptive title</li>
+      <li><strong>Source:</strong> Indicate if it’s from <em>Project Presentation</em> or specify the PMI Principle number and name</li>
+      <li><strong>Prompt (for PMI stories):</strong> Include the specific prompt you’re responding to</li>
+      <li><strong>STAR Story:</strong> Clearly labeled <em>Situation</em>, <em>Task</em>, <em>Action</em>, and <em>Result</em></li>
+    </ul>
+
+    <div class="org-tips">
+      <h3>💡 Organization Tips</h3>
+      <ul>
+        <li>Group stories by source (Project Presentations vs. PMI Principles).</li>
+        <li>Use the same format for every story on this page.</li>
+        <li>Keep the STAR headings visible for each story.</li>
+        <li>Use the dividers between stories to make scanning easier.</li>
+        <li>If you include the optional risk/issue story, label it clearly as <strong>Optional</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Project Presentation Stories -->
+  <section class="card">
+    <h2 class="section-title">Project Presentation Stories</h2>
+    <p>Use this section for stories that come directly from your course project work.</p>
+
+    <!-- STAR Story: example / replace with your own -->
+    <article class="star-story">
+      <div class="star-story-header">
+        <div class="star-story-title">Managing Conflicting Priorities in an IT Project</div>
+      </div>
+
+      <div class="star-meta">
+        <p><strong>Source:</strong> Project Presentation</p>
+        <p><strong>Prompt (if PMI story):</strong> —</p>
+      </div>
+
+      <div class="star-section">
+        <h4>Situation</h4>
+        <p>During our semester-long IT portfolio project, our team had overlapping deadlines for requirements gathering, building the website, and preparing a midterm presentation. Several teammates also had exams that week, which caused stress and missed internal deadlines.</p>
+      </div>
+
+      <div class="star-section">
+        <h4>Task</h4>
+        <p>As the project coordinator, I needed to keep the project on track, rebalance workload, and make sure we delivered a complete, professional portfolio by the original deadline.</p>
+      </div>
+
+      <div class="star-section">
+        <h4>Action</h4>
+        <p>I led a quick working session to list all remaining tasks, estimate effort, and identify bottlenecks. I created a simple Kanban board to visualize priorities, reassigned some testing tasks from the busiest teammates to those with more capacity, and negotiated a small scope reduction on nonessential design elements. I also sent a short status email to our professor outlining what we would deliver by each milestone.</p>
+      </div>
+
+      <div class="star-section">
+        <h4>Result</h4>
+        <p>We met the original deadline, delivered all required project artifacts, and received positive feedback on our organization and communication. Our team earned an A on the project, and we continued using the Kanban board for the rest of the semester.</p>
+      </div>
+    </article>
+
+    <p class="star-note">Tip: Duplicate the entire <code>&lt;article class="star-story"&gt;…&lt;/article&gt;</code> block above for each additional Project Presentation story.</p>
+  </section>
+
+  <!-- PMI Principle Stories -->
+  <section class="card">
+    <h2 class="section-title">PMI Principles Stories</h2>
+    <p>Use this section for stories based on specific PMI Principles. Be sure to include the principle number and name in the <strong>Source</strong> field.</p>
+
+    <!-- STAR Story: example / placeholder -->
+    <article class="star-story">
+      <div class="star-story-header">
+        <div class="star-story-title">Applying Stakeholder Engagement to a Class Project</div>
+      </div>
+
+      <div class="star-meta">
+        <p><strong>Source:</strong> PMI Principle 2 – Stewardship / Stakeholder Engagement</p>
+        <p><strong>Prompt (for PMI stories):</strong> Describe a time you applied stakeholder engagement to improve a project outcome.</p>
+      </div>
+
+      <div class="star-section">
+        <h4>Situation</h4>
+        <p>In an earlier group project, our team was building a prototype for a campus app, but feedback from our “stakeholders” (classmates and instructor) was limited and inconsistent.</p>
+      </div>
+
+      <div class="star-section">
+        <h4>Task</h4>
+        <p>I needed to gather clearer expectations from our stakeholders so we could prioritize features and avoid rework before the final demo.</p>
+      </div>
+
+      <div class="star-section">
+        <h4>Action</h4>
+        <p>I scheduled a brief survey and a 10-minute Q&amp;A with the instructor, summarized what we heard into three priority requirements, and shared those with the team. We aligned our backlog to match those priorities and checked in once more before implementation.</p>
+      </div>
+
+      <div class="star-section">
+        <h4>Result</h4>
+        <p>The final prototype reflected exactly what the instructor and classmates cared about most, and our team received specific praise for how we incorporated stakeholder input.</p>
+      </div>
+    </article>
+
+    <p class="star-note">Tip: Update the Story Title, Source, Prompt, and each STAR section to match your own PMI-based stories.</p>
+  </section>
 
 </div>
 </body>
