@@ -53,6 +53,164 @@
     box-shadow:0 6px 20px rgba(0,0,0,.06);
     min-height:200px;
   }
+
+  /* --- Closure document styling (inside the card) --- */
+
+  .closure-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+  }
+  .closure-title-block h2 {
+    margin:0;
+    font-size:22px;
+  }
+  .closure-title-block p {
+    margin:4px 0 0;
+    font-size:14px;
+    color:#6b7280;
+  }
+
+  .export-btn {
+    border:none;
+    border-radius:999px;
+    padding:8px 16px;
+    font-size:14px;
+    cursor:pointer;
+    background:#10b981;
+    color:white;
+    box-shadow:0 4px 10px rgba(16,185,129,.3);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .export-btn:hover {
+    filter:brightness(1.05);
+  }
+
+  .section-number{
+    font-weight:700;
+    margin-top:20px;
+    margin-bottom:4px;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:#6b7280;
+  }
+  .section-heading{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .section-subtitle{
+    font-size:14px;
+    color:#6b7280;
+    margin-bottom:14px;
+  }
+
+  label{
+    font-size:14px;
+    display:block;
+    margin-bottom:4px;
+    color:#4b5563;
+  }
+  .required{
+    color:#ef4444;
+  }
+
+  input[type="text"],
+  textarea,
+  select{
+    width:100%;
+    border-radius:10px;
+    border:1px solid #e5e7eb;
+    padding:8px 10px;
+    font-size:14px;
+    outline:none;
+    background:#f9fafb;
+    transition:border-color .15s, box-shadow .15s, background .15s;
+  }
+  input[type="text"]:focus,
+  textarea:focus,
+  select:focus{
+    border-color:#10b981;
+    box-shadow:0 0 0 2px rgba(16,185,129,.2);
+    background:#ffffff;
+  }
+  textarea{
+    resize:vertical;
+    min-height:70px;
+  }
+
+  .two-col{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:12px;
+    margin-bottom:8px;
+  }
+  .field{
+    margin-bottom:10px;
+  }
+
+  .table-wrapper{
+    border-radius:10px;
+    border:1px solid #e5e7eb;
+    overflow:hidden;
+    margin-top:6px;
+    margin-bottom:16px;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  thead{
+    background:#f9fafb;
+  }
+  th,td{
+    padding:8px 10px;
+    border-bottom:1px solid #e5e7eb;
+    text-align:left;
+    vertical-align:top;
+  }
+  th{
+    font-weight:600;
+    color:#6b7280;
+  }
+  tr:last-child td{
+    border-bottom:none;
+  }
+
+  .form-footer{
+    margin-top:18px;
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+  }
+  .btn{
+    border-radius:999px;
+    padding:7px 16px;
+    border:none;
+    font-size:14px;
+    cursor:pointer;
+  }
+  .btn-secondary{
+    background:#e5e7eb;
+    color:#111827;
+  }
+  .btn-primary{
+    background:#10b981;
+    color:white;
+  }
+
+  @media (max-width:600px){
+    .closure-header {
+      flex-direction:column;
+      align-items:flex-start;
+    }
+  }
 </style>
 </head>
 
@@ -71,8 +229,192 @@
     <p>Final project materials and reflections.</p>
   </header>
 
-  <div class="card"></div>
+  <div class="card">
+    <!-- Everything inside this div will be exported to Word -->
+    <div id="closure-content">
+      <div class="closure-header">
+        <div class="closure-title-block">
+          <h2>Comprehensive Project Closure Document</h2>
+          <p>Summarize your project outcomes, learning, and recommendations.</p>
+        </div>
+      </div>
+
+      <!-- 1. Project Information -->
+      <div class="section-number">1. Project Information</div>
+      <div class="section-heading">Basic Project Details</div>
+
+      <div class="field">
+        <label for="title">Project Title <span class="required">*</span></label>
+        <input id="title" type="text" placeholder="e.g., Get an Entry-Level Job in Data Analytics">
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label for="manager">Project Manager</label>
+          <input id="manager" type="text" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="closure-type">Project Closure Type</label>
+          <select id="closure-type">
+            <option>Select closure type…</option>
+            <option>Successful completion</option>
+            <option>Cancelled</option>
+            <option>Suspended</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="description">Project Description</label>
+        <textarea id="description" placeholder="Brief overview of your project, who it serves, and the main features or deliverables."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="summary">Closing Summary</label>
+        <textarea id="summary" placeholder="Executive summary: Did you meet your goals? What worked well? What were the main challenges?"></textarea>
+      </div>
+
+      <!-- 2. Deliverables Summary -->
+      <div class="section-number">2. Deliverables Summary</div>
+      <div class="section-heading">Deliverables and Status</div>
+      <p class="section-subtitle">
+        List your major deliverables and track their completion status.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+          <tr>
+            <th style="width:30%;">Deliverable Name</th>
+            <th style="width:25%;">Original Definition of Done</th>
+            <th style="width:25%;">Actual Progress</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" placeholder="e.g., Project charter, user research">
+            </td>
+            <td>
+              <input type="text" placeholder="e.g., Complete charter draft">
+            </td>
+            <td>
+              <input type="text" placeholder="What was delivered?">
+            </td>
+            <td>
+              <input type="text" placeholder="On track, delayed, etc.">
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 3. Change Log -->
+      <div class="section-number">3. Change Log</div>
+      <div class="section-heading">Scope Changes</div>
+      <p class="section-subtitle">
+        Summarize any major changes to requirements, scope, or timelines.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+          <tr>
+            <th style="width:12%;">Change No.</th>
+            <th style="width:18%;">Change Date</th>
+            <th style="width:35%;">Change Description</th>
+            <th>Reason for Change</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input type="text" placeholder="1"></td>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="Describe the change"></td>
+            <td><input type="text" placeholder="Why was this needed?"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="2"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 4. Performance Analysis -->
+      <div class="section-number">4. Performance Analysis</div>
+      <div class="section-heading">Budget &amp; Schedule</div>
+
+      <div class="field">
+        <label for="budget">4.1 Budget Performance</label>
+        <textarea id="budget" placeholder="Did you stay within budget? Any unexpected costs?"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="schedule">4.2 Schedule Performance</label>
+        <textarea id="schedule" placeholder="Did you meet your milestones? What caused delays?"></textarea>
+      </div>
+    </div>
+
+    <!-- Buttons (including export) -->
+    <div class="form-footer">
+      <button class="btn btn-secondary" type="reset">Clear</button>
+      <button class="btn btn-primary" type="button" onclick="exportToWord()">💾 Export to Word</button>
+    </div>
+
+  </div>
 
 </div>
+
+<script>
+  function exportToWord(filename = 'Project_Closure_Document') {
+    // Get the content of the div
+    const content = document.getElementById('closure-content').innerHTML;
+
+    // Basic Word-compatible HTML wrapper
+    const preHtml =
+      "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+      "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+      "xmlns='http://www.w3.org/TR/REC-html40'>" +
+      "<head><meta charset='utf-8'><title>Export HTML To Word</title></head><body>";
+    const postHtml = "</body></html>";
+
+    const html = preHtml + content + postHtml;
+
+    // Create a Blob of the data
+    const blob = new Blob(['\ufeff', html], {
+      type: 'application/msword'
+    });
+
+    // Create download link element
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename + '.doc';
+
+    document.body.appendChild(link);
+    link.click();
+
+    // Cleanup
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+</script>
+
 </body>
 </html>
