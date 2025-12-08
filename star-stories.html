@@ -11,7 +11,7 @@
     margin:0;
     font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     background:#f5f7fb;
-    color:#0f172a; /* deep slate for better contrast */
+    color:#0f172a; /* deep slate */
   }
   .shell{max-width:1000px;margin:20px auto;padding:0 16px;}
 
@@ -34,6 +34,7 @@
     border-color:rgba(0,0,0,.15);
   }
 
+  /* HEADER */
   .header{
     background:linear-gradient(135deg,#004d7a,#008793);
     color:white;
@@ -41,22 +42,36 @@
     border-radius:14px;
     box-shadow:
       0 8px 20px rgba(0,0,0,.15),
-      0 0 30px rgba(0,192,255,.25); /* soft glow */
+      0 0 30px rgba(0,192,255,.25);
   }
+
   .header h1{
     margin:0 0 6px;
-    font-size:30px;
+    font-size:32px;
     font-weight:700;
-    background:linear-gradient(135deg,#e0faff,#ffffff);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .star-icon{
+    color:#facc15; /* bright golden yellow */
+    -webkit-text-fill-color:#facc15;
+  }
+
+  .title-text{
+    background:linear-gradient(135deg,#fff7cc,#ffffff); /* soft gold → white */
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
   }
+
   .header p{
     margin:0;
     font-size:15px;
     opacity:.9;
   }
 
+  /* CARD (sections) */
   .card{
     background:white;
     border-radius:14px;
@@ -71,17 +86,12 @@
     font-size:20px;
     color:#0f172a;
   }
-  .card > p{
-    margin:0 0 12px;
-    font-size:14px;
-    color:#4b5563;
-  }
 
   .section-title{
     font-size:18px;
     margin:0 0 12px;
     font-weight:600;
-    color:#0284c7; /* blue accent for section titles */
+    color:#0284c7; /* blue accent */
   }
 
   .org-tips{
@@ -92,29 +102,20 @@
     border:1px solid #bfdbfe;
     font-size:14px;
   }
+
   .org-tips h3{
     margin:0 0 8px;
     font-size:15px;
-    display:flex;
-    align-items:center;
-    gap:6px;
     color:#0f172a;
   }
-  .org-tips ul{
-    margin:0;
-    padding-left:18px;
-  }
-  .org-tips li{
-    margin:2px 0;
-  }
 
-  /* STAR story layout */
+  /* STAR STORY LAYOUT */
   .star-story{
     margin-top:18px;
     padding:18px;
     border-radius:12px;
     border:1px solid #d4d7de;
-    background:#eef2f7; /* soft blue-gray highlight */
+    background:#eef2f7; /* soft highlight */
   }
   .star-story + .star-story{
     border-top:3px solid #c7ccd8;
@@ -122,13 +123,10 @@
     margin-top:26px;
   }
 
-  .star-story-header{
-    margin-bottom:8px;
-  }
   .star-story-title{
-    font-size:15px;
+    font-size:16px;
     font-weight:600;
-    color:#004c70; /* dark teal for titles */
+    color:#004c70; /* dark teal */
   }
 
   .star-meta p{
@@ -136,26 +134,30 @@
     font-size:13px;
     color:#374151;
   }
-  .star-meta p strong{
-    color:#0369a1; /* teal accent for labels */
+
+  .star-meta strong{
+    color:#0369a1; /* teal accent */
   }
 
   .star-section{
     margin-top:10px;
   }
+
   .star-section h4{
-    margin:0 0 3px;
+    margin:0 0 4px;
     font-size:11px;
     text-transform:uppercase;
     letter-spacing:.08em;
-    color:#0ea5e9; /* sky blue accent for S/T/A/R headings */
+    color:#0ea5e9; /* sky blue accents */
   }
+
   .star-section p{
     margin:0;
     font-size:14px;
     line-height:1.5;
     color:#0f172a;
   }
+
 </style>
 </head>
 
@@ -170,20 +172,43 @@
   </nav>
 
   <header class="header">
-    <h1>⭐ STAR Stories</h1>
+    <h1>
+      <span class="star-icon">⭐</span>
+      <span class="title-text">STAR Stories</span>
+    </h1>
     <p>Your collection of behavioral interview stories using the STAR method.</p>
   </header>
 
-  <!-- Project Presentation Stories -->
+  <!-- Instructions -->
+  <section class="card">
+    <h2>Submission Format</h2>
+    <p>Create a STAR story for each prompt using the required elements below.</p>
+
+    <ul>
+      <li><strong>Story Title:</strong> Clear, descriptive title</li>
+      <li><strong>Source:</strong> Project Presentation or PMI Principle</li>
+      <li><strong>Prompt:</strong> Provided for PMI stories</li>
+      <li><strong>STAR Story:</strong> Situation, Task, Action, Result</li>
+    </ul>
+
+    <div class="org-tips">
+      <h3>💡 Organization Tips</h3>
+      <ul>
+        <li>Group stories by source.</li>
+        <li>Keep the STAR format consistent.</li>
+        <li>Use headings to make scanning easier.</li>
+        <li>Write clearly and professionally.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECT PRESENTATION STORIES -->
   <section class="card">
     <h2 class="section-title">Project Presentation Stories</h2>
-    <p>Use this section for stories that come directly from your course project work.</p>
 
-    <!-- STAR Story 1: Adding a Job Description Deliverable -->
+    <!-- STORY 1 -->
     <article class="star-story">
-      <div class="star-story-header">
-        <div class="star-story-title">Adding a Job Description Deliverable</div>
-      </div>
+      <div class="star-story-title">Adding a Job Description Deliverable</div>
 
       <div class="star-meta">
         <p><strong>Source:</strong> Project Presentation</p>
@@ -191,30 +216,28 @@
 
       <div class="star-section">
         <h4>Situation</h4>
-        <p>During our semester-long Project Management project, I focused heavily on deliverables that would help me learn core concepts. Partway through the semester, I realized that none of my deliverables actually checked whether what I was learning would matter in the job market. This created a risk that I could invest a lot of time in skills that might not help me get an entry-level IT role.</p>
+        <p>During our semester-long Project Management project, I focused heavily on deliverables that would help me learn core concepts. Partway through the semester, I realized that none of my deliverables actually checked whether what I was learning would matter in the job market. This created a risk that I could invest time in skills that might not help me get an entry-level IT role.</p>
       </div>
 
       <div class="star-section">
         <h4>Task</h4>
-        <p>After discussing this with my professor, she suggested I add a deliverable that compared my learning plan to real job requirements. My task was to research entry-level IT positions and determine whether the paths I was pursuing would make me a stronger candidate, or whether I needed to adjust my focus.</p>
+        <p>After discussing this with my professor, she suggested adding a deliverable that compared my learning plan to real job requirements. My task was to research entry-level IT roles and determine whether my learning path aligned with industry needs.</p>
       </div>
 
       <div class="star-section">
         <h4>Action</h4>
-        <p>That evening, I researched job postings for entry-level roles such as cybersecurity analyst, network analyst, and help desk support. I reviewed openings from multiple companies and captured the required skills, certifications, and tools in a Word document. I then looked for patterns across postings, grouped similar requirements, and compared them against the courses I was taking through Cisco’s Networking Academy and my other study plans.</p>
+        <p>I researched postings for cybersecurity, networking, and help desk roles, collected required skills, and compared them to my coursework. I documented similarities, gaps, and patterns, then evaluated how Cisco Networking Academy aligned with employer expectations.</p>
       </div>
 
       <div class="star-section">
         <h4>Result</h4>
-        <p>The comparison confirmed that the networking basics, IT support, and cybersecurity analyst paths I had chosen were closely aligned with what employers were asking for. Using ChatGPT, I also identified additional resources and mapped out a path toward CompTIA A+, Network+, and Security+ certifications. This new deliverable gave me confidence that my coursework and self-study are building directly toward real entry-level IT opportunities rather than just classroom knowledge.</p>
+        <p>The analysis confirmed that my chosen paths supported job readiness. I also identified resources that help prepare for CompTIA A+, Network+, and Security+. The deliverable ensured my learning was industry-aligned rather than theoretical.</p>
       </div>
     </article>
 
-    <!-- STAR Story 2: Making Daisy the STAR of My STORY -->
+    <!-- STORY 2 -->
     <article class="star-story">
-      <div class="star-story-header">
-        <div class="star-story-title">Making Daisy the STAR of My STORY</div>
-      </div>
+      <div class="star-story-title">Making Daisy the STAR of My STORY</div>
 
       <div class="star-meta">
         <p><strong>Source:</strong> Project Presentation</p>
@@ -222,36 +245,33 @@
 
       <div class="star-section">
         <h4>Situation</h4>
-        <p>As part of our semester project, we were assigned to create a short “TikTok-style” video demonstrating something we learned in class. I initially wanted to explain STAR stories, but I faced a major obstacle: I’m not comfortable being on camera and felt awkward filming myself. I didn’t know how to make the assignment both engaging and personally manageable.</p>
+        <p>For our semester project, we were assigned to create a short video demonstrating something we learned. I wanted to explain STAR stories but felt uncomfortable being on camera, which left me uncertain about how to complete the assignment effectively.</p>
       </div>
 
       <div class="star-section">
         <h4>Task</h4>
-        <p>My task was to produce a creative and clear video demonstrating the STAR method. I needed to find a way to meet the project’s expectations without relying on traditional on-camera presentation. While brainstorming ideas with my wife, she suggested a unique and unexpected solution—feature our puppy, Daisy, as the “star” of the video and use a voiceover for the explanation.</p>
+        <p>I needed to create a clear, creative video explaining the STAR method while avoiding direct on-camera presentation. My wife suggested using our puppy, Daisy, as the “star” of the video and recording a voiceover.</p>
       </div>
 
       <div class="star-section">
         <h4>Action</h4>
-        <p>I wrote a simple script that explained the STAR acronym in an accessible way. My wife helped develop the concept of having Daisy “type out” each letter of STAR in the video. Using treats for motivation, Daisy performed her role perfectly while I recorded the visuals and added a voiceover narration to describe the method.</p>
+        <p>I wrote a script explaining the STAR method and filmed Daisy “typing” each letter using treats for motivation. I combined the footage with a voiceover to explain the concept in simple, engaging terms.</p>
       </div>
 
       <div class="star-section">
         <h4>Result</h4>
-        <p>The final video was fun, creative, and well received. Even though I worried it wasn’t highly technical, viewers—including family members we tested it with—loved it, largely thanks to Daisy’s charm. The process allowed me to complete the assignment in a way that felt authentic and comfortable, while still effectively communicating what STAR stories are.</p>
+        <p>The video was fun, charming, and well received by viewers. It allowed me to complete the assignment comfortably while still explaining the STAR method effectively.</p>
       </div>
     </article>
   </section>
 
-  <!-- PMI Principle Stories -->
+  <!-- PMI STORIES -->
   <section class="card">
     <h2 class="section-title">PMI Principles Stories</h2>
-    <p>Use this section for stories based on specific PMI Principles. Include the principle number and name in the <strong>Source</strong> field.</p>
 
-    <!-- PMI Story 1: Building Trust with a New Client -->
+    <!-- STORY 1 -->
     <article class="star-story">
-      <div class="star-story-header">
-        <div class="star-story-title">Building Trust with a New Client</div>
-      </div>
+      <div class="star-story-title">Building Trust with a New Client</div>
 
       <div class="star-meta">
         <p><strong>Source:</strong> PMI Principle 1 – Be a Diligent, Respectful, and Caring Steward</p>
@@ -260,30 +280,28 @@
 
       <div class="star-section">
         <h4>Situation</h4>
-        <p>In my current job, we welcomed a new client who sells laundry detergent in small packaging quantities through Amazon. He was considering a large order of 10,000 units, but before committing, both sides needed to confirm whether we could reliably produce and package the material within a one-month window. To assess feasibility, we agreed to run a sample batch that would inform whether the partnership would be beneficial for both parties.</p>
+        <p>We had a new client selling detergent in small packages who wanted to evaluate our ability to produce 10,000 units within a month. To determine feasibility, we ran a sample batch to ensure mutual benefit.</p>
       </div>
 
       <div class="star-section">
         <h4>Task</h4>
-        <p>As the lead powder blender, I was responsible for determining whether we could meet the production and packaging requirements. I first aligned with my supervisor on the timeline and staffing needs, identifying which employees had the skills and reliability to assist with the packaging phase. We also evaluated the material’s characteristics and recognized that the dry mix created a dust issue that would need proper ventilation. Together, we established a production approach that emphasized worker safety, efficiency, and quality.</p>
+        <p>As lead powder blender, I needed to ensure we could produce, package, and ship the product safely and efficiently. This required coordinating staffing and addressing dust ventilation concerns.</p>
       </div>
 
       <div class="star-section">
         <h4>Action</h4>
-        <p>With the plan in place, I coordinated the preparation of both materials and equipment. I ensured employees used N95 respirators to reduce inhalation risks from the dust. I tested the mixture process and found that the formulation wasn’t difficult and could be blended in roughly 30 minutes. After mixing, we transported the product to the packaging area, maintaining consistent communication to keep the workflow safe, clean, and efficient.</p>
+        <p>I prepared materials, ensured proper respirator use, mixed the product, and coordinated workflow across production and packaging. Communication remained constant to maintain safety and quality.</p>
       </div>
 
       <div class="star-section">
         <h4>Result</h4>
-        <p>The client was fully satisfied with the sample batch and impressed with how quickly and professionally we produced it. He expressed appreciation by providing a small bonus to our company and moved forward with us as a trusted supplier. This experience not only strengthened a valuable customer relationship but also demonstrated our team’s capability to deliver high-quality results under new and uncertain conditions.</p>
+        <p>The client was highly satisfied with both quality and speed. He continued working with us and even provided a bonus. The experience strengthened trust and demonstrated our reliability under pressure.</p>
       </div>
     </article>
 
-    <!-- PMI Story 2: Substituting Suitable Ingredients to Complete an Emergency Order -->
+    <!-- STORY 2 -->
     <article class="star-story">
-      <div class="star-story-header">
-        <div class="star-story-title">Substituting Suitable Ingredients to Complete an Emergency Order</div>
-      </div>
+      <div class="star-story-title">Substituting Suitable Ingredients to Complete an Emergency Order</div>
 
       <div class="star-meta">
         <p><strong>Source:</strong> PMI Principle 9 – Navigating Complexity</p>
@@ -292,30 +310,28 @@
 
       <div class="star-section">
         <h4>Situation</h4>
-        <p>We received an emergency order from a plating company that urgently needed a soaking powder by the end of the day. The mix was normally simple to produce, but as I began preparing the batch, I realized we were missing a key ingredient responsible for helping the powder “spread” across the metals during washing. Without it, the product would not perform correctly, and the customer’s operations could be delayed.</p>
+        <p>A plating company urgently needed a soaking powder by the end of the day, but we were missing a key ingredient required for its spreading function. Without it, the order couldn’t be fulfilled.</p>
       </div>
 
       <div class="star-section">
         <h4>Task</h4>
-        <p>I needed to find a safe, effective substitute immediately, as there was no time to order the missing ingredient. Drawing on my dad’s 30 years of chemical blending experience as a resource, I consulted with him about potential alternatives. I also examined our inventory and noticed another ingredient with a similar appearance and purpose. After comparing Safety Data Sheets (SDS), I discovered that the substitute material was chemically equivalent to the original ingredient previously used.</p>
+        <p>I needed to identify a safe and effective substitute immediately. After consulting my dad, who has 30+ years of blending experience, I compared SDS sheets and confirmed we already had an equivalent material.</p>
       </div>
 
       <div class="star-section">
         <h4>Action</h4>
-        <p>Once I confirmed the match, I brought my findings to our general manager to request approval. I showed him the SDS documentation that demonstrated the equivalency, and he agreed that it was an appropriate substitution. Following his direction, I produced the batch and pulled a QC sample for a consistency check before packaging.</p>
+        <p>I presented my findings to the general manager, obtained approval, produced the batch, and submitted a QC sample to verify consistency before packaging.</p>
       </div>
 
       <div class="star-section">
         <h4>Result</h4>
-        <p>We successfully completed and shipped the order within an hour of receiving it. Our general manager notified the customer of the substitution, and later that day the customer replied with appreciation for our quick response. He confirmed that the product worked exactly as expected and had no performance issues. This experience strengthened customer trust and demonstrated our capability to adapt quickly and safely under urgent, complex conditions.</p>
+        <p>We delivered the product within an hour. The customer thanked us for the quick turnaround and confirmed it worked perfectly, reinforcing trust and showcasing adaptability.</p>
       </div>
     </article>
 
-    <!-- PMI Story 3: Assuming Leadership Unofficially -->
+    <!-- STORY 3 -->
     <article class="star-story">
-      <div class="star-story-header">
-        <div class="star-story-title">Assuming Leadership Unofficially</div>
-      </div>
+      <div class="star-story-title">Assuming Leadership Unofficially</div>
 
       <div class="star-meta">
         <p><strong>Source:</strong> PMI Principle 6 – Leading Without Authority</p>
@@ -323,22 +339,22 @@
 
       <div class="star-section">
         <h4>Situation</h4>
-        <p>Last semester, I was assigned to a group of five classmates for a major project. Since we didn’t know each other beforehand, we spent the first few weeks establishing roles and dividing responsibilities. However, by the fourth week, communication within the group had abruptly stopped. For two weeks, no one responded inside or outside of class, and I had no visibility into whether anyone was completing their tasks. With deadlines approaching, it became clear that if no one stepped up, the project would fall apart.</p>
+        <p>During a group project, communication stopped entirely for two weeks, and no one was completing their assigned tasks. With deadlines approaching, the project was at risk of failure.</p>
       </div>
 
       <div class="star-section">
         <h4>Task</h4>
-        <p>To prevent us from missing deadlines and receiving a poor grade, I took the initiative to reestablish communication. I created a Microsoft Teams channel for the group and sent a message through Canvas to ensure everyone received it. I wasn’t willing to let the group’s lack of communication put my grade at risk, so I drafted a clear email outlining the need to regroup, along with a proposed plan. I also informed the professor of the situation so he understood that I had been working independently up to that point.</p>
+        <p>I took initiative to reestablish communication, create a Teams channel, contact members directly, and notify the professor so expectations were clear and progress could resume.</p>
       </div>
 
       <div class="star-section">
         <h4>Action</h4>
-        <p>In my message, I emphasized the urgency of the deadlines and made it clear that we needed to organize ourselves immediately. I also explained that if no one responded, I would complete the project on my own and submit documentation to the professor to reflect my effort. This prompted the group to reply, and once communication resumed, I facilitated the reassignment of roles, set internal deadlines, and delegated tasks based on each member’s strengths. I continued monitoring progress to ensure we stayed on track.</p>
+        <p>I sent an urgent message outlining deadlines and the need to regroup. I stated that if no one responded, I would complete the project alone while documenting my work. This prompted the team to reengage, allowing us to reassign roles and set new internal deadlines.</p>
       </div>
 
       <div class="star-section">
         <h4>Result</h4>
-        <p>Thanks to the renewed structure and clarity, we completed the entire project. Although the final grade—a B+—was lower than what I had hoped for, I was proud that we pulled the project together under pressure. The experience taught me that waiting too long to intervene can significantly damage group outcomes—as seen in our rushed PowerPoint and limited preparation time. Now, when I face similar issues in group work, I address communication problems immediately and take initiative rather than hoping they resolve on their own.</p>
+        <p>We completed the project and earned a B+. Although lower than hoped, it taught me that delayed communication harms outcomes, and proactive leadership is essential.</p>
       </div>
     </article>
   </section>
