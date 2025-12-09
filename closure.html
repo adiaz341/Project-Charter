@@ -54,8 +54,6 @@
     min-height:200px;
   }
 
-  /* --- Closure document styling (inside the card) --- */
-
   .closure-header {
     display:flex;
     justify-content:space-between;
@@ -77,20 +75,18 @@
     font-weight:700;
     margin-top:20px;
     margin-bottom:4px;
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:.08em;
-    color:#6b7280;
+    font-size:14px;
+    color:#111827;
   }
   .section-heading{
-    font-size:17px;
+    font-size:16px;
     font-weight:600;
-    margin-bottom:8px;
+    margin-bottom:6px;
   }
   .section-subtitle{
     font-size:14px;
     color:#6b7280;
-    margin-bottom:14px;
+    margin-bottom:10px;
   }
 
   label{
@@ -127,14 +123,8 @@
     min-height:70px;
   }
 
-  .two-col{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:12px;
-    margin-bottom:8px;
-  }
   .field{
-    margin-bottom:10px;
+    margin-bottom:12px;
   }
 
   .table-wrapper{
@@ -150,7 +140,8 @@
     font-size:13px;
   }
   thead{
-    background:#f9fafb;
+    background:#b91c1c;
+    color:#f9fafb;
   }
   th,td{
     padding:8px 10px;
@@ -160,7 +151,6 @@
   }
   th{
     font-weight:600;
-    color:#6b7280;
   }
   tr:last-child td{
     border-bottom:none;
@@ -224,44 +214,45 @@
 
       <!-- 1. Project Information -->
       <div class="section-number">1. Project Information</div>
-      <div class="section-heading">Basic Project Details</div>
+      <div class="section-heading">Project Information</div>
 
       <div class="field">
         <label for="title">Project Title <span class="required">*</span></label>
         <input id="title" type="text" placeholder="e.g., Get an Entry-Level Job in Data Analytics">
       </div>
 
-      <div class="two-col">
-        <div class="field">
-          <label for="manager">Project Manager</label>
-          <input id="manager" type="text" placeholder="Your name">
-        </div>
-        <div class="field">
-          <label for="closure-type">Project Closure Type</label>
-          <select id="closure-type">
-            <option>Select closure type…</option>
-            <option>Successful completion</option>
-            <option>Cancelled</option>
-            <option>Suspended</option>
-          </select>
-        </div>
+      <div class="field">
+        <label for="manager">Project Manager</label>
+        <input id="manager" type="text" placeholder="Your name">
       </div>
 
       <div class="field">
         <label for="description">Project Description</label>
-        <textarea id="description" placeholder="Brief overview of your project, who it serves, and the main features or deliverables."></textarea>
+        <textarea id="description" placeholder="Brief overview of your semester project - what problem does it solve, who are the users, and what are the main features or deliverables?"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="closure-type">Project Closure Type</label>
+        <select id="closure-type">
+          <option>Select closure type...</option>
+          <option>✅ Normal Closure - Project completed successfully</option>
+          <option>⚠️ Premature Closure - Ended early, core objectives met</option>
+          <option>🧩 Perpetual Closure - No official end, ongoing</option>
+          <option>❌ Failed / Unsuccessful Closure - Terminated due to issues</option>
+          <option>🔁 Changed Priority Closure - Stopped due to strategy shift</option>
+        </select>
       </div>
 
       <div class="field">
         <label for="summary">Closing Summary</label>
-        <textarea id="summary" placeholder="Executive summary: Did you meet your goals? What worked well? What were the main challenges?"></textarea>
+        <textarea id="summary" placeholder="Executive summary of overall project performance - Did you meet your goals? What were the key successes and challenges? How would you rate the project's overall success?"></textarea>
       </div>
 
       <!-- 2. Deliverables Summary -->
       <div class="section-number">2. Deliverables Summary</div>
-      <div class="section-heading">Deliverables and Status</div>
+      <div class="section-heading">Deliverables Summary</div>
       <p class="section-subtitle">
-        List your major deliverables and track their completion status.
+        List all major deliverables and track their completion status.
       </p>
 
       <div class="table-wrapper">
@@ -277,29 +268,47 @@
           <tbody>
           <tr>
             <td>
-              <input type="text" placeholder="e.g., Project charter, user research">
+              <input type="text" placeholder="e.g., Project Charter, User Research Report">
             </td>
             <td>
-              <input type="text" placeholder="e.g., Complete charter draft">
+              <input type="text" placeholder="e.g., Complete charter with all sections, 10+ user interviews">
             </td>
             <td>
-              <input type="text" placeholder="What was delivered?">
+              <input type="text" placeholder="What was delivered">
             </td>
             <td>
-              <input type="text" placeholder="On track, delayed, etc.">
+              <input type="text" placeholder="-">
             </td>
           </tr>
           <tr>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
+            <td><input type="text" placeholder="Deliverable 2"></td>
+            <td><input type="text" placeholder="Original criteria"></td>
+            <td><input type="text" placeholder="What was delivered"></td>
+            <td><input type="text" placeholder="-"></td>
           </tr>
           <tr>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
+            <td><input type="text" placeholder="Deliverable 3"></td>
+            <td><input type="text" placeholder="Original criteria"></td>
+            <td><input type="text" placeholder="What was delivered"></td>
+            <td><input type="text" placeholder="-"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Deliverable 4"></td>
+            <td><input type="text" placeholder="Original criteria"></td>
+            <td><input type="text" placeholder="What was delivered"></td>
+            <td><input type="text" placeholder="-"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Deliverable 5"></td>
+            <td><input type="text" placeholder="Original criteria"></td>
+            <td><input type="text" placeholder="What was delivered"></td>
+            <td><input type="text" placeholder="-"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Deliverable 6"></td>
+            <td><input type="text" placeholder="Original criteria"></td>
+            <td><input type="text" placeholder="What was delivered"></td>
+            <td><input type="text" placeholder="-"></td>
           </tr>
           </tbody>
         </table>
@@ -307,18 +316,18 @@
 
       <!-- 3. Change Log -->
       <div class="section-number">3. Change Log</div>
-      <div class="section-heading">Scope Changes</div>
+      <div class="section-heading">Change Log</div>
       <p class="section-subtitle">
-        Summarize any major changes to requirements, scope, or timelines.
+        Summary of all scope changes made during the project.
       </p>
 
       <div class="table-wrapper">
         <table>
           <thead>
           <tr>
-            <th style="width:12%;">Change No.</th>
-            <th style="width:18%;">Change Date</th>
-            <th style="width:35%;">Change Description</th>
+            <th style="width:10%;">Change No</th>
+            <th style="width:15%;">Change Date</th>
+            <th style="width:35%;">Change</th>
             <th>Reason for Change</th>
           </tr>
           </thead>
@@ -327,13 +336,31 @@
             <td><input type="text" placeholder="1"></td>
             <td><input type="text" placeholder="mm/dd/yy"></td>
             <td><input type="text" placeholder="Describe the change"></td>
-            <td><input type="text" placeholder="Why was this needed?"></td>
+            <td><input type="text" placeholder="Why was this change needed?"></td>
           </tr>
           <tr>
             <td><input type="text" placeholder="2"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="Describe the change"></td>
+            <td><input type="text" placeholder="Why was this change needed?"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="3"></td>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="Describe the change"></td>
+            <td><input type="text" placeholder="Why was this change needed?"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="4"></td>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="Describe the change"></td>
+            <td><input type="text" placeholder="Why was this change needed?"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="5"></td>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="Describe the change"></td>
+            <td><input type="text" placeholder="Why was this change needed?"></td>
           </tr>
           </tbody>
         </table>
@@ -341,208 +368,170 @@
 
       <!-- 4. Performance Analysis -->
       <div class="section-number">4. Performance Analysis</div>
-      <div class="section-heading">Budget &amp; Schedule</div>
 
+      <div class="section-heading">4.1 Budget Performance</div>
       <div class="field">
-        <label for="budget">4.1 Budget Performance</label>
-        <textarea id="budget" placeholder="Did you stay within budget? Any unexpected costs?"></textarea>
+        <textarea id="budget" placeholder="If applicable: Did you stay within budget constraints? Any unexpected costs for tools, hosting, or resources?"></textarea>
       </div>
 
+      <div class="section-heading">4.2 Schedule Performance</div>
       <div class="field">
-        <label for="schedule">4.2 Schedule Performance</label>
-        <textarea id="schedule" placeholder="Did you meet your milestones? What caused delays?"></textarea>
+        <textarea id="schedule" placeholder="Did you meet your semester milestones? What caused delays? Were your time estimates realistic for this project?"></textarea>
       </div>
 
-      <!-- 5. Quality & Requirements -->
-      <div class="section-number">5. Quality &amp; Requirements</div>
-      <div class="section-heading">5.1 Product / Service Quality</div>
+      <!-- 5. Stakeholder Management -->
+      <div class="section-number">5. Stakeholder Management</div>
+      <div class="section-heading">Stakeholder Management</div>
       <div class="field">
-        <textarea id="quality" placeholder="Describe the overall quality of the final deliverables. Were quality standards met?"></textarea>
+        <textarea id="stakeholders" placeholder="How did you engage with potential users, the instructor, or other stakeholders? What feedback was most valuable? How effective was your communication strategy?"></textarea>
       </div>
 
-      <div class="section-heading">5.2 Requirements Coverage</div>
+      <!-- 6. Risk and Issue Summary -->
+      <div class="section-number">6. Risk and Issue Summary</div>
+      <div class="section-heading">Risk and Issue Summary</div>
       <div class="field">
-        <textarea id="requirements" placeholder="How well did the final solution meet the original requirements and acceptance criteria?"></textarea>
+        <textarea id="risks" placeholder="Document the key risks and issues that materialized during your project:
+• What risks from your risk register actually happened?
+• What unexpected issues came up?
+• How did you handle them?
+• Are there any outstanding risks or issues that need to be monitored going forward?"></textarea>
       </div>
 
-      <!-- 6. Stakeholder Engagement -->
-      <div class="section-number">6. Stakeholder Engagement</div>
-      <div class="section-heading">Stakeholder Feedback &amp; Satisfaction</div>
+      <!-- 7. What Went Well -->
+      <div class="section-number">7. What Went Well?</div>
+      <div class="section-heading">Successes and Best Practices</div>
+      <div class="field">
+        <textarea id="went-well" placeholder="What worked exceptionally well? What practices should be repeated in future projects?
+
+Examples:
+• Weekly team check-ins kept everyone on track and motivated
+• Using a shared project management tool (Trello/Asana) improved visibility
+• Breaking the project into sprints helped manage the workload across the semester
+• Getting early feedback from potential users shaped better features"></textarea>
+      </div>
+
+      <!-- 8. What Didn't Go Well -->
+      <div class="section-number">8. What Didn’t Go Well?</div>
+      <div class="section-heading">Challenges and Problems</div>
+      <div class="field">
+        <textarea id="didnt-go-well" placeholder="What caused difficulties? What should be avoided or improved?
+
+Examples:
+• Balancing coursework with project deadlines created time pressure
+• Initial scope was too ambitious for the semester timeline
+• Team members had conflicting schedules for meetings
+• Underestimated the time needed for documentation and testing"></textarea>
+      </div>
+
+      <!-- 9. What Would You Do Differently? -->
+      <div class="section-number">9. What Would You Do Differently?</div>
+      <div class="section-heading">Improvements and Recommendations</div>
+      <div class="field">
+        <textarea id="differently" placeholder="If starting over, what would you change? What concrete recommendations do you have?
+
+Examples:
+• Start with a smaller MVP and add features incrementally
+• Set clearer team expectations and meeting schedules in week 1
+• Create a realistic timeline with buffer time for unexpected issues
+• Document decisions and rationale as you go instead of at the end"></textarea>
+      </div>
+
+      <!-- 10. Lessons Learned Register -->
+      <div class="section-number">10. Lessons Learned Register</div>
+      <div class="section-heading">Lessons Learned Register</div>
       <p class="section-subtitle">
-        Capture key stakeholder feedback and their satisfaction with the final outcome.
+        Document at least five lessons learned throughout your project lifecycle. Use the table format below to capture each lesson.
       </p>
       <div class="table-wrapper">
         <table>
           <thead>
           <tr>
-            <th style="width:25%;">Stakeholder / Group</th>
-            <th style="width:20%;">Role</th>
-            <th style="width:20%;">Satisfaction (1–5)</th>
-            <th>Comments</th>
+            <th style="width:15%;">Date</th>
+            <th style="width:20%;">SDLC Stage</th>
+            <th style="width:25%;">What was the problem?</th>
+            <th style="width:20%;">What was the consequence?</th>
+            <th>Lesson Learned Advice</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td><input type="text" placeholder="Sponsor, client, users..."></td>
-            <td><input type="text" placeholder="e.g., Sponsor"></td>
-            <td><input type="text" placeholder="4"></td>
-            <td><input type="text" placeholder="Short summary of feedback"></td>
-          </tr>
-          <tr>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- 7. Risks & Issues -->
-      <div class="section-number">7. Risks &amp; Issues</div>
-      <div class="section-heading">Risk &amp; Issue Summary</div>
-      <p class="section-subtitle">
-        Document major risks and issues that impacted the project and how they were handled.
-      </p>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-          <tr>
-            <th style="width:18%;">ID</th>
-            <th style="width:30%;">Description</th>
-            <th style="width:18%;">Impact</th>
-            <th style="width:18%;">Response</th>
-            <th>Outcome</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><input type="text" placeholder="R1 / I1"></td>
-            <td><input type="text" placeholder="Describe the risk or issue"></td>
-            <td><input type="text" placeholder="High / Med / Low"></td>
-            <td><input type="text" placeholder="Avoid, mitigate, accept..."></td>
-            <td><input type="text" placeholder="What happened in the end?"></td>
-          </tr>
-          <tr>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- 8. Lessons Learned -->
-      <div class="section-number">8. Lessons Learned</div>
-      <div class="section-heading">What Went Well</div>
-      <div class="field">
-        <textarea id="lessons-good" placeholder="Describe practices, decisions, or tools that worked particularly well and should be repeated."></textarea>
-      </div>
-
-      <div class="section-heading">What Could Be Improved</div>
-      <div class="field">
-        <textarea id="lessons-bad" placeholder="Describe what did not go well and suggestions for improvement on future projects."></textarea>
-      </div>
-
-      <!-- 9. Benefits Realization -->
-      <div class="section-number">9. Benefits Realization</div>
-      <div class="section-heading">Business Outcomes &amp; Impact</div>
-      <div class="field">
-        <textarea id="benefits" placeholder="Summarize the benefits delivered (e.g., cost savings, time savings, quality improvements, customer satisfaction)."></textarea>
-      </div>
-
-      <!-- 10. Handover & Transition -->
-      <div class="section-number">10. Handover &amp; Transition</div>
-      <div class="section-heading">Operational Handover</div>
-      <div class="field">
-        <textarea id="handover" placeholder="Describe how deliverables were handed off to operations/support and any training completed."></textarea>
-      </div>
-
-      <div class="section-heading">Support &amp; Maintenance Plan</div>
-      <div class="field">
-        <textarea id="support" placeholder="Outline who owns the product/service now, and how support and maintenance will be handled."></textarea>
-      </div>
-
-      <!-- 11. Outstanding Items -->
-      <div class="section-number">11. Outstanding Items</div>
-      <div class="section-heading">Open Actions / Follow-on Work</div>
-      <p class="section-subtitle">
-        List any remaining work or follow-up tasks that need to be completed after project closure.
-      </p>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-          <tr>
-            <th style="width:30%;">Item</th>
-            <th style="width:20%;">Owner</th>
-            <th style="width:20%;">Due Date</th>
-            <th>Status / Notes</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><input type="text" placeholder="e.g., Final training session"></td>
-            <td><input type="text" placeholder="Name / role"></td>
             <td><input type="text" placeholder="mm/dd/yy"></td>
-            <td><input type="text" placeholder="Planned / In progress / Done"></td>
+            <td><input type="text" placeholder="Initiation / Planning / Execution / Monitoring / Closing"></td>
+            <td><input type="text" placeholder="Describe the problem or challenge encountered"></td>
+            <td><input type="text" placeholder="What happened as a result?"></td>
+            <td><input type="text" placeholder="What advice would you give to avoid or handle this in the future?"></td>
           </tr>
           <tr>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- 12. Project Archive -->
-      <div class="section-number">12. Project Archive</div>
-      <div class="section-heading">Documentation &amp; Asset Storage</div>
-      <div class="field">
-        <textarea id="archive" placeholder="Where are key project documents, code, designs, and other assets stored for future reference?"></textarea>
-      </div>
-
-      <!-- 13. Sign-Off -->
-      <div class="section-number">13. Sign-Off</div>
-      <div class="section-heading">Approvals</div>
-      <p class="section-subtitle">
-        Capture formal approval that the project is complete and accepted.
-      </p>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-          <tr>
-            <th style="width:30%;">Name</th>
-            <th style="width:25%;">Role</th>
-            <th style="width:20%;">Date</th>
-            <th>Signature / Notes</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><input type="text" placeholder="Sponsor"></td>
-            <td><input type="text" placeholder="Project Sponsor"></td>
             <td><input type="text" placeholder="mm/dd/yy"></td>
-            <td><input type="text" placeholder="Approved, pending, etc."></td>
+            <td><input type="text" placeholder="SDLC Stage"></td>
+            <td><input type="text" placeholder="Problem description"></td>
+            <td><input type="text" placeholder="Consequence"></td>
+            <td><input type="text" placeholder="Advice nugget"></td>
           </tr>
           <tr>
-            <td><input type="text" placeholder="Project Manager"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="SDLC Stage"></td>
+            <td><input type="text" placeholder="Problem description"></td>
+            <td><input type="text" placeholder="Consequence"></td>
+            <td><input type="text" placeholder="Advice nugget"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="SDLC Stage"></td>
+            <td><input type="text" placeholder="Problem description"></td>
+            <td><input type="text" placeholder="Consequence"></td>
+            <td><input type="text" placeholder="Advice nugget"></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="mm/dd/yy"></td>
+            <td><input type="text" placeholder="SDLC Stage"></td>
+            <td><input type="text" placeholder="Problem description"></td>
+            <td><input type="text" placeholder="Consequence"></td>
+            <td><input type="text" placeholder="Advice nugget"></td>
           </tr>
           </tbody>
         </table>
       </div>
 
-            <!-- 14. What's Next -->
-      <div class="section-number">14. What&#39;s Next</div>
-      <div class="section-heading">What&#39;s Next</div>
+      <!-- 11. Key Takeaways for Future Projects -->
+      <div class="section-number">11. Key Takeaways for Future Projects</div>
+      <div class="section-heading">Key Takeaways for Future Projects</div>
+      <div class="field">
+        <textarea id="takeaways" placeholder="What are the most important lessons you learned that you’d apply to your next project?
+
+Be specific and actionable:
+1. Start with a realistic scope—our initial plan was too ambitious for one semester
+2. Schedule regular team sync meetings at the same time each week for consistency
+3. Build in buffer time for learning new tools and technologies"></textarea>
+      </div>
+
+      <!-- 12. Formal Sign-Off -->
+      <div class="section-number">12. Formal Sign-Off</div>
+      <div class="section-heading">Formal Sign-Off</div>
+      <div class="field">
+        <textarea id="signoff" placeholder="Document stakeholder feedback and approval:
+• Your name and signature as PM
+• Team members who approve the final deliverables
+• Stakeholder feedback: Were they happy with the outcome? What were their impressions?
+• Stakeholder sign-off confirming they are satisfied with the deliverables
+• Instructor/course approval (if applicable)"></textarea>
+      </div>
+
+      <!-- 13. Recognition -->
+      <div class="section-number">13. Recognition</div>
+      <div class="section-heading">Recognition</div>
+      <div class="field">
+        <textarea id="recognition" placeholder="Thank the people who helped make your project successful:
+• Team members and their specific contributions
+• People you interviewed or who provided feedback
+• Classmates who offered advice or support"></textarea>
+      </div>
+
+      <!-- 14. What's Next -->
+      <div class="section-number">14. What’s Next</div>
+      <div class="section-heading">What’s Next</div>
       <p class="section-subtitle">
-        Future plans, next steps, and how you&#39;ll apply what you learned.
+        Future plans, next steps, and how you’ll apply what you learned.
       </p>
       <div class="field">
         <textarea id="whats-next" placeholder="What are your next steps after this project?
@@ -552,23 +541,21 @@
 • How has this project changed your approach to project management?"></textarea>
       </div>
 
+      <!-- Buttons (including export) -->
+      <div class="form-footer">
+        <button class="btn btn-secondary" type="reset">Clear</button>
+        <button class="btn btn-primary" type="button" onclick="exportToWord()">💾 Export to Word</button>
+      </div>
 
-    <!-- Buttons (including export) -->
-    <div class="form-footer">
-      <button class="btn btn-secondary" type="reset">Clear</button>
-      <button class="btn btn-primary" type="button" onclick="exportToWord()">💾 Export to Word</button>
-    </div>
+    </div><!-- /#closure-content -->
+  </div><!-- /.card -->
 
-  </div>
-
-</div>
+</div><!-- /.shell -->
 
 <script>
   function exportToWord(filename = 'Project_Closure_Document') {
-    // Get the content of the div
     const content = document.getElementById('closure-content').innerHTML;
 
-    // Basic Word-compatible HTML wrapper
     const preHtml =
       "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
       "xmlns:w='urn:schemas-microsoft-com:office:word' " +
@@ -578,12 +565,10 @@
 
     const html = preHtml + content + postHtml;
 
-    // Create a Blob of the data
     const blob = new Blob(['\ufeff', html], {
       type: 'application/msword'
     });
 
-    // Create download link element
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -591,8 +576,6 @@
 
     document.body.appendChild(link);
     link.click();
-
-    // Cleanup
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   }
