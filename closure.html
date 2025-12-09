@@ -108,6 +108,112 @@
         font-size:12px;
       }
     }
+    /* Project summary info grid */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.info-item{
+  background:#f9fafb;
+  border-radius:10px;
+  padding:10px 12px;
+  border:1px solid #e5e7eb;
+}
+
+.info-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#6b7280;
+  margin-bottom:4px;
+}
+
+.info-value{
+  font-size:14px;
+  font-weight:600;
+  color:#111827;
+}
+
+/* Status pills in tables */
+.status-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:2px 8px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  border:1px solid transparent;
+}
+
+.status-done{
+  background:#ecfdf3;
+  color:#15803d;
+  border-color:#bbf7d0;
+}
+
+.status-progress{
+  background:#eff6ff;
+  color:#1d4ed8;
+  border-color:#bfdbfe;
+}
+
+.status-risk{
+  background:#fef2f2;
+  color:#b91c1c;
+  border-color:#fecaca;
+}
+
+/* Zebra striping for tables */
+tbody tr:nth-child(odd){
+  background:#f9fafb;
+}
+tbody tr:nth-child(even){
+  background:#ffffff;
+}
+
+/* Callout boxes */
+.callout{
+  border-radius:12px;
+  padding:12px 14px;
+  border:1px solid;
+  margin-bottom:12px;
+}
+
+.callout-key{
+  background:#ecfeff;
+  border-color:#a5f3fc;
+}
+
+.callout-next{
+  background:#fef3c7;
+  border-color:#fde68a;
+}
+
+/* Accent bar on section titles */
+h2.section-title{
+  margin-top:24px;
+  margin-bottom:8px;
+  font-size:20px;
+  font-weight:700;
+  color:#111827;
+  padding-left:10px;
+  border-left:4px solid #004d7a;
+}
+
+/* Keep first section closer to header */
+h2.section-title:first-of-type{
+  margin-top:0;
+}
+
+/* Narrower reading width */
+.content-wrap{
+  max-width:720px;
+  margin:0 auto;
+}
+
   </style>
 </head>
 <body>
@@ -120,49 +226,52 @@
   </header>
 
   <main class="card">
+    <div> class="content-wrap">
 
     <!-- 1. Project Information -->
     <h2 class="section-title">1. Project Information</h2>
 
-    <div class="field-row">
-      <div class="field-label">Project Title:</div>
-      <p>Landing an Entry-Level IT Job</p>
-    </div>
+<div class="info-grid">
+  <div class="info-item">
+    <div class="info-label">Project Title</div>
+    <div class="info-value">Landing an Entry-Level IT Job</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">Project Manager</div>
+    <div class="info-value">Alejandro Diaz</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">Closure Type</div>
+    <div class="info-value">Perpetual Closure – No official end, ongoing</div>
+  </div>
+</div>
 
-    <div class="field-row">
-      <div class="field-label">Project Manager:</div>
-      <p>Alejandro Diaz</p>
-    </div>
+<div class="field-row">
+  <div class="field-label">Project Description:</div>
+  <p>
+    This project aimed to increase my knowledge of the fundamentals of Information Technology.
+    I wanted to master the fundamentals and demonstrate that I went above and beyond to acquire
+    the skills necessary for an entry-level IT job. I didn't have much knowledge besides what
+    I had learned in school, so I wanted to get a hands-on approach to improve my chances of
+    getting a job.
+  </p>
+</div>
 
-    <div class="field-row">
-      <div class="field-label">Project Description:</div>
-      <p>
-        This project aimed to increase my knowledge of the fundamentals of Information Technology.
-        I wanted to master the fundamentals and demonstrate that I went above and beyond to acquire
-        the skills necessary for an entry-level IT job. I didn't have much knowledge besides what
-        I had learned in school, so I wanted to get a hands-on approach to improve my chances of
-        getting a job.
-      </p>
-    </div>
+<div class="field-row">
+  <div class="field-label">Closing Summary:</div>
+  <p>
+    This project taught me more than I had previously known. While I completed some of the
+    tasks outlined in my deliverables, such as obtaining a certification in Cybersecurity
+    through ISC2, completing the Networking Basics module on Cisco's online learning
+    platform, and purchasing a TryHackMe account to enhance my cybersecurity skills.
+    This project was beneficial as it not only taught me technical skills, but it also
+    enhanced my communication, business, and networking skills. Overall, this project
+    felt like a success.
+  </p>
+</div>
 
-    <div class="field-row">
-      <div class="field-label">Project Closure Type:</div>
-      <p>Perpetual Closure – No official end, ongoing</p>
     </div>
-
-    <div class="field-row">
-      <div class="field-label">Closing Summary:</div>
-      <p>
-        This project taught me more than I had previously known. While I completed some of the
-        tasks outlined in my deliverables, such as obtaining a certification in Cybersecurity
-        through ISC2, completing the Networking Basics module on Cisco's online learning
-        platform, and purchasing a TryHackMe account to enhance my cybersecurity skills.
-        This project was beneficial as it not only taught me technical skills, but it also
-        enhanced my communication, business, and networking skills. Overall, this project
-        felt like a success.
-      </p>
-    </div>
-
+  </main>
     <!-- 2. Deliverables Summary -->
     <h2 class="section-title">2. Deliverables Summary</h2>
     <p class="subtitle">Summary of deliverables, their original definition of done, actual progress, and status.</p>
@@ -184,7 +293,7 @@
             responsive on mobile/desktop.
           </td>
           <td>GitHub portfolio completed.</td>
-          <td>Done</td>
+          <td><span class="status-pill status-done">Done</span></td>
         </tr>
         <tr>
           <td>Cisco Networking Academy Badges</td>
@@ -193,7 +302,7 @@
             and IT Support Specialist path and earn the badges to demonstrate skills learned.
           </td>
           <td>Networking Basics badge.</td>
-          <td>Done</td>
+          <td><span class="status-pill status-done">Done</span></td>
         </tr>
         <tr>
           <td>Professional Certifications</td>
@@ -201,7 +310,7 @@
             Both exams passed; certificates linked in GitHub portfolio.
           </td>
           <td>ISC2 CC Certification / A+ certification.</td>
-          <td>In progress</td>
+          <td><span class="status-pill status-progress">In progress</span></td>
         </tr>
         <tr>
           <td>Weekly Meetup with Network</td>
@@ -213,7 +322,7 @@
             Simple document stating that I met up with possible job sponsors every week.
             Short summary of how the meeting with the network went.
           </td>
-          <td>Done</td>
+          <td><span class="status-pill status-done">Done</span></td>
         </tr>
         <tr>
           <td>Entry-level Job Research</td>
@@ -224,7 +333,7 @@
           <td>
             A paper with common job descriptions, traits, and skills.
           </td>
-          <td>Done</td>
+          <td><span class="status-pill status-done">Done</span></td>
         </tr>
       </tbody>
     </table>
@@ -404,12 +513,15 @@
 
     <!-- 11. Key Takeaways for Future Projects -->
     <h2 class="section-title">11. Key Takeaways for Future Projects</h2>
-    <p>
-      For my next project, I aim to establish a game plan to set my goals. Little by little,
-      I will tackle my assignments in an organized manner, completing the essential sections
-      first. Then, I will conduct a check to see where I stand, timewise, and how I am
-      performing compared to the timeline.
-    </p>
+<div class="callout callout-key">
+  <p>
+    For my next project, I aim to establish a game plan to set my goals. Little by little,
+    I will tackle my assignments in an organized manner, completing the essential sections
+    first. Then, I will conduct a check to see where I stand, timewise, and how I am
+    performing compared to the timeline.
+  </p>
+</div>
+
 
     <!-- 12. Formal Sign-Off -->
     <h2 class="section-title">12. Formal Sign-Off</h2>
@@ -432,16 +544,17 @@
 
     <!-- 14. What’s Next -->
     <h2 class="section-title">14. What’s Next</h2>
-    <p>
-      Moving forward, I will complete the cybersecurity and IT Support path on Cisco's
-      Networking Academy. Additionally, I have begun studying for my next certification,
-      which includes CompTIA's A+, Security+, and Network+ certifications.
-    </p>
-    <p>
-      I have also started applying for entry-level positions, including a job opening at
-      LA County that targets IT students. Wish me luck!
-    </p>
-
+<div class="callout callout-next">
+  <p>
+    Moving forward, I will complete the cybersecurity and IT Support path on Cisco's
+    Networking Academy. Additionally, I have begun studying for my next certification,
+    which includes CompTIA's A+, Security+, and Network+ certifications.
+  </p>
+  <p>
+    I have also started applying for entry-level positions, including a job opening at
+    LA County that targets IT students. Wish me luck!
+  </p>
+</div>
   </main>
 </div>
 
