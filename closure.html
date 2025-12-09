@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Project Closure</title>
+  <title>Comprehensive Project Closure Document</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -17,6 +17,31 @@
       max-width:900px;
       margin:24px auto 40px;
       padding:0 16px;
+    }
+
+    /* --- Top Navigation Bar --- */
+    .topnav{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      margin-bottom:16px;
+      font-size:14px;
+    }
+    .topnav a{
+      text-decoration:none;
+      color:#0b3140;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      transition:.15s ease;
+    }
+    .topnav a:hover{
+      background:#ffffffaa;
+      border-color:rgba(0,0,0,.15);
+    }
+    .topnav a[aria-current="page"]{
+      font-weight:700;
+      color:#004d7a;
     }
 
     .header{
@@ -216,47 +241,20 @@
       max-width:720px;
       margin:0 auto;
     }
-    
-/* --- Top Navigation Bar --- */
-.topnav{
-  display:flex;
-  justify-content:flex-end;
-  gap:10px;
-  margin-bottom:16px;
-  font-size:14px;
-}
-.topnav a{
-  text-decoration:none;
-  color:#0b3140;
-  padding:4px 10px;
-  border-radius:999px;
-  border:1px solid transparent;
-  transition:.15s ease;
-}
-.topnav a:hover{
-  background:#ffffffaa;
-  border-color:rgba(0,0,0,.15);
-}
-.topnav a[aria-current="page"]{
-  font-weight:700;
-  color:#004d7a;
-}
 
   </style>
 </head>
 <body>
 
-<nav class="topnav" aria-label="Page navigation">
-  <a href="./index.html">🏠 Landing Page</a>
-  <a href="./charter.html">📄 Project Charter</a>
-  <a href="./status.html">📊 Status Reports</a>
-  <a href="./interviews.html">👥 Stakeholder Interviews</a>
-  <a href="./peer-reviews.html">💬 Peer Reviews</a>
-  <a href="./star-stories.html">⭐ STAR Stories</a>
-  <a href="./closure.html" aria-current="page">✅ Closure Documents</a>
-</nav>
-
 <div class="shell">
+
+  <!-- Shared top navigation -->
+  <nav class="topnav">
+    <a href="./index.html">🏠 Landing Page</a>
+    <a href="./charter.html">📄 Project Charter</a>
+    <a href="./status.html">📊 Status Reports</a>
+    <a href="./closure.html" aria-current="page">✅ Closure Documents</a>
+  </nav>
 
   <header class="header">
     <h1>Comprehensive Project Closure Document</h1>
