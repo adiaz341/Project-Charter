@@ -39,9 +39,32 @@ details[open] .chev{ transform:rotate(90deg) translateY(-1px) }
   }
   body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:var(--paper);color:var(--ink)}
   .shell{max-width:1100px;margin:24px auto;padding:0 16px}
-  .topnav{display:flex;gap:8px;margin-bottom:12px}
-  .tab{display:inline-block;padding:8px 12px;border:1px solid var(--br);border-radius:10px;background:#fff;text-decoration:none;color:#0b3140;font-weight:600}
-  .tab.active{background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));color:#fff;border-color:transparent}
+    
+  /* Top navigation (global site nav) */
+  .topnav{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-bottom:16px;
+    font-size:14px;
+  }
+  .topnav a{
+    text-decoration:none;
+    color:#0b3140;
+    padding:4px 10px;
+    border-radius:999px;
+    border:1px solid transparent;
+    transition:.15s ease;
+  }
+  .topnav a:hover{
+    background:#ffffffaa;
+    border-color:rgba(0,0,0,.15);
+  }
+  .topnav a[aria-current="page"]{
+    font-weight:700;
+    color:#004d7a;
+  }
+
   .container{background:var(--card);border:1px solid var(--br);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
   .header{background:linear-gradient(135deg,var(--brand-dark),var(--brand-mid));color:#fff;padding:22px;text-align:center}
   .content{padding:22px}
@@ -113,15 +136,16 @@ details[open] .chev{ transform:rotate(90deg) translateY(-1px) }
 </head>
 <body>
   <div class="shell">
-    <!-- Tabs -->
-    <nav class="topnav" aria-label="Sections">
-      <a class="tab" href="./index.html">Landing Page</a>
-      <a class="tab active" href="./status.html" aria-current="page">Status Reports</a>
-      <a class="tab" href="./charter.html">Project Charter</a>
-      <a class="tab" href="./closure.html">Project Closure</a>
-      <a class="tab" href="./interviews.html">Interviews</a>
-      <a class="tab" href="./star-stories.html">Star Stories</a>
-    </nav>
+    <!-- Top NAV -->
+    <nav class="topnav" aria-label="Page navigation">
+  <a href="./index.html">🏠 Landing Page</a>
+  <a href="./charter.html">📄 Project Charter</a>
+  <a href="./status.html" aria-current="page">📊 Status Reports</a>
+  <a href="./interviews.html">👥 Stakeholder Interviews</a>
+  <a href="./star-stories.html">⭐ STAR Stories</a>
+  <a href="./closure.html">✅ Closure Documents</a>
+</nav>
+
 
     <!-- Quick Jump -->
 <nav class="breadcrumbs" aria-label="Quick jump">
