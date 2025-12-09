@@ -1,721 +1,449 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Closure Documents — IT Project Portfolio</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-  html{
-    scroll-behavior:smooth;
-  }
-  body{
-    margin:0;
-    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    background:#f5f7fb;
-    color:#1f2937;
-  }
-  .shell{max-width:1100px;margin:20px auto;padding:0 16px;}
-
-  .topnav{
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-    margin-bottom:16px;
-    font-size:14px;
-  }
-  .topnav a{
-    text-decoration:none;
-    color:#0b3140;
-    padding:4px 10px;
-    border-radius:999px;
-    border:1px solid transparent;
-  }
-  .topnav a:hover{
-    background:#ffffffaa;
-    border-color:rgba(0,0,0,.15);
-  }
-
-  .header{
-    background:linear-gradient(135deg,#004d7a,#008793);
-    color:white;
-    padding:24px;
-    border-radius:14px;
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
-  }
-  .header h1{margin:0 0 6px;font-size:28px}
-  .header p{margin:0;font-size:15px;opacity:.9}
-
-  .card{
-    background:white;
-    border-radius:18px;
-    padding:20px 22px;
-    margin-top:20px;
-    border:1px solid #e5e7eb;
-    box-shadow:0 4px 14px rgba(15,23,42,.08);
-  }
-
-  /* layout with sticky sidebar */
-  .layout{
-    display:grid;
-    grid-template-columns:260px minmax(0,1fr);
-    gap:24px;
-  }
-
-  .toc{
-    align-self:flex-start;
-    position:sticky;
-    top:86px;
-    background:#f9fafb;
-    border-radius:14px;
-    border:1px solid #e5e7eb;
-    padding:12px 12px;
-  }
-  .toc-title{
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:.1em;
-    color:#6b7280;
-    margin-bottom:8px;
-  }
-  .toc ul{
-    list-style:none;
-    padding:0;
-    margin:0;
-  }
-  .toc li{
-    margin-bottom:4px;
-  }
-  .toc a{
-    display:block;
-    font-size:13px;
-    padding:6px 10px;
-    border-radius:999px;
-    text-decoration:none;
-    color:#374151;
-    border:1px solid transparent;
-    white-space:nowrap;
-  }
-  .toc a:hover{
-    background:#e0f2fe;
-    border-color:#bfdbfe;
-  }
-  .toc a.active{
-    background:#004d7a;
-    color:white;
-    border-color:#004d7a;
-  }
-
-  .closure-header {
-    margin-bottom:18px;
-  }
-  .closure-title-block h2 {
-    margin:0;
-    font-size:22px;
-  }
-  .closure-title-block p {
-    margin:4px 0 0;
-    font-size:14px;
-    color:#6b7280;
-  }
-
-  /* Main section title (number + name) */
-  .section-number{
-    font-weight:600;
-    margin-top:24px;
-    margin-bottom:6px;
-    font-size:18px;
-    color:#111827;
-  }
-  /* Sub-headings INSIDE sections (4.1, etc.) */
-  .section-heading{
-    font-size:15px;
-    font-weight:600;
-    margin-bottom:6px;
-    color:#004d7a;
-  }
-  .section-subtitle{
-    font-size:14px;
-    color:#6b7280;
-    margin-bottom:10px;
-  }
-
-  label{
-    font-size:14px;
-    display:block;
-    margin-bottom:4px;
-    color:#4b5563;
-  }
-  .required{
-    color:#ef4444;
-  }
-
-  input[type="text"],
-  textarea,
-  select{
-    width:100%;
-    border-radius:10px;
-    border:1px solid #e5e7eb;
-    padding:9px 11px;
-    font-size:14px;
-    outline:none;
-    background:#f9fafb;
-    transition:border-color .15s, box-shadow .15s, background .15s;
-  }
-  input[type="text"]:focus,
-  textarea:focus,
-  select:focus{
-    border-color:#10b981;
-    box-shadow:0 0 0 2px rgba(16,185,129,.2);
-    background:#ffffff;
-  }
-  textarea{
-    resize:vertical;
-    min-height:70px;
-  }
-
-  .field{
-    margin-bottom:12px;
-  }
-
-  .table-wrapper{
-    border-radius:10px;
-    border:1px solid #e5e7eb;
-    overflow:hidden;
-    margin-top:6px;
-    margin-bottom:16px;
-  }
-  table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:13px;
-  }
-  thead{
-    background:#004d7a;
-    color:#f9fafb;
-  }
-  th,td{
-    padding:8px 10px;
-    border-bottom:1px solid #e5e7eb;
-    text-align:left;
-    vertical-align:top;
-  }
-  th{
-    font-weight:600;
-  }
-  tr:last-child td{
-    border-bottom:none;
-  }
-  td input{
-    padding:7px 9px;
-  }
-
-  .form-footer{
-    margin-top:24px;
-    padding-top:12px;
-    border-top:1px solid #e5e7eb;
-    display:flex;
-    justify-content:flex-end;
-    gap:8px;
-  }
-  .btn{
-    border-radius:999px;
-    padding:7px 16px;
-    border:none;
-    font-size:14px;
-    cursor:pointer;
-  }
-  .btn-secondary{
-    background:#e5e7eb;
-    color:#111827;
-  }
-  .btn-primary{
-    background:#008793;
-    color:white;
-  }
-
-  @media (max-width:900px){
-    .layout{
-      grid-template-columns:1fr;
-      gap:16px;
+  <meta charset="utf-8">
+  <title>Comprehensive Project Closure Document</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#f5f7fb;
+      color:#111827;
     }
-    .toc{
-      position:static;
-      display:flex;
-      flex-direction:column;
+
+    .shell{
+      max-width:900px;
+      margin:24px auto 40px;
+      padding:0 16px;
     }
-    .toc ul{
-      display:flex;
-      overflow-x:auto;
-      gap:8px;
+
+    .header{
+      background:linear-gradient(135deg,#004d7a,#008793);
+      color:white;
+      padding:24px 22px;
+      border-radius:16px;
+      box-shadow:0 8px 20px rgba(0,0,0,.12);
+      margin-bottom:20px;
     }
-    .toc li{
-      margin-bottom:0;
+    .header h1{
+      margin:0 0 6px;
+      font-size:28px;
     }
-  }
-</style>
+    .header p{
+      margin:0;
+      font-size:15px;
+      opacity:.9;
+    }
+
+    .card{
+      background:white;
+      border-radius:18px;
+      padding:22px 22px 26px;
+      border:1px solid #e5e7eb;
+      box-shadow:0 4px 14px rgba(15,23,42,.08);
+    }
+
+    h2.section-title{
+      margin-top:22px;
+      margin-bottom:8px;
+      font-size:20px;
+      font-weight:700;
+      color:#111827;
+    }
+    .subtitle{
+      font-size:14px;
+      color:#6b7280;
+      margin-bottom:8px;
+    }
+
+    .field-row{
+      margin-bottom:10px;
+    }
+    .field-label{
+      font-weight:600;
+    }
+    .field-label span{
+      font-weight:400;
+    }
+
+    p{
+      margin:6px 0 10px;
+      line-height:1.55;
+      font-size:14px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:13px;
+      margin:6px 0 14px;
+    }
+    thead{
+      background:#004d7a;
+      color:#f9fafb;
+    }
+    th,td{
+      border:1px solid #e5e7eb;
+      padding:8px 8px;
+      vertical-align:top;
+      text-align:left;
+    }
+    th{
+      font-weight:600;
+    }
+
+    ul{
+      margin:6px 0 10px 20px;
+      padding:0;
+      font-size:14px;
+    }
+
+    @media (max-width:640px){
+      .card{
+        padding:18px 16px 22px;
+      }
+      table{
+        font-size:12px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+
 <div class="shell">
 
-  <nav class="topnav">
-    <a href="./index.html">🏠 Landing Page</a>
-    <a href="./charter.html">📄 Project Charter</a>
-    <a href="./status.html">📊 Status Reports</a>
-    <a href="./closure.html" aria-current="page">✅ Closure Documents</a>
-  </nav>
-
   <header class="header">
-    <h1>Closure Documents</h1>
-    <p>Final project materials and reflections.</p>
+    <h1>Comprehensive Project Closure Document</h1>
+    <p>Landing an Entry-Level IT Job — Project Closure</p>
   </header>
 
-  <div class="card">
-    <div class="layout">
+  <main class="card">
 
-      <!-- Sticky sidebar navigation -->
-      <aside class="toc">
-        <div class="toc-title">On this page</div>
-        <ul>
-          <li><a href="#sec-1">1. Project Information</a></li>
-          <li><a href="#sec-2">2. Deliverables Summary</a></li>
-          <li><a href="#sec-3">3. Change Log</a></li>
-          <li><a href="#sec-4">4. Performance Analysis</a></li>
-          <li><a href="#sec-5">5. Stakeholder Management</a></li>
-          <li><a href="#sec-6">6. Risk and Issue Summary</a></li>
-          <li><a href="#sec-7">7. What Went Well?</a></li>
-          <li><a href="#sec-8">8. What Didn’t Go Well?</a></li>
-          <li><a href="#sec-9">9. What Would You Do Differently?</a></li>
-          <li><a href="#sec-10">10. Lessons Learned Register</a></li>
-          <li><a href="#sec-11">11. Key Takeaways for Future Projects</a></li>
-          <li><a href="#sec-12">12. Formal Sign-Off</a></li>
-          <li><a href="#sec-13">13. Recognition</a></li>
-          <li><a href="#sec-14">14. What’s Next</a></li>
-        </ul>
-      </aside>
+    <!-- 1. Project Information -->
+    <h2 class="section-title">1. Project Information</h2>
 
-      <!-- Everything inside this div will be exported to Word -->
-      <div id="closure-content">
+    <div class="field-row">
+      <div class="field-label">Project Title:</div>
+      <p>Landing an Entry-Level IT Job</p>
+    </div>
 
-        <div class="closure-header">
-          <div class="closure-title-block">
-            <h2>Comprehensive Project Closure Document</h2>
-            <p>Summarize your project outcomes, learning, and recommendations.</p>
-          </div>
-        </div>
+    <div class="field-row">
+      <div class="field-label">Project Manager:</div>
+      <p>Alejandro Diaz</p>
+    </div>
 
-        <!-- 1. Project Information -->
-        <section id="sec-1" data-section>
-          <div class="section-number">1. Project Information</div>
+    <div class="field-row">
+      <div class="field-label">Project Description:</div>
+      <p>
+        This project aimed to increase my knowledge of the fundamentals of Information Technology.
+        I wanted to master the fundamentals and demonstrate that I went above and beyond to acquire
+        the skills necessary for an entry-level IT job. I didn't have much knowledge besides what
+        I had learned in school, so I wanted to get a hands-on approach to improve my chances of
+        getting a job.
+      </p>
+    </div>
 
-          <div class="field">
-            <label for="title">Project Title <span class="required">*</span></label>
-            <input id="title" type="text" placeholder="e.g., Get an Entry-Level Job in Data Analytics">
-          </div>
+    <div class="field-row">
+      <div class="field-label">Project Closure Type:</div>
+      <p>Perpetual Closure – No official end, ongoing</p>
+    </div>
 
-          <div class="field">
-            <label for="manager">Project Manager</label>
-            <input id="manager" type="text" placeholder="Your name">
-          </div>
+    <div class="field-row">
+      <div class="field-label">Closing Summary:</div>
+      <p>
+        This project taught me more than I had previously known. While I completed some of the
+        tasks outlined in my deliverables, such as obtaining a certification in Cybersecurity
+        through ISC2, completing the Networking Basics module on Cisco's online learning
+        platform, and purchasing a TryHackMe account to enhance my cybersecurity skills.
+        This project was beneficial as it not only taught me technical skills, but it also
+        enhanced my communication, business, and networking skills. Overall, this project
+        felt like a success.
+      </p>
+    </div>
 
-          <div class="field">
-            <label for="description">Project Description</label>
-            <textarea id="description" placeholder="Brief overview of your semester project - what problem does it solve, who are the users, and what are the main features or deliverables?"></textarea>
-          </div>
+    <!-- 2. Deliverables Summary -->
+    <h2 class="section-title">2. Deliverables Summary</h2>
+    <p class="subtitle">Summary of deliverables, their original definition of done, actual progress, and status.</p>
 
-          <div class="field">
-            <label for="closure-type">Project Closure Type</label>
-            <select id="closure-type">
-              <option>Select closure type...</option>
-              <option>✅ Normal Closure - Project completed successfully</option>
-              <option>⚠️ Premature Closure - Ended early, core objectives met</option>
-              <option>🧩 Perpetual Closure - No official end, ongoing</option>
-              <option>❌ Failed / Unsuccessful Closure - Terminated due to issues</option>
-              <option>🔁 Changed Priority Closure - Stopped due to strategy shift</option>
-            </select>
-          </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Deliverable Name</th>
+          <th>Original Definition of Done</th>
+          <th>Actual Progress</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GitHub Portfolio</td>
+          <td>
+            Reviewed by 2 peers confirming 10+ links work; loads &lt; 3 seconds;
+            responsive on mobile/desktop.
+          </td>
+          <td>GitHub portfolio completed.</td>
+          <td>Done</td>
+        </tr>
+        <tr>
+          <td>Cisco Networking Academy Badges</td>
+          <td>
+            Complete Cisco Networking Academy’s Networking Technician, cybersecurity,
+            and IT Support Specialist path and earn the badges to demonstrate skills learned.
+          </td>
+          <td>Networking Basics badge.</td>
+          <td>Done</td>
+        </tr>
+        <tr>
+          <td>Professional Certifications</td>
+          <td>
+            Both exams passed; certificates linked in GitHub portfolio.
+          </td>
+          <td>ISC2 CC Certification / A+ certification.</td>
+          <td>In progress</td>
+        </tr>
+        <tr>
+          <td>Weekly Meetup with Network</td>
+          <td>
+            Meet with possible job sponsors for a weekly get-together and continue
+            furthering our bond.
+          </td>
+          <td>
+            Simple document stating that I met up with possible job sponsors every week.
+            Short summary of how the meeting with the network went.
+          </td>
+          <td>Done</td>
+        </tr>
+        <tr>
+          <td>Entry-level Job Research</td>
+          <td>
+            A summary of skills needed, recommended experience, and required experience
+            is documented. Confirm skills learned are ideal for this job.
+          </td>
+          <td>
+            A paper with common job descriptions, traits, and skills.
+          </td>
+          <td>Done</td>
+        </tr>
+      </tbody>
+    </table>
 
-          <div class="field">
-            <label for="summary">Closing Summary</label>
-            <textarea id="summary" placeholder="Executive summary of overall project performance - Did you meet your goals? What were the key successes and challenges? How would you rate the project's overall success?"></textarea>
-          </div>
-        </section>
+    <!-- 3. Change Log -->
+    <h2 class="section-title">3. Change Log</h2>
 
-        <!-- 2. Deliverables Summary -->
-        <section id="sec-2" data-section>
-          <div class="section-number">2. Deliverables Summary</div>
-          <p class="section-subtitle">
-            List all major deliverables and track their completion status.
-          </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Change No</th>
+          <th>Change Date</th>
+          <th>Change</th>
+          <th>Reason for Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2025-10-07</td>
+          <td>
+            Combined deliverables about certifications and badges and added two new
+            deliverables related to securing a job (job research and networking).
+          </td>
+          <td>
+            This change was necessary so that my charter wouldn't focus solely on certifications
+            and portfolios. If I hadn't changed it, then it wouldn't have helped me achieve my
+            goal of getting a job, which would be detrimental to my goal of getting hired.
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-          <div class="table-wrapper">
-            <table id="deliverables-table">
-              <thead>
-              <tr>
-                <th style="width:30%;">Deliverable Name</th>
-                <th style="width:25%;">Original Definition of Done</th>
-                <th style="width:25%;">Actual Progress</th>
-                <th>Status</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>
-                  <input type="text" placeholder="e.g., Project Charter, User Research Report">
-                </td>
-                <td>
-                  <input type="text" placeholder="e.g., Complete charter with all sections, 10+ user interviews">
-                </td>
-                <td>
-                  <input type="text" placeholder="What was delivered">
-                </td>
-                <td>
-                  <input type="text" placeholder="-">
-                </td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="Deliverable 2"></td>
-                <td><input type="text" placeholder="Original criteria"></td>
-                <td><input type="text" placeholder="What was delivered"></td>
-                <td><input type="text" placeholder="-"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="Deliverable 3"></td>
-                <td><input type="text" placeholder="Original criteria"></td>
-                <td><input type="text" placeholder="What was delivered"></td>
-                <td><input type="text" placeholder="-"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="Deliverable 4"></td>
-                <td><input type="text" placeholder="Original criteria"></td>
-                <td><input type="text" placeholder="What was delivered"></td>
-                <td><input type="text" placeholder="-"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="Deliverable 5"></td>
-                <td><input type="text" placeholder="Original criteria"></td>
-                <td><input type="text" placeholder="What was delivered"></td>
-                <td><input type="text" placeholder="-"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="Deliverable 6"></td>
-                <td><input type="text" placeholder="Original criteria"></td>
-                <td><input type="text" placeholder="What was delivered"></td>
-                <td><input type="text" placeholder="-"></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+    <!-- 4. Performance Analysis -->
+    <h2 class="section-title">4. Performance Analysis</h2>
 
-        <!-- 3. Change Log -->
-        <section id="sec-3" data-section>
-          <div class="section-number">3. Change Log</div>
-          <p class="section-subtitle">
-            Summary of all scope changes made during the project.
-          </p>
+    <div class="field-row">
+      <div class="field-label">4.1 Budget Performance:</div>
+      <p>
+        I stayed within budget; the only thing that was added on with a not-significant impact
+        was the TryHackMe subscription. It was on sale, so it was a worthy purchase. In the
+        long run, using this platform will enhance my understanding of cybersecurity and the
+        many domains offered within.
+      </p>
+    </div>
 
-          <div class="table-wrapper">
-            <table>
-              <thead>
-              <tr>
-                <th style="width:10%;">Change No</th>
-                <th style="width:15%;">Change Date</th>
-                <th style="width:35%;">Change</th>
-                <th>Reason for Change</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td><input type="text" placeholder="1"></td>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="Describe the change"></td>
-                <td><input type="text" placeholder="Why was this change needed?"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="2"></td>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="Describe the change"></td>
-                <td><input type="text" placeholder="Why was this change needed?"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="3"></td>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="Describe the change"></td>
-                <td><input type="text" placeholder="Why was this change needed?"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="4"></td>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="Describe the change"></td>
-                <td><input type="text" placeholder="Why was this change needed?"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="5"></td>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="Describe the change"></td>
-                <td><input type="text" placeholder="Why was this change needed?"></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+    <div class="field-row">
+      <div class="field-label">4.2 Schedule Performance:</div>
+      <p>
+        I met about 5 of the six milestones. Unfortunately, I couldn’t complete the other badges
+        I had looked to achieve with Cisco's Networking Academy. But once I realized that this
+        would happen, I made an executive decision to complete these courses during the winter break.
+      </p>
+    </div>
 
-        <!-- 4. Performance Analysis -->
-        <section id="sec-4" data-section>
-          <div class="section-number">4. Performance Analysis</div>
+    <!-- 5. Stakeholder Management -->
+    <h2 class="section-title">5. Stakeholder Management</h2>
+    <p>
+      The instructor held weekly meetings to address the uncertainty within our projects.
+      She added valuable feedback, such as networking with potential employers, conducting
+      thorough job research to ensure my learning would be beneficial, practicing effective
+      time management, and not being afraid of change. I also addressed some certifications
+      I wanted to obtain with my wife, the primary stakeholder, regarding some spending I
+      might need to make to get certified.
+    </p>
 
-          <div class="section-heading">4.1 Budget Performance</div>
-          <div class="field">
-            <textarea id="budget" placeholder="If applicable: Did you stay within budget constraints? Any unexpected costs for tools, hosting, or resources?"></textarea>
-          </div>
+    <!-- 6. Risk and Issue Summary -->
+    <h2 class="section-title">6. Risk and Issue Summary</h2>
+    <p>
+      I encountered a time issue with my deliverables, so I was unable to complete two of my
+      key learning deliverables. The next risk was my failure to ensure that my learning would
+      be beneficial. I had a plan of what I wanted to do, but I couldn't confirm with certainty
+      that it would truly be helpful for me to get an entry-level job.
+    </p>
 
-          <div class="section-heading">4.2 Schedule Performance</div>
-          <div class="field">
-            <textarea id="schedule" placeholder="Did you meet your semester milestones? What caused delays? Were your time estimates realistic for this project?"></textarea>
-          </div>
-        </section>
+    <!-- 7. What Went Well -->
+    <h2 class="section-title">7. What Went Well?</h2>
+    <p>
+      Weekly team check-ins helped with my accountability. They helped me get back on track
+      when I felt stuck on what to do next, and they were supportive as I studied for my
+      certification exam. The studying went well, and I used ChatGPT to create study questions
+      that helped me in my studies. This project was really enlightening about what can occur
+      when entering the professional world.
+    </p>
 
-        <!-- 5. Stakeholder Management -->
-        <section id="sec-5" data-section>
-          <div class="section-number">5. Stakeholder Management</div>
-          <div class="field">
-            <textarea id="stakeholders" placeholder="How did you engage with potential users, the instructor, or other stakeholders? What feedback was most valuable? How effective was your communication strategy?"></textarea>
-          </div>
-        </section>
+    <!-- 8. What Didn’t Go Well -->
+    <h2 class="section-title">8. What Didn’t Go Well?</h2>
+    <p>
+      There was a lot of work from other classes that sometimes overwhelmed me. Although I
+      was able to complete some deliverables, I fell behind in achieving all of them. I had
+      hoped to have a more visually appealing portfolio by the end of the semester, but
+      unfortunately, it didn't work out.
+    </p>
+    <p>
+      I look forward to completing the deliverables I didn't complete and furthering my education.
+    </p>
 
-        <!-- 6. Risk and Issue Summary -->
-        <section id="sec-6" data-section>
-          <div class="section-number">6. Risk and Issue Summary</div>
-          <div class="field">
-            <textarea id="risks" placeholder="Document the key risks and issues that materialized during your project:
-• What risks from your risk register actually happened?
-• What unexpected issues came up?
-• How did you handle them?
-• Are there any outstanding risks or issues that need to be monitored going forward?"></textarea>
-          </div>
-        </section>
+    <!-- 9. What Would You Do Differently? -->
+    <h2 class="section-title">9. What Would You Do Differently?</h2>
+    <p>
+      I would begin working on the learning sections more and split the modules from shortest
+      to longest to complete more deliverables. Additionally, I would have set a goal of
+      achieving at least two to three chapters instead of one, which would have put me further
+      ahead than I had anticipated, not to mention the troubleshooting of the project charter
+      when ChatGPT decided to give me more problems.
+    </p>
 
-        <!-- 7. What Went Well -->
-        <section id="sec-7" data-section>
-          <div class="section-number">7. What Went Well?</div>
-          <div class="section-heading">Successes and Best Practices</div>
-          <div class="field">
-            <textarea id="went-well" placeholder="What worked exceptionally well? What practices should be repeated in future projects?
+    <!-- 10. Lessons Learned Register -->
+    <h2 class="section-title">10. Lessons Learned Register</h2>
 
-Examples:
-• Weekly team check-ins kept everyone on track and motivated
-• Using a shared project management tool (Trello/Asana) improved visibility
-• Breaking the project into sprints helped manage the workload across the semester
-• Getting early feedback from potential users shaped better features"></textarea>
-          </div>
-        </section>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>SDLC Stage</th>
+          <th>What was the problem?</th>
+          <th>What was the consequence?</th>
+          <th>Lesson Learned Advice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>09/03/25</td>
+          <td>Planning</td>
+          <td>I couldn't establish a specific project.</td>
+          <td>
+            This set me back on my planning on what to do next for about 2 weeks.
+          </td>
+          <td>
+            Talk to the professor when unsure about what the project is going to be.
+          </td>
+        </tr>
+        <tr>
+          <td>09/21/25</td>
+          <td>Initiation</td>
+          <td>
+            Set back from planning carried further than originally thought.
+          </td>
+          <td>
+            By the time the initiation phase began, I struggled with structuring a
+            proper plan of action and I was disorganized.
+          </td>
+          <td>
+            Set the chart ahead of time in case I get held back in another section.
+          </td>
+        </tr>
+        <tr>
+          <td>10/02/25</td>
+          <td>Execution</td>
+          <td>
+            Deliverables were too focused on certifications and badges.
+          </td>
+          <td>
+            Wasted time focusing on the wrong deliverables. I had to make extra time
+            to figure these inconsistencies out.
+          </td>
+          <td>
+            Expand past certifications and badges; investigate something that will
+            give credibility to what I am looking to fix.
+          </td>
+        </tr>
+        <tr>
+          <td>11/25/25</td>
+          <td>Done</td>
+          <td>Procrastination!!!</td>
+          <td>
+            Last minute completion of my personal project and later nights completing
+            these assignments.
+          </td>
+          <td>
+            DON'T PROCRASTINATE!! Take advantage of the week off school to get a head
+            start on completing assignments.
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-        <!-- 8. What Didn't Go Well -->
-        <section id="sec-8" data-section>
-          <div class="section-number">8. What Didn’t Go Well?</div>
-          <div class="section-heading">Challenges and Problems</div>
-          <div class="field">
-            <textarea id="didnt-go-well" placeholder="What caused difficulties? What should be avoided or improved?
+    <!-- 11. Key Takeaways for Future Projects -->
+    <h2 class="section-title">11. Key Takeaways for Future Projects</h2>
+    <p>
+      For my next project, I aim to establish a game plan to set my goals. Little by little,
+      I will tackle my assignments in an organized manner, completing the essential sections
+      first. Then, I will conduct a check to see where I stand, timewise, and how I am
+      performing compared to the timeline.
+    </p>
 
-Examples:
-• Balancing coursework with project deadlines created time pressure
-• Initial scope was too ambitious for the semester timeline
-• Team members had conflicting schedules for meetings
-• Underestimated the time needed for documentation and testing"></textarea>
-          </div>
-        </section>
+    <!-- 12. Formal Sign-Off -->
+    <h2 class="section-title">12. Formal Sign-Off</h2>
+    <p>
+      My name is Alejandro Diaz, and I approve of this document. I am officially signing off,
+      stating that I did my best with all the homework and projects assigned by other classes.
+    </p>
 
-        <!-- 9. What Would You Do Differently? -->
-        <section id="sec-9" data-section>
-          <div class="section-number">9. What Would You Do Differently?</div>
-          <div class="section-heading">Improvements and Recommendations</div>
-          <div class="field">
-            <textarea id="differently" placeholder="If starting over, what would you change? What concrete recommendations do you have?
+    <!-- 13. Recognition -->
+    <h2 class="section-title">13. Recognition</h2>
+    <p>
+      Thank you to my team, Jackals! For the strong support you guys have given throughout
+      this semester. Thank you to everyone who gave me advice on how to stay on the right path!
+      Thank you, Alexis, Ryan, Juan, and Jeremy, for the open advice given and the viewpoints
+      I needed to complete my project.
+    </p>
+    <p>
+      Also, thank you to whoever may be reviewing this document.
+    </p>
 
-Examples:
-• Start with a smaller MVP and add features incrementally
-• Set clearer team expectations and meeting schedules in week 1
-• Create a realistic timeline with buffer time for unexpected issues
-• Document decisions and rationale as you go instead of at the end"></textarea>
-          </div>
-        </section>
+    <!-- 14. What’s Next -->
+    <h2 class="section-title">14. What’s Next</h2>
+    <p>
+      Moving forward, I will complete the cybersecurity and IT Support path on Cisco's
+      Networking Academy. Additionally, I have begun studying for my next certification,
+      which includes CompTIA's A+, Security+, and Network+ certifications.
+    </p>
+    <p>
+      I have also started applying for entry-level positions, including a job opening at
+      LA County that targets IT students. Wish me luck!
+    </p>
 
-        <!-- 10. Lessons Learned Register -->
-        <section id="sec-10" data-section>
-          <div class="section-number">10. Lessons Learned Register</div>
-          <p class="section-subtitle">
-            Document at least five lessons learned throughout your project lifecycle. Use the table format below to capture each lesson.
-          </p>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-              <tr>
-                <th style="width:15%;">Date</th>
-                <th style="width:20%;">SDLC Stage</th>
-                <th style="width:25%;">What was the problem?</th>
-                <th style="width:20%;">What was the consequence?</th>
-                <th>Lesson Learned Advice</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="Initiation / Planning / Execution / Monitoring / Closing"></td>
-                <td><input type="text" placeholder="Describe the problem or challenge encountered"></td>
-                <td><input type="text" placeholder="What happened as a result?"></td>
-                <td><input type="text" placeholder="What advice would you give to avoid or handle this in the future?"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="SDLC Stage"></td>
-                <td><input type="text" placeholder="Problem description"></td>
-                <td><input type="text" placeholder="Consequence"></td>
-                <td><input type="text" placeholder="Advice nugget"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="SDLC Stage"></td>
-                <td><input type="text" placeholder="Problem description"></td>
-                <td><input type="text" placeholder="Consequence"></td>
-                <td><input type="text" placeholder="Advice nugget"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="SDLC Stage"></td>
-                <td><input type="text" placeholder="Problem description"></td>
-                <td><input type="text" placeholder="Consequence"></td>
-                <td><input type="text" placeholder="Advice nugget"></td>
-              </tr>
-              <tr>
-                <td><input type="text" placeholder="mm/dd/yy"></td>
-                <td><input type="text" placeholder="SDLC Stage"></td>
-                <td><input type="text" placeholder="Problem description"></td>
-                <td><input type="text" placeholder="Consequence"></td>
-                <td><input type="text" placeholder="Advice nugget"></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- 11. Key Takeaways for Future Projects -->
-        <section id="sec-11" data-section>
-          <div class="section-number">11. Key Takeaways for Future Projects</div>
-          <div class="section-heading">Key Takeaways for Future Projects</div>
-          <div class="field">
-            <textarea id="takeaways" placeholder="What are the most important lessons you learned that you’d apply to your next project?
-
-Be specific and actionable:
-1. Start with a realistic scope—our initial plan was too ambitious for one semester
-2. Schedule regular team sync meetings at the same time each week for consistency
-3. Build in buffer time for learning new tools and technologies"></textarea>
-          </div>
-        </section>
-
-        <!-- 12. Formal Sign-Off -->
-        <section id="sec-12" data-section>
-          <div class="section-number">12. Formal Sign-Off</div>
-          <div class="section-heading">Formal Sign-Off</div>
-          <div class="field">
-            <textarea id="signoff" placeholder="Document stakeholder feedback and approval:
-• Your name and signature as PM
-• Team members who approve the final deliverables
-• Stakeholder feedback: Were they happy with the outcome? What were their impressions?
-• Stakeholder sign-off confirming they are satisfied with the deliverables
-• Instructor/course approval (if applicable)"></textarea>
-          </div>
-        </section>
-
-        <!-- 13. Recognition -->
-        <section id="sec-13" data-section>
-          <div class="section-number">13. Recognition</div>
-          <div class="section-heading">Recognition</div>
-          <div class="field">
-            <textarea id="recognition" placeholder="Thank the people who helped make your project successful:
-• Team members and their specific contributions
-• People you interviewed or who provided feedback
-• Classmates who offered advice or support"></textarea>
-          </div>
-        </section>
-
-        <!-- 14. What's Next -->
-        <section id="sec-14" data-section>
-          <div class="section-number">14. What’s Next</div>
-          <div class="section-heading">What’s Next</div>
-          <p class="section-subtitle">
-            Future plans, next steps, and how you’ll apply what you learned.
-          </p>
-          <div class="field">
-            <textarea id="whats-next" placeholder="What are your next steps after this project?
-• How will you apply the lessons learned to your next project or career?
-• Are there any follow-up actions or future enhancements planned?
-• What skills or knowledge do you want to develop further?
-• How has this project changed your approach to project management?"></textarea>
-          </div>
-        </section>
-
-        <!-- Buttons (including export) -->
-        <div class="form-footer">
-          <button class="btn btn-secondary" type="reset">Clear</button>
-          <button class="btn btn-primary" type="button" onclick="exportToWord()">💾 Export to Word</button>
-        </div>
-
-      </div><!-- /#closure-content -->
-    </div><!-- /.layout -->
-  </div><!-- /.card -->
-
-</div><!-- /.shell -->
-
-<script>
-  function exportToWord(filename = 'Project_Closure_Document') {
-    const content = document.getElementById('closure-content').innerHTML;
-
-    const preHtml =
-      "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
-      "xmlns:w='urn:schemas-microsoft-com:office:word' " +
-      "xmlns='http://www.w3.org/TR/REC-html40'>" +
-      "<head><meta charset='utf-8'><title>Export HTML To Word</title></head><body>";
-    const postHtml = "</body></html>";
-
-    const html = preHtml + content + postHtml;
-
-    const blob = new Blob(['\ufeff', html], {
-      type: 'application/msword'
-    });
-
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename + '.doc';
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  }
-
-  // highlight active section in sidebar while scrolling
-  const sections = document.querySelectorAll('[data-section]');
-  const navLinks = document.querySelectorAll('.toc a');
-
-  window.addEventListener('scroll', () => {
-    let currentId = null;
-    sections.forEach(sec => {
-      const rect = sec.getBoundingClientRect();
-      if (rect.top <= 120 && rect.bottom > 120) {
-        currentId = sec.id;
-      }
-    });
-    if (!currentId) return;
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      link.classList.toggle('active', href === '#' + currentId);
-    });
-  });
-</script>
+  </main>
+</div>
 
 </body>
 </html>
